@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Catálogo — Santelmo Computación</title>
+  <meta name="theme-color" content="#0b0f17" />
+  <link rel="stylesheet" href="./assets/css/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="./index.html" aria-label="Inicio">
+        <img class="brand-logo" src="./assets/img/logo.png" alt="Santelmo Computación" />
+      </a>
+      <nav class="nav" aria-label="Navegación">
+        <a href="./index.html">Inicio</a>
+        <a class="active" href="./catalogo.html">Catálogo</a>
+        <a href="./contacto.html">Contacto</a>
+      </nav>
+      <div class="rate-pill" aria-label="Tipo de cambio"><div class="value" data-rate-value>USDT/ARS: —</div></div>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1 class="page-title">Catálogo</h1>
+
+    <div class="controls" role="region" aria-label="Filtros">
+      <div class="field">
+        <label for="q">Buscar</label>
+        <input id="q" type="search" placeholder="Nombre o descripción…" data-filter-q />
+      </div>
+      <div class="field">
+        <label for="cat">Categoría</label>
+        <select id="cat" data-filter-category></select>
+      </div>
+      <div class="field">
+        <label for="sort">Orden</label>
+        <select id="sort" data-filter-sort>
+          <option value="relevancia">Relevancia</option>
+          <option value="precio_asc">Precio (menor a mayor)</option>
+          <option value="precio_desc">Precio (mayor a menor)</option>
+          <option value="stock">Stock</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="grid" data-catalog-grid></div>
+
+    <footer class="footer">
+      Los precios en ARS se calculan con USDT/ARS. Si Binance no responde, verás solo USD.
+    </footer>
+  </main>
+
+  <a class="fab" href="javascript:void(0)" role="button" aria-label="WhatsApp" data-fab-whatsapp>
+    <span class="dot"></span>
+    <span class="txt">
+      <span class="t">WhatsApp</span>
+      <span class="s">Comprar / consultar</span>
+    </span>
+  </a>
+
+  <script src="./assets/js/config.js"></script>
+<script src="./assets/js/utils.js"></script>
+<script src="./assets/js/currency.js"></script>
+<script src="./assets/js/data.js"></script>
+<script src="./assets/js/ui-modal.js"></script>
+
+<script src="./assets/js/selectx.js"></script>
+
+<script src="./assets/js/catalogo.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contacto — Santelmo Computación</title>
+  <meta name="theme-color" content="#0b0f17" />
+  <link rel="stylesheet" href="./assets/css/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="./index.html" aria-label="Inicio">
+        <img class="brand-logo" src="./assets/img/logo.png" alt="Santelmo Computación" />
+      </a>
+      <nav class="nav" aria-label="Navegación">
+        <a href="./index.html">Inicio</a>
+        <a href="./catalogo.html">Catálogo</a>
+        <a class="active" href="./contacto.html">Contacto</a>
+      </nav>
+      <div style="width:42px"></div>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1 class="page-title">Contacto</h1>
+
+    <div class="contact-card">
+      <div style="font-weight:900; font-size:14px;">Datos de la tienda</div>
+      <div style="color:rgba(234,240,255,.7); font-size:12.5px; margin-top:6px; line-height:1.4;">
+        Editá estos datos en <b>assets/js/config.js</b>.
+      </div>
+
+      <div class="contact-list">
+        <div class="contact-item">
+          <div class="k">Dirección</div>
+          <div class="v" data-contact-address>—</div>
+        </div>
+        <div class="contact-item">
+          <div class="k">Teléfono</div>
+          <div class="v"><a data-contact-phone-link href="tel:" style="text-decoration:underline" data-contact-phone>—</a></div>
+        </div>
+        <div class="contact-item">
+          <div class="k">Email</div>
+          <div class="v"><a data-contact-email-link href="mailto:" style="text-decoration:underline" data-contact-email>—</a></div>
+        </div>
+
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <a class="btn whatsapp" href="javascript:void(0)" role="button" data-contact-wa style="flex:1;">WhatsApp</a>
+          <a class="btn" href="./index.html" style="flex:1;">Volver al showroom</a>
+        </div>
+
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <a class="btn" href="#" data-contact-maps style="flex:1; opacity:.5; pointer-events:none;">Abrir en Maps</a>
+          <a class="btn" href="#" data-contact-ig style="flex:1; opacity:.5; pointer-events:none;">Instagram</a>
+        </div>
+      </div>
+    </div>
+
+    
+  </main>
+
+  <a class="fab" href="javascript:void(0)" role="button" aria-label="WhatsApp" data-fab-whatsapp>
+    <span class="dot"></span>
+    <span class="txt">
+      <span class="t">WhatsApp</span>
+      <span class="s">Consultas</span>
+    </span>
+  </a>
+
+  <script src="./assets/js/config.js"></script>
+  <script src="./assets/js/utils.js"></script>
+  <script src="./assets/js/currency.js"></script>
+  <script src="./assets/js/contacto.js"></script>
+</body>
+</html>
