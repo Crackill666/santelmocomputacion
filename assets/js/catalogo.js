@@ -40,6 +40,15 @@
   // Modal detalle
   const modal = (window.UIModal && window.UIModal.createModal) ? window.UIModal.createModal() : null;
 
+  function stockLevelText(stock){
+    const stockNum = Number(stock || 0);
+    if(stockNum <= 0) return "Sin stock";
+    if(stockNum <= 3) return "Stock: Bajo";
+    if(stockNum <= 5) return "Stock: Medio";
+    return "Stock: Alto";
+  }
+
+
   function openProductDetail(p){
     if(!modal || !p) return;
     modal.setTitle(p.category ? `${p.category}` : "Producto", "");
@@ -78,7 +87,7 @@
           <div class="chip-row" style="margin-top:8px">
             <span class="chip">${window.Utils.escapeHtml(p.category || "Producto")}</span>
             <span class="chip">${usd}</span>
-            <span class="chip">${(p.stock && Number(p.stock)>0) ? ("Stock: "+p.stock) : "Sin stock"}</span>
+            <span class="chip">${stockLevelText(p.stock)}</span>
           </div>
 
           <div class="product-desc">${window.Utils.escapeHtml(p.description || "—").replace(/\\n/g, "<br>")}</div>
@@ -189,8 +198,9 @@
     card.className = "card";
 
     const img0 = (p.images && p.images[0]) ? p.images[0] : "./assets/img/placeholder.jpg";
-    const stockText = (p.stock && Number(p.stock)>0) ? ("Stock: "+p.stock) : "Sin stock";
-    const catName = (p.category || "Producto");
+    
+    const stockText = stockLevelText(p.stock);
+const catName = (p.category || "Producto");
     const icon = (window.Utils && window.Utils.iconForCategory) ? window.Utils.iconForCategory(catName) : "";
 
     card.innerHTML = `

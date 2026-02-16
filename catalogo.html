@@ -11,7 +11,10 @@
   <header class="topbar">
     <div class="topbar-inner">
       <a class="brand" href="./index.html" aria-label="Inicio">
-        <img class="brand-logo" src="./assets/img/logo.png" alt="Santelmo Computación" />
+        <picture class="brand-picture">
+          <source media="(max-width: 768px)" srcset="./assets/img/logo-mobile.png" />
+          <img class="brand-logo" src="./assets/img/logo.png" alt="Santelmo Computación" />
+        </picture>
       </a>
       <nav class="nav" aria-label="Navegación">
         <a href="./index.html">Inicio</a>
@@ -69,6 +72,22 @@
 <script src="./assets/js/selectx.js"></script>
 
 <script src="./assets/js/catalogo.js"></script>
+
+
+<button id="scrollTopBtn" class="scroll-top-btn">↑ Inicio</button>
+<script>
+document.addEventListener("scroll", function(){
+  const btn = document.getElementById("scrollTopBtn");
+  if(window.scrollY > 200){
+    btn.style.display = "block";
+  } else {
+    btn.style.display = "none";
+  }
+});
+document.getElementById("scrollTopBtn").addEventListener("click", function(){
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+</script>
 
 </body>
 </html>

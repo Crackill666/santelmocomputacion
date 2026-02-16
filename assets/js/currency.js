@@ -10,7 +10,7 @@
 
   function fmtARS(n){
     try{
-      const num = new Intl.NumberFormat("es-AR", { maximumFractionDigits:0 }).format(Number(n||0));
+      const num = new Intl.NumberFormat("es-AR", { minimumFractionDigits:2, maximumFractionDigits:2 }).format(Number(n||0));
       return `$ARS ${num}`;
     }catch(e){
       return `$ARS ${Math.round(Number(n||0))}`;
@@ -18,9 +18,14 @@
   }
 
   function fmtUSD(n){
-    const v = Number(n||0);
-    const s = (Number.isFinite(v) ? v : 0).toFixed(2);
-    return `USD ${s}`;
+    try{
+      const num = new Intl.NumberFormat("es-AR", { minimumFractionDigits:2, maximumFractionDigits:2 }).format(Number(n||0));
+      return `USD ${num}`;
+    }catch(e){
+      const v = Number(n||0);
+      const s = (Number.isFinite(v) ? v : 0).toFixed(2).replace(".", ",");
+      return `USD ${s}`;
+    }
   }
 
   function fmtTime(ts){

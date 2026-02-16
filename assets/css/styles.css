@@ -1084,3 +1084,32 @@ img{max-width:100%; display:block}
   opacity:.55;
   cursor:not-allowed;
 }
+
+
+.scroll-top-btn{
+  position: fixed;
+  top: calc(88px + env(safe-area-inset-top));
+  right: 14px;
+  display: none;
+  z-index: 9999;
+  background: rgba(17,17,17,.92);
+  color: #fff;
+  border: 1px solid #444;
+  padding: 6px 10px;
+  border-radius: 16px;
+  font-size: 12px;
+  line-height: 1;
+  cursor: pointer;
+}
+.scroll-top-btn:hover{ filter: brightness(1.05); }
+
+
+.brand-picture{ display:block; }
+
+/* Mobile tweaks */
+
+@media (max-width: 768px){
+  .brand-logo{ height:42px; }
+  .topbar-inner{ padding:10px 14px; }
+}
+

@@ -6,6 +6,15 @@
 
   const modal = window.UIModal.createModal();
 
+  function stockLevelText(stock){
+    const stockNum = Number(stock || 0);
+    if(stockNum <= 0) return "Sin stock";
+    if(stockNum <= 3) return "Stock: Bajo";
+    if(stockNum <= 5) return "Stock: Medio";
+    return "Stock: Alto";
+  }
+
+
   let DATA = null;
   let currentCategoryId = null;
 
@@ -162,7 +171,7 @@
     card.className = "card card-product";
 
     const img0 = (p.images && p.images[0]) ? p.images[0] : "./assets/img/placeholder.jpg";
-    const stockText = (p.stock && Number(p.stock) > 0) ? `Stock: ${p.stock}` : "Sin stock";
+    const stockText = stockLevelText(p.stock);
 
     card.innerHTML = `
       <div class="card-media">
@@ -265,7 +274,7 @@
           <div class="chip-row" style="margin-top:8px">
             <span class="chip">${p.category || "Producto"}</span>
             <span class="chip">${usd}</span>
-            <span class="chip">${(p.stock && Number(p.stock)>0) ? ("Stock: "+p.stock) : "Sin stock"}</span>
+            <span class="chip">${stockLevelText(p.stock)}</span>
           </div>
 
           <div class="product-desc">${window.Utils.escapeHtml(p.description || "—").replace(/\n/g, "<br>")}</div>
