@@ -59,6 +59,13 @@ img{max-width:100%; display:block}
   padding:12px 16px;
 }
 
+
+.topbar-row{ display:flex; align-items:center; min-width:0; }
+.topbar-row1{ flex:0 0 auto; justify-content:flex-start; }
+.topbar-row2{ flex:1 1 auto; justify-content:space-between; gap:12px; min-width:0; }
+.topbar-row2 .nav{ flex:1 1 auto; justify-content:center; }
+
+
 .brand{
   display:flex;
   flex-direction:column;
@@ -564,7 +571,9 @@ img{max-width:100%; display:block}
 .brand-logo{
   height:34px;
   width:auto;
+  max-width: 72vw;
   display:block;
+  object-fit: contain;
   filter: drop-shadow(0 14px 30px rgba(0,0,0,.35));
 }
 @media (min-width: 900px){
@@ -1109,7 +1118,27 @@ img{max-width:100%; display:block}
 /* Mobile tweaks */
 
 @media (max-width: 768px){
-  .brand-logo{ height:42px; }
+  .topbar-inner{
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 10px;
+    padding:10px 14px;
+  }
+  .topbar-row1{ width:100%; }
+  .topbar-row2{
+    width:100%;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .topbar-row2 .nav{
+    justify-content: center;
+  }
+  .brand-logo{ height:40px; max-width: 78vw; }
+  .nav a{ padding:9px 10px; }
+  .rate-pill{ padding:6px 10px; }
+}
+
   .topbar-inner{ padding:10px 14px; }
 }
 
