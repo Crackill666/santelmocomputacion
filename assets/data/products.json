@@ -142,6 +142,34 @@
       "description": "- Tecnología inalámbrica Bluetooth - Hasta 12 hrs de duración - Carga rápida - 10 minutos de carga = 2 hrs - Diseño plegable - Almohadillas de espuma con memoria - Micrófono Integrado - Control de llamad as, pistas y vol"
     },
     {
+      "name": "Auricular Inalambrico+Traductor Idiomas M113",
+      "stock": 1,
+      "price_usd": 27.0,
+      "images": [
+        "/assets/products/Auricular Inalambrico+Traductor Idiomas M113/1.jpg",
+        "/assets/products/Auricular Inalambrico+Traductor Idiomas M113/2.jpg",
+        "/assets/products/Auricular Inalambrico+Traductor Idiomas M113/3.jpg"
+      ],
+      "folder": "/assets/products/Auricular Inalambrico+Traductor Idiomas M113/",
+      "category": "Auriculares",
+      "id": "auricular-inalambrico-traductor-idiomas-m113",
+      "description": "Auricular inalámbrico con función traductor de idiomas. Posee activación de por vida en la app. Distancia: 10m. Carga en 2hrs. Uso: 4-5 hrs. 40mAh. Interpretación simultánea. Asistente de reuniones."
+    },
+    {
+      "name": "Auricular Inalambrico+ Traductor Idiomas YYK-Q65",
+      "stock": 1,
+      "price_usd": 21.0,
+      "images": [
+        "/assets/products/Auricular Inalambrico+ Traductor Idiomas YYK-Q65/1.jpg",
+        "/assets/products/Auricular Inalambrico+ Traductor Idiomas YYK-Q65/2.jpg",
+        "/assets/products/Auricular Inalambrico+ Traductor Idiomas YYK-Q65/3.jpg"
+      ],
+      "folder": "/assets/products/Auricular Inalambrico+ Traductor Idiomas YYK-Q65/",
+      "category": "Auriculares",
+      "id": "auricular-inalambrico-traductor-idiomas-yyk-q65",
+      "description": "Auricular Bluetooth + Traductor de idiomas. Distancia: 10m. Touch. Carga en 1.5hrs. Uso de música hasta 6hrs."
+    },
+    {
       "name": "Memoria SANDISK 16GB Clase 10",
       "stock": 2,
       "price_usd": 19.0,
@@ -476,6 +504,20 @@
       "category": "Varios",
       "id": "soporte-celular-moto-bici-wa1",
       "description": "Sporte para manillar de motos y bicicletas, hasta 6,5 pulgadas"
+    },
+    {
+      "name": "Aspiradora Solpadora Aire Portatil Hogar Auto",
+      "stock": 1,
+      "price_usd": 63.0,
+      "images": [
+        "/assets/products/Aspiradora Solpadora Aire Portatil Hogar Auto/1.jpg",
+        "/assets/products/Aspiradora Solpadora Aire Portatil Hogar Auto/2.jpg",
+        "/assets/products/Aspiradora Solpadora Aire Portatil Hogar Auto/3.jpg"
+      ],
+      "folder": "/assets/products/Aspiradora Solpadora Aire Portatil Hogar Auto/",
+      "category": "Varios",
+      "id": "aspiradora-solpadora-aire-portatil-hogar-auto",
+      "description": "Aspiradora inalámbrica de 3 velocidades con función de soplador. Paquete incluido: 1 aspiradora; 1 boquilla de succión larga; 1 cepillo de boca plana; 1 boquilla de succión gruesa; 1 boquilla de soplado corta; 1 cable USB; 1 manual de instrucciones."
     },
     {
       "name": "Cable Belkin USD to MicroUSB",
