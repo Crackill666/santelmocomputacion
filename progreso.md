@@ -1,27 +1,42 @@
 # Progreso del proyecto - Santelmo Computacion
 
-Fecha: 2026-02-26
+Fecha de corte: 2026-03-02
 
-## 1) Relevamiento tecnico inicial
+## 1) Estado general del proyecto
 
-- Proyecto confirmado como sitio estatico (`HTML + CSS + JS`), sin framework ni build.
+- Tipo de proyecto: sitio estatico (`HTML + CSS + JS`), sin framework ni build.
 - Paginas principales:
   - `index.html` (showroom interactivo con hotspots)
-  - `catalogo.html` (catalogo con filtros)
-  - `contacto.html` (datos de contacto)
-- Datos de productos cargados desde:
-  - `assets/data/products.json`
-- Configuracion de negocio:
-  - `assets/js/config.js`
-- Cantidad detectada durante el relevamiento:
-  - `categories`: 6
-  - `products`: 41 (antes de agregar el ultimo producto)
+  - `catalogo.html` (catalogo con filtros y modal de producto)
+  - `contacto.html` (datos de contacto y accesos rapidos)
+- Estructura tecnica relevante:
+  - Estilos: `assets/css/styles.css`
+  - Configuracion de negocio/contacto: `assets/js/config.js`
+  - Datos de productos: `assets/data/products.json`
+  - Logica por pagina:
+    - `assets/js/app.js` (showroom)
+    - `assets/js/catalogo.js` (catalogo)
+    - `assets/js/contacto.js` (contacto)
+  - Utilidades compartidas:
+    - `assets/js/data.js`
+    - `assets/js/currency.js`
+    - `assets/js/utils.js`
+    - `assets/js/ui-modal.js`
+    - `assets/js/selectx.js`
 
-## 2) Cambios implementados en esta sesion
+## 2) Inventario y datos (estado actual)
+
+- Archivo validado: `assets/data/products.json` (`ConvertFrom-Json` OK).
+- Estructura JSON: `meta`, `categories`, `products`.
+- Conteo actual:
+  - `categories`: 6
+  - `products`: 42
+
+## 3) Cambios ya implementados antes de hoy (sesion previa)
 
 Archivo modificado: `assets/data/products.json`
 
-### 2.1 Nuevo producto agregado en categoria "Varios"
+### 3.1 Producto agregado en categoria "Varios"
 
 - `name`: `Aspiradora Solpadora Aire Portatil Hogar Auto`
 - `stock`: `1`
@@ -35,27 +50,36 @@ Archivo modificado: `assets/data/products.json`
   - `/assets/products/Aspiradora Solpadora Aire Portatil Hogar Auto/3.jpg`
 - `description` cargada desde PDF `Descripcion II`.
 
-### 2.2 Descripciones actualizadas desde PDF "Descripcion II"
+### 3.2 Descripciones actualizadas desde PDF "Descripcion II"
 
 Se actualizaron estos productos:
 
 1. `Auricular Inalambrico+Traductor Idiomas M113`
 2. `Auricular Inalambrico+ Traductor Idiomas YYK-Q65`
 
-## 3) Fuente de contenido usada para descripciones
+Fuente usada:
+- `C:\STC WEB\000-informacion base\Descripcion II.pdf` (texto extraido por OCR en Windows).
 
-- PDF localizado en:
-  - `C:\STC WEB\000-informacion base\Descripcion II.pdf`
-- Se extrajo el texto por OCR en entorno Windows para completar las descripciones solicitadas.
+## 4) Cambios implementados hoy (2026-03-02)
 
-## 4) Estado actual
+Archivo modificado: `contacto.html`
 
-- JSON validado luego de los cambios (`ConvertFrom-Json` OK).
-- El proyecto queda listo para continuar con nuevas modificaciones desde este punto.
+- Se agrego una nueva fila de contacto entre Telefono y Email:
+  - `Horario`: `Lunes a Viernes de 10 a 17:30 hs`
 
-## 5) Pendiente recomendado para proxima sesion (opcional)
+Referencia:
+- bloque de contacto en `contacto.html` (linea de horario ya insertada).
+
+## 5) Pendientes recomendados para proxima sesion
 
 - Revisar y limpiar duplicados de estilos SelectX en `assets/css/styles.css`.
 - Corregir posible llave sobrante al final de `assets/css/styles.css`.
 - Homogeneizar algunos `id` de productos para mantener formato slug consistente en todo el catalogo.
 
+## 6) Punto de reanudacion sugerido
+
+Al retomar, comenzar por:
+
+1. Auditoria y limpieza de `assets/css/styles.css`.
+2. Revalidar visualmente `catalogo.html` y `contacto.html` despues de los ajustes.
+3. Mantener `progreso.md` actualizado en cada bloque de cambios para trazabilidad.
