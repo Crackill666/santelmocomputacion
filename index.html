@@ -72,6 +72,19 @@ src="https://www.facebook.com/tr?id=1980377969521010&ev=PageView&noscript=1"
   <script src="./assets/js/ui-modal.js"></script>
   <script>window.HOTSPOTS = [{"id": "auriculares", "x": 13.4277, "y": 25.4212, "w": 12.9883, "h": 61.1722}, {"id": "varios", "x": 29.9316, "y": 24.1758, "w": 4.7852, "h": 53.1868}, {"id": "gaming", "x": 43.6523, "y": 20.7326, "w": 9.082, "h": 51.2088}, {"id": "mochilas", "x": 54.2969, "y": 44.9084, "w": 12.8418, "h": 15.3114}, {"id": "storage", "x": 68.9453, "y": 44.9084, "w": 8.3008, "h": 18.8278}, {"id": "cables", "x": 85.2051, "y": 34.4322, "w": 11.2793, "h": 28.5714}, {"id": "catalogo", "x": 35.9375, "y": 81.5385, "w": 16.4551, "h": 16.5568}, {"id": "contacto", "x": 78.2227, "y": 75.0183, "w": 16.0156, "h": 22.1978}];</script>
   <script src="./assets/js/app.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const whatsappBtn = document.querySelector("[data-fab-whatsapp]");
+  if (whatsappBtn) {
+    whatsappBtn.addEventListener("click", function () {
+      if (typeof fbq !== "undefined") {
+        fbq('track', 'Lead');
+        console.log("Evento Lead enviado a Meta");
+      }
+    });
+  }
+});
+</script>
 </body>
 </html>
 

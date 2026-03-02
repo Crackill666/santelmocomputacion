@@ -107,6 +107,19 @@ document.getElementById("scrollTopBtn").addEventListener("click", function(){
 });
 </script>
 
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const whatsappBtn = document.querySelector("[data-fab-whatsapp]");
+  if (whatsappBtn) {
+    whatsappBtn.addEventListener("click", function () {
+      if (typeof fbq !== "undefined") {
+        fbq('track', 'Lead');
+        console.log("Evento Lead enviado a Meta");
+      }
+    });
+  }
+});
+</script>
 </body>
 </html>
 

@@ -200,8 +200,12 @@
     const img0 = (p.images && p.images[0]) ? p.images[0] : "./assets/img/placeholder.jpg";
     
     const stockText = stockLevelText(p.stock);
-const catName = (p.category || "Producto");
+    const catName = (p.category || "Producto");
     const icon = (window.Utils && window.Utils.iconForCategory) ? window.Utils.iconForCategory(catName) : "";
+    const usdValue = Number(p.price_usd || 0);
+    const usdText = window.Currency.fmtUSD(usdValue);
+    const rate = window.Currency.getState().rate;
+    const arsText = rate ? window.Currency.fmtARS(window.Currency.usdToArs(usdValue)) : "$ARS —";
 
     card.innerHTML = `
       <div class="card-media">
@@ -213,14 +217,17 @@ const catName = (p.category || "Producto");
 
         <div class="chip-row">
           <span class="chip">${window.Utils.escapeHtml(catName)}</span>
-          <span class="chip">${window.Currency.fmtUSD(Number(p.price_usd || 0))}</span>
+          <span class="chip">${usdText}</span>
           <span class="chip">${stockText}</span>
         </div>
 
         <div class="card-desc">${window.Utils.safeText(p.description || "", 120)}</div>
 
         <div class="card-bottom">
-          <div class="card-price">${window.Currency.fmtUSD(Number(p.price_usd || 0))}</div>
+          <div class="card-price">
+            <div class="usd">${usdText}</div>
+            <div class="ars">${arsText}</div>
+          </div>
           <button class="btn tiny" type="button" data-view>Ver</button>
         </div>
       </div>
@@ -280,5 +287,6 @@ const catName = (p.category || "Producto");
     el.addEventListener("change", render);
   });
 
+  window.Currency.subscribe(()=> render());
   render();
 })();
