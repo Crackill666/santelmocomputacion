@@ -528,11 +528,8 @@ img{max-width:100%; display:block}
 /* Novedades */
 .novedades-list{
   display:grid;
-  gap:14px;
+  gap:22px;
   margin-top:10px;
-}
-.novedad-item .product-main{
-  aspect-ratio: 16/9;
 }
 .novedad-item .product-desc{
   max-height:none;
@@ -584,7 +581,10 @@ img{max-width:100%; display:block}
   margin-top: 12px;
 }
 .guide-cta .btn{
-  min-width: 240px;
+  min-width: 170px;
+  height: 40px;
+  padding: 0 16px;
+  font-size: 13px;
 }
 
 /* Floating WhatsApp */
@@ -809,6 +809,27 @@ img{max-width:100%; display:block}
   font-size:12px;
   color: rgba(234,240,255,.55);
   line-height:1.45;
+}
+
+/* Novedades tuning */
+.novedad-item .product-main{
+  aspect-ratio: 16/9;
+}
+@media (min-width: 900px){
+  .novedad-item .product-grid{
+    grid-template-columns: 1.05fr 1fr;
+    gap: 18px;
+    align-items: stretch;
+  }
+  .novedad-item .product-gallery,
+  .novedad-item .product-info{
+    height: 100%;
+  }
+  .novedad-item .product-main{
+    height: 100%;
+    min-height: 320px;
+    aspect-ratio: auto;
+  }
 }
 
 /* Toast */

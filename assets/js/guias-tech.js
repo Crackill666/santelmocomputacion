@@ -21,7 +21,7 @@
       viewBtn.addEventListener("click", function(e){
         e.preventDefault();
         trackLead();
-        window.location.href = "./index.html?category=varios&product=aspiradora-solpadora-aire-portatil-hogar-auto";
+        window.location.href = "./index.html?v=20260310&category=varios&product=aspiradora-solpadora-aire-portatil-hogar-auto";
       });
     }
 
