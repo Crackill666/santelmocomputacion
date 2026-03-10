@@ -525,6 +525,68 @@ img{max-width:100%; display:block}
 .contact-item .k{font-size:12px; color:var(--muted); margin-bottom:4px}
 .contact-item .v{font-weight:900}
 
+/* Novedades */
+.novedades-list{
+  display:grid;
+  gap:14px;
+  margin-top:10px;
+}
+.novedad-item .product-main{
+  aspect-ratio: 16/9;
+}
+.novedad-item .product-desc{
+  max-height:none;
+  overflow:visible;
+}
+
+/* Guia Tech article */
+.guide-article{
+  max-width: 900px;
+  margin: 14px auto 0;
+}
+.guide-article h2{
+  margin: 14px 0 8px;
+  font-size: 16px;
+  font-weight: 900;
+}
+.guide-article p{
+  color: rgba(234,240,255,.86);
+  line-height: 1.5;
+  margin: 8px 0;
+}
+.guide-article ul{
+  margin: 8px 0 2px 18px;
+  color: rgba(234,240,255,.9);
+}
+.guide-article li{
+  margin: 6px 0;
+}
+.guide-image{
+  margin: 12px auto 8px;
+  max-width: 70%;
+  border: 1px solid var(--stroke);
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.04);
+}
+.guide-image img{
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.guide-image figcaption{
+  padding: 8px 10px;
+  font-size: 12px;
+  color: var(--muted);
+  border-top: 1px solid var(--stroke);
+}
+.guide-cta{
+  margin-top: 12px;
+}
+.guide-cta .btn{
+  min-width: 240px;
+}
+
 /* Floating WhatsApp */
 .fab{
   position: fixed;
@@ -1141,4 +1203,3 @@ img{max-width:100%; display:block}
 
   .topbar-inner{ padding:10px 14px; }
 }
-

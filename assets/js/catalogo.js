@@ -86,7 +86,6 @@
 
           <div class="chip-row" style="margin-top:8px">
             <span class="chip">${window.Utils.escapeHtml(p.category || "Producto")}</span>
-            <span class="chip">${usd}</span>
             <span class="chip">${stockLevelText(p.stock)}</span>
           </div>
 
@@ -217,7 +216,6 @@
 
         <div class="chip-row">
           <span class="chip">${window.Utils.escapeHtml(catName)}</span>
-          <span class="chip">${usdText}</span>
           <span class="chip">${stockText}</span>
         </div>
 

@@ -101,6 +101,48 @@
     return window.StoreData.loadProducts().then(d=>attachCategoryIds(d));
   }
 
+  function resolveCategoryId(raw){
+    const key = norm(raw);
+    if(!key) return null;
+    const cat = (DATA.categories||[]).find(c=>
+      norm(c.id)===key ||
+      norm(c.name)===key ||
+      norm(c.productCategory)===key
+    );
+    if(cat) return cat.id;
+    const hs = (window.HOTSPOTS||[]).map(h=>String(h.id||""));
+    const match = hs.find(id=> norm(id)===key);
+    return match || raw;
+  }
+
+  function applyDeepLinkFromUrl(){
+    const params = new URLSearchParams(window.location.search || "");
+    const categoryRaw = params.get("category");
+    const productRaw = params.get("product");
+    const presetQuery = params.get("q") || "";
+
+    if(!categoryRaw && !productRaw && !presetQuery) return;
+
+    let hotspotId = categoryRaw ? resolveCategoryId(categoryRaw) : null;
+    let product = null;
+
+    if(productRaw){
+      const pKey = norm(productRaw);
+      product = (DATA.products||[]).find(p=> norm(p.id)===pKey || norm(p.name)===pKey) || null;
+      if(product && product.category_id) hotspotId = product.category_id;
+    }
+
+    if(!hotspotId) return;
+
+    if(product){
+      openCategory(hotspotId, presetQuery);
+      openProductDetail(product, hotspotId);
+      return;
+    }
+
+    openCategory(hotspotId, presetQuery);
+  }
+
   function openCategory(hotspotId, presetQuery=""){
     if(!DATA) return;
 
@@ -183,7 +225,6 @@
 
         <div class="chip-row">
           <span class="chip">${(p.category || getHotspotTitle(hotspotId))}</span>
-          <span class="chip">${window.Currency.fmtUSD(Number(p.price_usd || 0))}</span>
           <span class="chip">${stockText}</span>
         </div>
 
@@ -273,7 +314,6 @@
 
           <div class="chip-row" style="margin-top:8px">
             <span class="chip">${p.category || "Producto"}</span>
-            <span class="chip">${usd}</span>
             <span class="chip">${stockLevelText(p.stock)}</span>
           </div>
 
@@ -373,6 +413,9 @@
 
     // hotspots
     setupHotspots();
+
+    // deep-link support: open category/product from URL params
+    applyDeepLinkFromUrl();
 
     // if user clicks the hint, open catalog
     const hintBtn = document.querySelector("[data-open-catalog]");

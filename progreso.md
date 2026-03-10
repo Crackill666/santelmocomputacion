@@ -62,16 +62,67 @@ Fuente usada:
 
 ## 4) Cambios implementados hoy (2026-03-02)
 
-Archivo modificado: `contacto.html`
+Archivos modificados:
+- `index.html`
+- `catalogo.html`
+- `contacto.html`
+- `assets/js/catalogo.js`
 
-- Se agrego una nueva fila de contacto entre Telefono y Email:
-  - `Horario`: `Lunes a Viernes de 10 a 17:30 hs`
+### 4.1 Meta Pixel instalado en todas las paginas
 
-Referencia:
-- bloque de contacto en `contacto.html` (linea de horario ya insertada).
+Se inserto el bloque completo de Meta Pixel dentro de `<head>` en:
+- `index.html`
+- `catalogo.html`
+- `contacto.html`
+
+Implementacion:
+- `fbq('init', '1980377969521010');`
+- `fbq('track', 'PageView');`
+- bloque `<noscript>` correspondiente
+
+### 4.2 Evento Lead al click en boton WhatsApp (FAB)
+
+Se agrego script antes de `</body>` en las 3 paginas HTML para trackear:
+- `fbq('track', 'Lead')`
+
+Selector usado:
+- `[data-fab-whatsapp]`
+
+Nota:
+- No se modifico el comportamiento existente del boton (solo se agrego listener de tracking).
+
+### 4.3 Correccion de textos con codificacion rota (mojibake)
+
+Se corrigieron textos visibles en HTML, por ejemplo:
+- `Catalogo`, `Computacion`, `Navegacion` (con tildes restauradas en los HTML)
+- `Direccion`, `Telefono`, `Categoria` (con tildes restauradas en los HTML)
+- simbolos especiales restaurados: guion largo, puntos suspensivos, flecha arriba y mano indicadora
+
+### 4.4 Fix de ARS en cards del catalogo
+
+Problema:
+- En `catalogo.html` el precio en ARS aparecia en modal de detalle, pero no en las tarjetas del listado.
+
+Solucion aplicada en `assets/js/catalogo.js`:
+- Se agrego la linea ARS en `card-price` debajo del USD.
+- Se usa `window.Currency.getState().rate` + `usdToArs(...)` para calcular ARS.
+- Se agrego `window.Currency.subscribe(()=> render());` para refrescar cards cuando llega/actualiza cotizacion.
+
+### 4.5 Mitigacion de cache en produccion (Cloudflare/browser)
+
+Se agrego versionado en `catalogo.html` para forzar carga de JS nuevo:
+- `./assets/js/currency.js?v=20260302`
+- `./assets/js/catalogo.js?v=20260302`
+
+Observacion de despliegue:
+- Si en produccion no se refleja un cambio de JS, hacer `Purge Cache` en Cloudflare y hard refresh (`Ctrl+F5`).
 
 ## 5) Pendientes recomendados para proxima sesion
 
+- Verificar en produccion (Events Manager + Meta Pixel Helper) que:
+  - `PageView` dispare en las 3 paginas.
+  - `Lead` dispare al click en `[data-fab-whatsapp]`.
+- Confirmar visualmente en produccion que ARS aparece en cards de `catalogo` sin abrir modal.
 - Revisar y limpiar duplicados de estilos SelectX en `assets/css/styles.css`.
 - Corregir posible llave sobrante al final de `assets/css/styles.css`.
 - Homogeneizar algunos `id` de productos para mantener formato slug consistente en todo el catalogo.
@@ -80,6 +131,7 @@ Referencia:
 
 Al retomar, comenzar por:
 
-1. Auditoria y limpieza de `assets/css/styles.css`.
-2. Revalidar visualmente `catalogo.html` y `contacto.html` despues de los ajustes.
-3. Mantener `progreso.md` actualizado en cada bloque de cambios para trazabilidad.
+1. Validar tracking en Meta (PageView + Lead) en entorno productivo.
+2. Revalidar `catalogo` en produccion con cache limpio (que ARS aparezca en cards).
+3. Continuar con auditoria y limpieza de `assets/css/styles.css`.
+4. Mantener `progreso.md` actualizado en cada bloque de cambios para trazabilidad.
