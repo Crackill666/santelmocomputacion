@@ -1,4 +1,4 @@
-(function(){
+﻿(function(){
   const { STORE_CONFIG } = window;
   const whatsappNumber = (STORE_CONFIG && STORE_CONFIG.whatsappNumber) ? STORE_CONFIG.whatsappNumber : "";
 
@@ -56,14 +56,14 @@
 
   function getHotspotTitle(id){
     const map = {
-      auriculares: "🎧 Auriculares",
-      varios: "📦 Varios",
-      gaming: "🖱️ Mouse/Teclado",
-      mochilas: "🎒 Mochilas",
-      storage: "💾 Storage",
-      cables: "🔌 Cables",
-      catalogo: "🗂️ Catálogo",
-      contacto: "📩 Contacto",
+      auriculares: "Auriculares",
+      varios: "Varios",
+      gaming: "Mouse/Teclado",
+      mochilas: "Mochilas",
+      storage: "Storage",
+      cables: "Cables",
+      catalogo: "Catalogo",
+      contacto: "Contacto",
     };
     return map[id] || id;
   }
@@ -195,7 +195,7 @@
       empty.className = "empty";
       empty.innerHTML = `
         <div class="empty-title">No hay productos para mostrar</div>
-        <div class="empty-sub">Probá con otra categoría o buscá por nombre.</div>
+        <div class="empty-sub">ProbÃ¡ con otra categorÃ­a o buscÃ¡ por nombre.</div>
       `;
       wrap.appendChild(empty);
       return wrap;
@@ -233,7 +233,7 @@
         <div class="card-bottom">
           <div class="card-price">
             <div class="usd">${window.Currency.fmtUSD(Number(p.price_usd || 0))}</div>
-            <div class="ars">$ARS —</div>
+            <div class="ars">$ARS â€”</div>
           </div>
 
           <button class="btn ghost btn-view" type="button" data-view>Ver</button>
@@ -245,12 +245,12 @@
     const _icon = (window.Utils && window.Utils.iconForCategory) ? window.Utils.iconForCategory(_catName) : "";
     const _titleEl = card.querySelector(".card-title");
     _titleEl.innerHTML = `<span class="mini-icon">${_icon}</span><span class="t">${window.Utils.escapeHtml(p.name || "Producto")}</span>`;
-    card.querySelector(".card-desc").textContent = window.Utils.safeText(p.description || "—", 140);
+    card.querySelector(".card-desc").textContent = window.Utils.safeText(p.description || "â€”", 140);
 
     const arsEl = card.querySelector(".ars");
     const updateArs = (rateState)=>{
       const a = rateState && rateState.rate ? window.Currency.usdToArs(Number(p.price_usd||0)) : null;
-      arsEl.textContent = a ? window.Currency.fmtARS(a) : "$ARS —";
+      arsEl.textContent = a ? window.Currency.fmtARS(a) : "$ARS â€”";
     };
     updateArs(window.Currency.getState());
     window.Currency.subscribe(updateArs);
@@ -317,11 +317,11 @@
             <span class="chip">${stockLevelText(p.stock)}</span>
           </div>
 
-          <div class="product-desc">${window.Utils.escapeHtml(p.description || "—").replace(/\n/g, "<br>")}</div>
+          <div class="product-desc">${window.Utils.escapeHtml(p.description || "â€”").replace(/\n/g, "<br>")}</div>
 
           <div class="product-price">
             <div class="usd">${usd}</div>
-            <div class="ars" data-ars>$ARS —</div>
+            <div class="ars" data-ars>$ARS â€”</div>
             <div class="rate-note" data-rate-note></div>
           </div>
 
@@ -353,13 +353,13 @@
     const noteEl = wrap.querySelector("[data-rate-note]");
     const updateArs = (s)=>{
       if(!s || !s.rate){
-        arsEl.textContent = "$ARS —";
+        arsEl.textContent = "$ARS â€”";
         noteEl.textContent = "No se pudo actualizar el tipo de cambio.";
         return;
       }
       const a = window.Currency.usdToArs(Number(p.price_usd||0));
-      arsEl.textContent = a ? window.Currency.fmtARS(a) : "$ARS —";
-      noteEl.textContent = `Tipo de cambio: ${window.Currency.fmtARS(s.rate)} • ${window.Currency.fmtTime(s.updatedAt)}`;
+      arsEl.textContent = a ? window.Currency.fmtARS(a) : "$ARS â€”";
+      noteEl.textContent = `Tipo de cambio: ${window.Currency.fmtARS(s.rate)} â€¢ ${window.Currency.fmtTime(s.updatedAt)}`;
     };
     updateArs(window.Currency.getState());
     window.Currency.subscribe(updateArs);
@@ -399,7 +399,7 @@
       DATA = await fetchData();
     }catch(_){
       const hint = document.querySelector("[data-showroom-hint]");
-      if(hint) hint.textContent = "No se pudo cargar el catálogo. Verificá assets/data/products.json";
+      if(hint) hint.textContent = "No se pudo cargar el catÃ¡logo. VerificÃ¡ assets/data/products.json";
       return;
     }
 
@@ -426,3 +426,4 @@
 
   document.addEventListener("DOMContentLoaded", init);
 })();
+

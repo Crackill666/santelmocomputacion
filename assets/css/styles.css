@@ -1268,13 +1268,15 @@ img{max-width:100%; display:block}
     height: min(94dvh, 760px);
   }
 
-  /* En pantallas táctiles mostramos áreas clickeables del showroom */
+  /* En mobile mantenemos el mismo estilo visual de web:
+     sin overlays persistentes, solo feedback al tocar */
   .hotspot{
-    border-color: rgba(255,255,255,.22);
-    background: rgba(255,255,255,.04);
+    border-color: rgba(255,255,255,0);
+    background: rgba(255,255,255,0);
+    box-shadow: none;
   }
   .hotspot::after{
-    opacity:1;
-    transform: translateY(0);
+    opacity:0;
+    transform: translateY(2px);
   }
 }

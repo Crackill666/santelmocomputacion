@@ -288,3 +288,16 @@ Solucion aplicada:
 Para asegurar que produccion cargue el fix nuevo:
 - Se versiono el stylesheet en todas las paginas principales:
   - `./assets/css/styles.css?v=20260310-mobilefix`
+
+### 10.5 Ajuste visual hotspots (desktop-like)
+
+Cambio solicitado:
+- No mostrar iconos/etiquetas persistentes en la imagen del showroom.
+- Mantener comportamiento tipo web: nombre visible solo en hover/active.
+
+Implementacion:
+- Se removio la visibilidad forzada de hotspots en mobile (`.hotspot` + `.hotspot::after`).
+- Se normalizaron titulos de hotspots sin emojis en `assets/js/app.js`.
+- Se actualizo cache busting:
+  - CSS: `?v=20260310-mobilefix2`
+  - JS showroom (`index.html`): `app.js?v=20260310-hotspots2`
