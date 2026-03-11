@@ -1,6 +1,6 @@
 # Progreso del proyecto - Santelmo Computacion
 
-Fecha de corte: 2026-03-02
+Fecha de corte: 2026-03-10
 
 ## 1) Estado general del proyecto
 
@@ -9,6 +9,8 @@ Fecha de corte: 2026-03-02
   - `index.html` (showroom interactivo con hotspots)
   - `catalogo.html` (catalogo con filtros y modal de producto)
   - `contacto.html` (datos de contacto y accesos rapidos)
+  - `novedades.html` (listado vertical de productos destacados)
+  - `guias-tech.html` (articulo corto + CTA comercial)
 - Estructura tecnica relevante:
   - Estilos: `assets/css/styles.css`
   - Configuracion de negocio/contacto: `assets/js/config.js`
@@ -17,6 +19,8 @@ Fecha de corte: 2026-03-02
     - `assets/js/app.js` (showroom)
     - `assets/js/catalogo.js` (catalogo)
     - `assets/js/contacto.js` (contacto)
+    - `assets/js/novedades.js` (novedades)
+    - `assets/js/guias-tech.js` (guias tech)
   - Utilidades compartidas:
     - `assets/js/data.js`
     - `assets/js/currency.js`
@@ -135,3 +139,152 @@ Al retomar, comenzar por:
 2. Revalidar `catalogo` en produccion con cache limpio (que ARS aparezca en cards).
 3. Continuar con auditoria y limpieza de `assets/css/styles.css`.
 4. Mantener `progreso.md` actualizado en cada bloque de cambios para trazabilidad.
+
+## 7) Cambios implementados hoy (2026-03-10)
+
+Archivos modificados/creados durante la sesion:
+- `index.html`
+- `catalogo.html`
+- `contacto.html`
+- `novedades.html` (nuevo)
+- `guias-tech.html` (nuevo/reconstruido)
+- `assets/js/app.js`
+- `assets/js/catalogo.js`
+- `assets/js/novedades.js` (nuevo)
+- `assets/js/guias-tech.js` (nuevo)
+- `assets/css/styles.css`
+
+### 7.1 Ajuste de cards: quitar precio duplicado en chip-row
+
+Se elimino el chip de precio (USD) que repetia informacion en:
+- Cards de `catalogo` (`assets/js/catalogo.js`)
+- Cards de showroom (`assets/js/app.js`)
+- Detalle/modal de producto en showroom y catalogo (se mantiene precio abajo en `product-price`/`card-price`)
+
+Resultado:
+- Arriba quedan chips de categoria + stock.
+- Abajo queda el bloque de precio (USD + ARS), evitando duplicacion visual.
+
+### 7.2 Navegacion: nuevas secciones "Novedades" y "Guias Tech"
+
+Se actualizo la barra de navegacion en:
+- `index.html`
+- `catalogo.html`
+- `contacto.html`
+
+Se separo el item anterior combinado en dos items:
+- `Novedades`
+- `Guias Tech`
+
+### 7.3 Seccion Novedades implementada
+
+Se creo `novedades.html` y `assets/js/novedades.js` para mostrar 4 productos definidos:
+1. `Aspiradora Solpadora Aire Portatil Hogar Auto`
+2. `Auricular Inalambrico+Traductor Idiomas M113`
+3. `Auricular Inalambrico+ Traductor Idiomas YYK-Q65`
+4. `Teclado Gamer Redragon k630 Dragonbron`
+
+Comportamiento:
+- Carga de datos desde `assets/data/products.json` usando `StoreData.loadProducts()`.
+- Render vertical (uno debajo del otro) con imagen, descripcion, categoria y stock.
+- Bloque de precio completo (USD, ARS, tipo de cambio) y boton `Comprar`.
+- Boton `Comprar` abre WhatsApp con mensaje de producto + precio.
+
+Ajustes de UI posteriores en `assets/css/styles.css`:
+- Reduccion/ajuste de altura visual de imagen en novedades.
+- Mayor separacion vertical entre productos.
+- Igualacion de altura entre bloque de imagen y bloque de descripcion en desktop.
+
+### 7.4 Seccion Guias Tech implementada
+
+Se construyo `guias-tech.html` con articulo corto SEO/comercial:
+- Titulo principal: `Como limpiar tu notebook sin dañarla` (centrado).
+- Introduccion breve + consejos rapidos + solucion recomendada + producto recomendado + CTA.
+- Se dejo una sola imagen en el articulo (se reemplazo la 3ra por la 2da, segun pedido).
+
+Cambio de copy solicitado:
+- Consejo actualizado con texto especifico sobre microfibra + alcohol isopropilico al 70%.
+
+CTA:
+- Texto del boton cambiado a `Ver`.
+- Enlace configurado para abrir producto puntual en showroom/modal.
+
+### 7.5 Deep-link a producto desde Guias Tech
+
+Se agrego soporte en `assets/js/app.js` para abrir categoria/producto por URL:
+- Parametros soportados: `category`, `product`, `q`
+- Ejemplo usado:  
+  `./index.html?v=20260310&category=varios&product=aspiradora-solpadora-aire-portatil-hogar-auto`
+
+Flujo:
+- Se abre categoria `Varios`.
+- Se abre automaticamente el detalle del producto objetivo.
+
+### 7.6 Mitigacion de cache adicional (produccion)
+
+Para evitar que deploy use JS viejo:
+- `index.html` carga `app.js` con version:
+  - `./assets/js/app.js?v=20260310`
+- Boton `Ver` en `guias-tech.html` usa URL con `?v=20260310` + parametros deep-link.
+
+## 8) Pendientes recomendados para proxima sesion (actualizado)
+
+- Validar en produccion que el boton `Ver` de `Guias Tech` abra directo el producto en modal (categoria `Varios`).
+- Verificar que los ajustes visuales de `Novedades` queden OK en mobile (espaciado y alturas).
+- Si hay textos con mojibake en algun archivo HTML/JS, hacer pasada final de normalizacion de codificacion.
+- Definir si `guias-tech.html` quedara como landing unica o como indice para multiples articulos.
+
+## 9) Punto de reanudacion sugerido (actualizado)
+
+Al retomar, comenzar por:
+
+1. Probar en produccion `Guias Tech > Ver` con cache limpio (`Purge Cache` + `Ctrl+F5`).
+2. Revisar visual de `Novedades` en desktop/mobile y ajustar fine-tuning de alturas/espacios si hace falta.
+3. Cargar el siguiente articulo en `Guias Tech` reutilizando misma estructura.
+4. Mantener `progreso.md` actualizado al cerrar cada bloque de cambios.
+
+## 10) Hotfix responsive mobile (2026-03-10)
+
+Archivos modificados:
+- `assets/css/styles.css`
+- `index.html`
+- `catalogo.html`
+- `contacto.html`
+- `novedades.html`
+- `guias-tech.html`
+
+### 10.1 Navegacion mobile (topbar)
+
+Problema reportado:
+- En telefono se cortaba el item `Contacto` en la barra superior.
+
+Solucion aplicada:
+- En `@media (max-width: 768px)` se paso `topbar-row2` a layout vertical.
+- La `nav` ahora usa wrap y los links se distribuyen en varias filas (sin recorte lateral).
+- `rate-pill` en mobile pasa a ocupar ancho completo y centrado.
+
+### 10.2 Modal/categorias en showroom
+
+Problema reportado:
+- En mobile, dentro del modal de productos, al scrollear se podia desalinear/cortar contenido.
+
+Solucion aplicada:
+- Se bloqueo scroll horizontal en `body` y `.modal-body`.
+- Se dejo scroll vertical explicito en `.modal-body`.
+- Se agregaron defensas de quiebre de texto (`overflow-wrap`) en titulo/descripcion para evitar desbordes.
+- Se sumo soporte `dvh` en altura de `.modal-sheet` para mejorar comportamiento en navegadores mobile/in-app.
+
+### 10.3 Zonas clickeables del showroom en touch
+
+Problema reportado:
+- En Inicio no se identificaban bien las zonas tocables.
+
+Solucion aplicada:
+- En mobile se muestran de forma persistente bordes suaves en `.hotspot`.
+- Las etiquetas de hotspots (`::after`) quedan visibles para guiar el toque.
+
+### 10.4 Cache busting de CSS
+
+Para asegurar que produccion cargue el fix nuevo:
+- Se versiono el stylesheet en todas las paginas principales:
+  - `./assets/css/styles.css?v=20260310-mobilefix`
