@@ -15,7 +15,12 @@ function createApp(){
   const app = express();
   app.disable("x-powered-by");
 
-  const LOCAL_ORIGIN_RE = /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/i;
+  const ALLOWED_ORIGINS = new Set([
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+    "https://santelmocomputacion.com.ar",
+    "https://www.santelmocomputacion.com.ar",
+  ]);
 
   app.use((req, res, next)=>{
     res.setHeader("X-Content-Type-Options", "nosniff");
@@ -32,7 +37,7 @@ function createApp(){
 
   app.use((req, res, next)=>{
     const origin = req.headers.origin;
-    if(origin && LOCAL_ORIGIN_RE.test(origin)){
+    if(origin && ALLOWED_ORIGINS.has(origin)){
       res.header("Access-Control-Allow-Origin", origin);
       res.header("Vary", "Origin");
       res.header("Access-Control-Allow-Methods", "GET,POST,OPTIONS");
