@@ -28,19 +28,16 @@
       "name": "Mochilas",
       "productCategory": "Mochilas"
     },
-    
     {
       "id": "cables",
       "name": "Cables",
       "productCategory": "Cables"
     },
     {
-  "id": "storage",
-  "name": "Almacenamiento",
-  "productCategory": "Almacenamiento"
-}
-
-    
+      "id": "storage",
+      "name": "Almacenamiento",
+      "productCategory": "Almacenamiento"
+    }
   ],
   "products": [
     {
@@ -270,7 +267,7 @@
     {
       "name": "Mochila Targus Intellect Essential 15.6",
       "stock": 10,
-      "price_usd": 15.0,
+      "price_usd": 15,
       "images": [
         "/assets/products/Mochila Targus Intellect Essential 15.6/1.jpg",
         "/assets/products/Mochila Targus Intellect Essential 15.6/2.jpg",
@@ -298,7 +295,7 @@
     {
       "name": "Mochila Targus Sport 15.6",
       "stock": 10,
-      "price_usd": 30.0,
+      "price_usd": 30,
       "images": [
         "/assets/products/Mochila Targus Sport 15.6/1.jpg",
         "/assets/products/Mochila Targus Sport 15.6/2.jpg",
@@ -312,7 +309,7 @@
     {
       "name": "Mouse Logitech M317c Chirpy Bird",
       "stock": 3,
-      "price_usd": 22.0,
+      "price_usd": 22,
       "images": [
         "/assets/products/Mouse Logitech M317c Chirpy Bird/1.jpg",
         "/assets/products/Mouse Logitech M317c Chirpy Bird/2.jpg",
@@ -340,7 +337,7 @@
     {
       "name": "Mouse Logitech M317c Floral",
       "stock": 4,
-      "price_usd": 22.0,
+      "price_usd": 22,
       "images": [
         "/assets/products/Mouse Logitech M317c Floral/1.jpg",
         "/assets/products/Mouse Logitech M317c Floral/2.jpg",
@@ -354,7 +351,7 @@
     {
       "name": "Mouse Logitech M317c Golden Garden",
       "stock": 3,
-      "price_usd": 22.0,
+      "price_usd": 22,
       "images": [
         "/assets/products/Mouse Logitech M317c Golden Garden/1.jpg",
         "/assets/products/Mouse Logitech M317c Golden Garden/2.jpg",
@@ -368,7 +365,7 @@
     {
       "name": "Mouse Targus Mini",
       "stock": 11,
-      "price_usd": 5.0,
+      "price_usd": 5,
       "images": [
         "/assets/products/Mouse Targus Mini/1.jpg",
         "/assets/products/Mouse Targus Mini/2.jpg",
@@ -520,9 +517,22 @@
       "description": "Aspiradora inalámbrica de 3 velocidades con función de soplador. Paquete incluido: 1 aspiradora; 1 boquilla de succión larga; 1 cepillo de boca plana; 1 boquilla de succión gruesa; 1 boquilla de soplado corta; 1 cable USB; 1 manual de instrucciones."
     },
     {
+      "name": "Film Protector Pantalla",
+      "stock": 1,
+      "price_usd": 0.5,
+      "images": [
+        "/assets/products/FILM/1.jpg",
+        "/assets/products/FILM/2.jpg",
+        "/assets/products/FILM/3.jpg"
+      ],
+      "folder": "/assets/products/FILM/",
+      "category": "Varios",
+      "id": "film-protector"
+    },
+    {
       "name": "Cable Belkin USB to MicroUSB",
       "stock": 25,
-      "price_usd": 6.0,
+      "price_usd": 6,
       "images": [
         "/assets/products/Cable Belkin USD to MicroUSB/1.jpg",
         "/assets/products/Cable Belkin USD to MicroUSB/2.jpg",
@@ -620,7 +630,7 @@
     {
       "name": "Cable carga-datos USB to Type C",
       "stock": 2,
-      "price_usd": 16.0,
+      "price_usd": 16,
       "images": [
         "/assets/products/Cable carga-datos USB to Type C/1.jpg",
         "/assets/products/Cable carga-datos USB to Type C/2.jpg",
