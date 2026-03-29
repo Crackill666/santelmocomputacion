@@ -1,0 +1,13 @@
+node_modules/
+.npm-cache/
+.env
+# Datos sensibles - NO subir al repo
+# Datos sensibles (pedidos)
+server/data/orders.json
+server/data/*.json
+# Logs
+logs/
+*.log
+# Etiquetas / PDFs generados
+labels/
+*.pdf

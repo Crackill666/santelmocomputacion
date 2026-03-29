@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Contacto — Santelmo Computación</title>
   <meta name="theme-color" content="#0b0f17" />
-  <link rel="stylesheet" href="./assets/css/styles.css?v=20260310-mobilefix2" />
+  <link rel="stylesheet" href="./assets/css/styles.css?v=20260316-mode1" />
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
@@ -40,7 +40,12 @@ src="https://www.facebook.com/tr?id=1980377969521010&ev=PageView&noscript=1"
         <a href="./guias-tech.html">Guias Tech</a>
         <a class="active" href="./contacto.html">Contacto</a>
       </nav>
-      <div style="width:42px"></div>
+      <div class="topbar-status">
+        <div class="mode-pill" data-runtime-mode-badge aria-label="Modo operativo">
+          <div class="label">Modo</div>
+          <div class="value" data-runtime-mode-value>—</div>
+        </div>
+      </div>
     </div>
     </div>
   </header>
@@ -56,6 +61,7 @@ src="https://www.facebook.com/tr?id=1980377969521010&ev=PageView&noscript=1"
         <div class="contact-item">
           <div class="k">Dirección</div>
           <div class="v" data-contact-address>—</div>
+          <div class="contact-note">Oficina en CABA (con cita previa)</div>
         </div>
         <div class="contact-item">
           <div class="k">Teléfono</div>
@@ -71,14 +77,16 @@ src="https://www.facebook.com/tr?id=1980377969521010&ev=PageView&noscript=1"
         </div>
 
         <div style="display:flex; gap:10px; flex-wrap:wrap;">
-          <a class="btn whatsapp" href="javascript:void(0)" role="button" data-contact-wa style="flex:1;">WhatsApp</a>
+          <a class="btn whatsapp" href="javascript:void(0)" role="button" data-contact-wa style="flex:1;">Escribinos por WhatsApp</a>
           <a class="btn" href="./index.html" style="flex:1;">Volver al showroom</a>
         </div>
+        <div class="contact-microcopy">Respondemos r&aacute;pido &#10003;</div>
 
         <div style="display:flex; gap:10px; flex-wrap:wrap;">
           <a class="btn" href="#" data-contact-maps style="flex:1; opacity:.5; pointer-events:none;">Abrir en Maps</a>
           <a class="btn" href="#" data-contact-ig style="flex:1; opacity:.5; pointer-events:none;">Instagram</a>
         </div>
+        <div class="contact-microcopy contact-microcopy-end">Pod&eacute;s consultarnos sin compromiso</div>
       </div>
     </div>
 
@@ -94,6 +102,7 @@ src="https://www.facebook.com/tr?id=1980377969521010&ev=PageView&noscript=1"
   </a>
 
   <script src="./assets/js/config.js"></script>
+  <script src="./assets/js/runtime-mode.js?v=20260316-mode1"></script>
   <script src="./assets/js/utils.js"></script>
   <script src="./assets/js/currency.js"></script>
   <script src="./assets/js/contacto.js"></script>

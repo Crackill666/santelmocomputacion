@@ -17,7 +17,7 @@
         number: whatsappNumber,
         text: "Hola! Quiero hacer una consulta."
       });
-      window.open(url, "_blank", "noopener");
+      window.open(url, "_blank", "noopener,noreferrer");
     });
   }
 
@@ -173,7 +173,7 @@
         number: whatsappNumber,
         text: msg
       });
-      window.open(url, "_blank", "noopener");
+      window.open(url, "_blank", "noopener,noreferrer");
     });
 
     return wrap;

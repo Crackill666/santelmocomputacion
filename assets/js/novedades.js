@@ -25,9 +25,9 @@
   function getStockText(stock){
     const n = Number(stock || 0);
     if(n <= 0) return "Sin stock";
-    if(n <= 3) return "Stock: Bajo";
-    if(n <= 5) return "Stock: Medio";
-    return "Stock: Alto";
+    if(n <= 3) return "\u2714\uFE0F Disponible ahora";
+    if(n <= 5) return "\u2714\uFE0F Disponible ahora";
+    return "\u2714\uFE0F Disponible ahora";
   }
 
   function trackLeadIfAvailable(){
@@ -66,6 +66,7 @@
     const arsEl = article.querySelector("[data-ars]");
     const noteEl = article.querySelector("[data-rate-note]");
     const buyBtn = article.querySelector("[data-buy]");
+    const checkoutBtn = article.querySelector("[data-buy-future]");
 
     if(window.Currency && arsEl && noteEl){
       const updateArs = function(state){
@@ -91,8 +92,19 @@
             number: cfg.whatsappNumber,
             text: buildBuyMessage(product)
           });
-          window.open(url, "_blank", "noopener");
+          window.open(url, "_blank", "noopener,noreferrer");
         }
+      });
+    }
+
+    if(checkoutBtn){
+      checkoutBtn.addEventListener("click", function(e){
+        e.preventDefault();
+        if(window.Checkout && typeof window.Checkout.start === "function"){
+          window.Checkout.start(product, { source: "novedades", button: checkoutBtn });
+          return;
+        }
+        alert("Checkout no disponible por el momento.");
       });
     }
   }
@@ -108,7 +120,7 @@
           number: cfg.whatsappNumber,
           text: cfg.whatsappDefaultText || "Hola! Quiero hacer una consulta."
         });
-        window.open(url, "_blank", "noopener");
+        window.open(url, "_blank", "noopener,noreferrer");
       }
     });
   }
@@ -144,18 +156,18 @@
         </div>
         <div class="product-info">
           <div class="product-title">${name}</div>
-          <div class="chip-row" style="margin-top:8px">
-            <span class="chip">${category}</span>
+          <div class="chip-row chip-row-stack" style="margin-top:8px">
             <span class="chip">${stockText}</span>
           </div>
           <div class="product-desc">${description}</div>
           <div class="product-price">
-            <div class="usd">${usdText}</div>
-            <div class="ars" data-ars>$ARS -</div>
+            <div class="usd precio-usd">${usdText}</div>
+            <div class="ars precio-ars" data-ars>$ARS -</div>
             <div class="rate-note" data-rate-note></div>
           </div>
           <div class="product-actions">
-            <button class="btn whatsapp" type="button" data-buy style="flex:1;">Comprar</button>
+            <button class="btn whatsapp btn-consultar" type="button" data-buy style="flex:1;">Consultar</button>
+            <button class="btn whatsapp btn-comprar" type="button" data-buy-future style="flex:1;">Comprar</button>
           </div>
         </div>
       </div>

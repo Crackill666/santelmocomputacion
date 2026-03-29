@@ -14,7 +14,7 @@
   if(fab){
     fab.addEventListener("click", ()=>{
       const url = window.Utils.buildWhatsAppUrl({ number: whatsappNumber, text: "Hola! Quiero hacer una consulta." });
-      window.open(url, "_blank", "noopener");
+      window.open(url, "_blank", "noopener,noreferrer");
     });
   }
 
@@ -43,9 +43,9 @@
   function stockLevelText(stock){
     const stockNum = Number(stock || 0);
     if(stockNum <= 0) return "Sin stock";
-    if(stockNum <= 3) return "Stock: Bajo";
-    if(stockNum <= 5) return "Stock: Medio";
-    return "Stock: Alto";
+    if(stockNum <= 3) return "\u2714\uFE0F Disponible ahora";
+    if(stockNum <= 5) return "\u2714\uFE0F Disponible ahora";
+    return "\u2714\uFE0F Disponible ahora";
   }
 
 
@@ -84,22 +84,31 @@
         <div class="product-info">
           <div class="product-title">${window.Utils.escapeHtml(p.name || "Producto")}</div>
 
-          <div class="chip-row" style="margin-top:8px">
-            <span class="chip">${window.Utils.escapeHtml(p.category || "Producto")}</span>
+          <div class="chip-row chip-row-stack" style="margin-top:8px">
             <span class="chip">${stockLevelText(p.stock)}</span>
           </div>
 
           <div class="product-desc">${window.Utils.escapeHtml(p.description || "—").replace(/\\n/g, "<br>")}</div>
 
           <div class="product-price">
-            <div class="usd">${usd}</div>
-            <div class="ars" data-ars>$ARS —</div>
+            <div class="usd precio-usd">${usd}</div>
+            <div class="ars precio-ars" data-ars>$ARS —</div>
             <div class="rate-note" data-rate-note></div>
           </div>
 
           <div class="product-actions">
-            <button class="btn whatsapp" type="button" data-wa>Comprar</button>
+            <button class="btn whatsapp btn-consultar" type="button" data-wa>Consultar por WhatsApp</button>
+            <button class="btn whatsapp btn-comprar" type="button" data-buy-future>Comprar ahora</button>
           </div>
+          <div class="product-trust" aria-label="Beneficios de compra">
+            <div><span class="trust-ico" aria-hidden="true">&#10003;</span><span>Compra 100% segura con Mercado Pago</span></div>
+            <div><span class="trust-ico" aria-hidden="true">&#10003;</span><span>Env&iacute;o a todo el pa&iacute;s o retiro en local</span></div>
+            <div><span class="trust-ico" aria-hidden="true">&#10003;</span><span>Asesoramiento r&aacute;pido por WhatsApp</span></div>
+          </div>
+          <div class="buy-note" style="margin-top:6px; font-size:12px; opacity:0.8;">
+            Pag&aacute; con Mercado Pago de forma segura
+          </div>
+        </div>
         </div>
       </div>
     `;
@@ -143,11 +152,38 @@
     if(waBtn){
       waBtn.addEventListener("click", (e)=>{
         e.preventDefault();
-        const rate = window.Currency.getState().rate;
-        const ars = rate ? window.Currency.fmtARS(window.Currency.usdToArs(Number(p.price_usd||0))) : "$ARS —";
-        const msg = `Hola! Quiero comprar/consultar:\n${p.name}\n${window.Currency.fmtUSD(Number(p.price_usd||0))} — ${ars}`;
-        const url = window.Utils.buildWhatsAppUrl({ number: whatsappNumber, text: msg });
-        window.open(url, "_blank", "noopener");
+        const productName = p.nombre || p.name || "Producto";
+        const usdValue = Number(p.price_usd || 0);
+        const priceUsd = usdValue.toLocaleString("es-AR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        const state = window.Currency.getState();
+        const arsAmount = state && state.rate ? window.Currency.usdToArs(usdValue) : null;
+        const priceArs = Number.isFinite(arsAmount)
+          ? Number(arsAmount).toLocaleString("es-AR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+          : "no disponible";
+        const product = { nombre: productName };
+        const message = `Hola! Quiero consultar por este producto:
+
+* ${product.nombre}
+  USD ${priceUsd} \u2014 $ARS ${priceArs}
+
+\u00BFLo tienen disponible? \u00BFC\u00F3mo ser\u00EDa el env\u00EDo?`;
+
+        const waNumber = String(whatsappNumber || "").replace(/[^\d]/g, "");
+        const waBase = waNumber ? "https://wa.me/" + waNumber : "https://wa.me/";
+        const url = waBase + "?text=" + encodeURIComponent(message);
+        window.open(url, "_blank", "noopener,noreferrer");
+      });
+    }
+
+    const buyBtn = wrap.querySelector("[data-buy-future]");
+    if(buyBtn){
+      buyBtn.addEventListener("click", (e)=>{
+        e.preventDefault();
+        if(window.Checkout && typeof window.Checkout.start === "function"){
+          window.Checkout.start(p, { source: "catalogo_modal", button: buyBtn });
+          return;
+        }
+        alert("Checkout no disponible por el momento.");
       });
     }
 

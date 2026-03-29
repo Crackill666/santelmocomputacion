@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Test Correo Argentino - SantelmoComputacion</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 860px; margin: 24px auto; padding: 0 12px; }
+    h1 { margin-bottom: 8px; }
+    .row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 10px; }
+    label { font-size: 13px; color: #333; }
+    input { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 6px; }
+    button { padding: 8px 12px; border: 1px solid #222; background: #fff; cursor: pointer; border-radius: 6px; }
+    .actions { display: flex; gap: 8px; margin: 10px 0 14px; }
+    pre { background: #f7f7f7; border: 1px solid #ddd; border-radius: 6px; padding: 10px; overflow: auto; min-height: 180px; }
+    @media (max-width: 760px){ .row { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <h1>Prueba mínima Correo Argentino</h1>
+  <p>Esta página solo prueba <code>/auth-check</code> y <code>/agencies</code>. No modifica checkout.</p>
+
+  <div class="actions">
+    <button id="authCheckBtn" type="button">Validar credenciales</button>
+  </div>
+
+  <div class="row">
+    <div>
+      <label for="provinceCode">Province code</label>
+      <input id="provinceCode" type="text" placeholder="B" />
+    </div>
+    <div>
+      <label for="postalCode">Postal code</label>
+      <input id="postalCode" type="text" placeholder="1000" />
+    </div>
+    <div>
+      <label for="locality">Locality</label>
+      <input id="locality" type="text" placeholder="CABA" />
+    </div>
+  </div>
+
+  <div class="actions">
+    <button id="agenciesBtn" type="button">Consultar sucursales</button>
+  </div>
+
+  <pre id="output">Esperando acción...</pre>
+
+  <script src="./assets/js/correo-test.js"></script>
+</body>
+</html>

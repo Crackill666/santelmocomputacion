@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Detalle pedido - Santelmo Computacion</title>
+  <meta name="theme-color" content="#0b0f17" />
+  <link rel="stylesheet" href="/assets/css/styles.css?v=checkout-20260316-email1" />
+  <link rel="stylesheet" href="/assets/css/checkout.css?v=checkout-20260316-email1" />
+</head>
+<body class="checkout-page">
+  <main class="checkout-shell wide">
+    <section class="checkout-card">
+      <h1>Detalle de pedido</h1>
+
+      <div id="detailAccessGate" class="order-summary">
+        <p class="subtitle" id="detailAccessInfo">Ingresa token admin para desbloquear el panel.</p>
+        <div class="filters-row">
+          <label>Token admin
+            <input id="adminToken" type="password" placeholder="x-admin-token" autocomplete="off" />
+          </label>
+          <button id="unlockDetailPanel" class="btn tiny" type="button">Desbloquear panel</button>
+        </div>
+      </div>
+
+      <div id="detailPanelContent" style="display:none;">
+        <div class="actions-row" style="margin-bottom:10px;">
+          <a class="btn" href="/stc-admin-orders-9x7q"><- Volver a pedidos</a>
+          <button id="btnReload" class="btn tiny" type="button">Refrescar</button>
+        </div>
+
+        <p class="subtitle" id="detailInfo">Cargando...</p>
+        <div id="detailAlert" class="alert-box" style="display:none;"></div>
+
+        <div id="orderSummary" class="order-summary"></div>
+
+        <h2 style="margin-top:16px;">Datos del cliente</h2>
+        <div id="customerSummary" class="order-summary"></div>
+
+        <h2>Items</h2>
+        <div class="table-wrap">
+          <table class="orders-table">
+            <thead>
+              <tr>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Unitario</th>
+                <th>Subtotal</th>
+              </tr>
+            </thead>
+            <tbody id="itemsBody"></tbody>
+          </table>
+        </div>
+
+        <h2 style="margin-top:16px;">Totales</h2>
+        <div id="totalsSummary" class="order-summary"></div>
+
+        <h2 style="margin-top:16px;">Direccion de envio</h2>
+        <div id="shippingSummary" class="order-summary"></div>
+
+        <div id="shipmentSection">
+          <h2 style="margin-top:16px;">Envio mock</h2>
+          <div class="actions-row" id="shipmentActions">
+            <button id="btnCreateShipment" class="btn whatsapp" type="button">Crear envio</button>
+            <button id="btnGenerateLabel" class="btn" type="button">Generar etiqueta</button>
+            <a id="btnViewLabel" class="btn" href="#" target="_blank" rel="noopener" style="display:none;">Ver etiqueta</a>
+          </div>
+        </div>
+
+        <h2 style="margin-top:16px;">Tracking mock</h2>
+        <div id="trackingSummary" class="order-summary"></div>
+        <div class="actions-row" id="trackingActions">
+          <button id="btnToInTransit" class="btn" type="button">Pasar a transito</button>
+          <button id="btnToOutForDelivery" class="btn" type="button">Pasar a reparto</button>
+          <button id="btnToDelivered" class="btn" type="button">Marcar entregado</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="/assets/js/config.js?v=checkout-20260316-email1"></script>
+  <script src="/assets/js/admin-order-detail.js?v=checkout-20260316-email1"></script>
+</body>
+</html>

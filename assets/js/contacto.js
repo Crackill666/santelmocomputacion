@@ -39,7 +39,7 @@
         number: cfg.whatsappNumber,
         text: cfg.whatsappDefaultText || "Hola! Quiero hacer una consulta."
       });
-      window.open(url, "_blank", "noopener");
+      window.open(url, "_blank", "noopener,noreferrer");
     });
   }
 
@@ -61,7 +61,7 @@
         number: cfg.whatsappNumber,
         text: cfg.whatsappDefaultText || "Hola! Quiero hacer una consulta."
       });
-      window.open(url, "_blank", "noopener");
+      window.open(url, "_blank", "noopener,noreferrer");
     });
   }
 })();

@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Compra confirmada - Santelmo Computacion</title>
+  <meta name="theme-color" content="#0b0f17" />
+  <link rel="stylesheet" href="./assets/css/styles.css?v=checkout-20260316-email2" />
+  <link rel="stylesheet" href="./assets/css/checkout.css?v=checkout-20260316-email2" />
+</head>
+<body class="checkout-page">
+  <main class="checkout-shell">
+    <section class="checkout-card">
+      <h1 data-status-title>Verificando pago...</h1>
+      <p class="subtitle" data-status-subtitle>Estamos confirmando el estado de tu compra.</p>
+      <div class="alert-box" data-alert style="display:none;"></div>
+      <div class="order-summary" data-order-summary></div>
+    </section>
+
+    <section class="checkout-card" data-shipping-wrap>
+      <h2>&Uacute;ltimo paso: datos de env&iacute;o</h2>
+      <p class="subtitle" data-shipping-subtitle>Complet&aacute; estos datos para despachar tu compra. Te va a llevar menos de un minuto.</p>
+      <div class="alert-box" data-shipping-alert style="display:none;"></div>
+      <div class="alert-box" data-agency-info style="display:none;"></div>
+
+      <form id="shippingForm" class="shipping-form" novalidate data-shipping-form method="post">
+        <p class="subtitle" style="margin:6px 0 4px;">Contacto</p>
+
+        <label>Nombre y apellido
+          <input type="text" name="nombre_apellido" required />
+        </label>
+
+        <label>Telefono
+          <input type="tel" name="telefono" required />
+        </label>
+
+        <label>Email
+          <input type="email" name="email" required />
+        </label>
+
+        <p class="subtitle" style="margin:6px 0 4px;">Direcci&oacute;n</p>
+
+        <div class="grid-2">
+          <label>Calle
+            <input type="text" name="calle" required />
+          </label>
+          <label>Numero
+            <input type="text" name="numero" required />
+          </label>
+        </div>
+
+        <label>Piso / departamento (opcional)
+          <input type="text" name="piso_departamento" />
+        </label>
+
+        <div class="grid-2">
+          <label>Localidad
+            <input type="text" name="localidad" required />
+          </label>
+          <label>Provincia
+            <input type="text" name="provincia" required />
+          </label>
+        </div>
+
+        <label>Codigo postal
+          <input type="text" name="codigo_postal" required />
+        </label>
+
+        <p class="subtitle" style="margin:6px 0 4px;">Observaciones</p>
+
+        <label>Observaciones (opcional)
+          <textarea name="observaciones" rows="3"></textarea>
+        </label>
+
+        <div class="actions-row">
+          <button id="shippingSubmit" class="btn whatsapp" type="submit">Guardar envio</button>
+          <a class="btn" href="./catalogo.html">Seguir viendo productos</a>
+        </div>
+      </form>
+    </section>
+
+    <section class="checkout-card" data-pickup-wrap style="display:none;">
+      <h2>Retiro en local</h2>
+      <p class="subtitle">Mostra este numero al retirar para validar tu pedido.</p>
+      <div class="alert-box" data-pickup-alert style="display:none;"></div>
+
+      <div class="pickup-order-id" data-pickup-order-id>Pedido -</div>
+      <div class="order-summary" data-pickup-showroom></div>
+
+      <form id="pickupForm" class="shipping-form" novalidate>
+        <label>Nombre y apellido
+          <input type="text" name="pickup_contact_name" required />
+        </label>
+
+        <label>Telefono
+          <input type="tel" name="pickup_contact_phone" required />
+        </label>
+
+        <label>Email
+          <input type="email" name="pickup_contact_email" required />
+        </label>
+
+        <div class="actions-row">
+          <button id="pickupSubmit" class="btn whatsapp" type="submit">Confirmar datos de retiro</button>
+          <a class="btn" href="./catalogo.html">Seguir viendo productos</a>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <script src="./assets/js/config.js?v=checkout-20260316-email2"></script>
+  <script src="./assets/js/checkout-success.js?v=checkout-20260316-email2"></script>
+</body>
+</html>
+

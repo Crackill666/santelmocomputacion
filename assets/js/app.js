@@ -1,4 +1,4 @@
-﻿(function(){
+(function(){
   const { STORE_CONFIG } = window;
   const whatsappNumber = (STORE_CONFIG && STORE_CONFIG.whatsappNumber) ? STORE_CONFIG.whatsappNumber : "";
 
@@ -9,9 +9,9 @@
   function stockLevelText(stock){
     const stockNum = Number(stock || 0);
     if(stockNum <= 0) return "Sin stock";
-    if(stockNum <= 3) return "Stock: Bajo";
-    if(stockNum <= 5) return "Stock: Medio";
-    return "Stock: Alto";
+    if(stockNum <= 3) return "\u2714\uFE0F Disponible ahora";
+    if(stockNum <= 5) return "\u2714\uFE0F Disponible ahora";
+    return "\u2714\uFE0F Disponible ahora";
   }
 
 
@@ -195,7 +195,7 @@
       empty.className = "empty";
       empty.innerHTML = `
         <div class="empty-title">No hay productos para mostrar</div>
-        <div class="empty-sub">ProbÃ¡ con otra categorÃ­a o buscÃ¡ por nombre.</div>
+        <div class="empty-sub">Probá con otra categoría o buscá por nombre.</div>
       `;
       wrap.appendChild(empty);
       return wrap;
@@ -233,7 +233,7 @@
         <div class="card-bottom">
           <div class="card-price">
             <div class="usd">${window.Currency.fmtUSD(Number(p.price_usd || 0))}</div>
-            <div class="ars">$ARS â€”</div>
+            <div class="ars">$ARS —</div>
           </div>
 
           <button class="btn ghost btn-view" type="button" data-view>Ver</button>
@@ -245,12 +245,12 @@
     const _icon = (window.Utils && window.Utils.iconForCategory) ? window.Utils.iconForCategory(_catName) : "";
     const _titleEl = card.querySelector(".card-title");
     _titleEl.innerHTML = `<span class="mini-icon">${_icon}</span><span class="t">${window.Utils.escapeHtml(p.name || "Producto")}</span>`;
-    card.querySelector(".card-desc").textContent = window.Utils.safeText(p.description || "â€”", 140);
+    card.querySelector(".card-desc").textContent = window.Utils.safeText(p.description || "—", 140);
 
     const arsEl = card.querySelector(".ars");
     const updateArs = (rateState)=>{
       const a = rateState && rateState.rate ? window.Currency.usdToArs(Number(p.price_usd||0)) : null;
-      arsEl.textContent = a ? window.Currency.fmtARS(a) : "$ARS â€”";
+      arsEl.textContent = a ? window.Currency.fmtARS(a) : "$ARS —";
     };
     updateArs(window.Currency.getState());
     window.Currency.subscribe(updateArs);
@@ -312,24 +312,31 @@
         <div class="product-info">
           <div class="product-title">${p.name || "Producto"}</div>
 
-          <div class="chip-row" style="margin-top:8px">
-            <span class="chip">${p.category || "Producto"}</span>
+          <div class="chip-row chip-row-stack" style="margin-top:8px">
             <span class="chip">${stockLevelText(p.stock)}</span>
           </div>
 
-          <div class="product-desc">${window.Utils.escapeHtml(p.description || "â€”").replace(/\n/g, "<br>")}</div>
+          <div class="product-desc">${window.Utils.escapeHtml(p.description || "—").replace(/\n/g, "<br>")}</div>
 
           <div class="product-price">
-            <div class="usd">${usd}</div>
-            <div class="ars" data-ars>$ARS â€”</div>
+            <div class="usd precio-usd">${usd}</div>
+            <div class="ars precio-ars" data-ars>$ARS —</div>
             <div class="rate-note" data-rate-note></div>
           </div>
 
           <div class="product-actions">
-            <button class="btn whatsapp" type="button" data-wa>Comprar</button>
+            <button class="btn whatsapp btn-consultar" type="button" data-wa>Consultar por WhatsApp</button>
+            <button class="btn whatsapp btn-comprar" type="button" data-buy-future>Comprar ahora</button>
           </div>
-
-          
+          <div class="product-trust" aria-label="Beneficios de compra">
+            <div><span class="trust-ico" aria-hidden="true">&#10003;</span><span>Compra 100% segura con Mercado Pago</span></div>
+            <div><span class="trust-ico" aria-hidden="true">&#10003;</span><span>Env&iacute;o a todo el pa&iacute;s o retiro en local</span></div>
+            <div><span class="trust-ico" aria-hidden="true">&#10003;</span><span>Asesoramiento r&aacute;pido por WhatsApp</span></div>
+          </div>
+          <div class="buy-note" style="margin-top:6px; font-size:12px; opacity:0.8;">
+            Pag&aacute; con Mercado Pago de forma segura
+          </div>
+        </div>
         </div>
       </div>
     `;
@@ -353,27 +360,55 @@
     const noteEl = wrap.querySelector("[data-rate-note]");
     const updateArs = (s)=>{
       if(!s || !s.rate){
-        arsEl.textContent = "$ARS â€”";
+        arsEl.textContent = "$ARS —";
         noteEl.textContent = "No se pudo actualizar el tipo de cambio.";
         return;
       }
       const a = window.Currency.usdToArs(Number(p.price_usd||0));
-      arsEl.textContent = a ? window.Currency.fmtARS(a) : "$ARS â€”";
-      noteEl.textContent = `Tipo de cambio: ${window.Currency.fmtARS(s.rate)} â€¢ ${window.Currency.fmtTime(s.updatedAt)}`;
+      arsEl.textContent = a ? window.Currency.fmtARS(a) : "$ARS —";
+      noteEl.textContent = `Tipo de cambio: ${window.Currency.fmtARS(s.rate)} \u2022 ${window.Currency.fmtTime(s.updatedAt)}`;
     };
     updateArs(window.Currency.getState());
     window.Currency.subscribe(updateArs);
 
     const msg = ()=>{
-      const s = window.Currency.getState();
-      const a = s && s.rate ? window.Currency.fmtARS(window.Currency.usdToArs(Number(p.price_usd||0))) : "ARS (no disponible)";
-      return `Hola! Quiero comprar: ${p.name}\nPrecio: ${window.Currency.fmtUSD(Number(p.price_usd||0))}\nPrecio ARS: ${a}`;
+      const productName = p.nombre || p.name || "Producto";
+      const usdValue = Number(p.price_usd || 0);
+      const priceUsd = usdValue.toLocaleString("es-AR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      const state = window.Currency.getState();
+      const arsAmount = state && state.rate ? window.Currency.usdToArs(usdValue) : null;
+      const priceArs = Number.isFinite(arsAmount)
+        ? Number(arsAmount).toLocaleString("es-AR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+        : "no disponible";
+      const product = { nombre: productName };
+      const message = `Hola! Quiero consultar por este producto:
+
+* ${product.nombre}
+  USD ${priceUsd} \u2014 $ARS ${priceArs}
+
+\u00BFLo tienen disponible? \u00BFC\u00F3mo ser\u00EDa el env\u00EDo?`;
+      return message;
     };
 
     wrap.querySelector("[data-wa]").addEventListener("click", ()=>{
-      const url = window.Utils.buildWhatsAppUrl({ number: whatsappNumber, text: msg() });
-      window.open(url, "_blank", "noopener");
+      const waNumber = String(whatsappNumber || "").replace(/[^\d]/g, "");
+      const waBase = waNumber ? "https://wa.me/" + waNumber : "https://wa.me/";
+      const message = msg();
+      const url = waBase + "?text=" + encodeURIComponent(message);
+      window.open(url, "_blank", "noopener,noreferrer");
     });
+
+    const buyBtn = wrap.querySelector("[data-buy-future]");
+    if(buyBtn){
+      buyBtn.addEventListener("click", (e)=>{
+        e.preventDefault();
+        if(window.Checkout && typeof window.Checkout.start === "function"){
+          window.Checkout.start(p, { source: "showroom_modal", button: buyBtn });
+          return;
+        }
+        alert("Checkout no disponible por el momento.");
+      });
+    }
 
     return wrap;
   }
@@ -389,7 +424,7 @@
           number: whatsappNumber,
           text: (STORE_CONFIG && STORE_CONFIG.whatsappDefaultText) ? STORE_CONFIG.whatsappDefaultText : "Hola! Quiero hacer una consulta."
         });
-        window.open(url, "_blank", "noopener");
+        window.open(url, "_blank", "noopener,noreferrer");
       });
     }
 
@@ -399,7 +434,7 @@
       DATA = await fetchData();
     }catch(_){
       const hint = document.querySelector("[data-showroom-hint]");
-      if(hint) hint.textContent = "No se pudo cargar el catÃ¡logo. VerificÃ¡ assets/data/products.json";
+      if(hint) hint.textContent = "No se pudo cargar el catálogo. Verificá assets/data/products.json";
       return;
     }
 

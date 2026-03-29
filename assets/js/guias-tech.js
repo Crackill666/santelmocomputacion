@@ -12,7 +12,7 @@
       number: cfg.whatsappNumber,
       text: text || cfg.whatsappDefaultText || "Hola! Quiero hacer una consulta."
     });
-    window.open(url, "_blank", "noopener");
+    window.open(url, "_blank", "noopener,noreferrer");
   }
 
   function bindActions(){

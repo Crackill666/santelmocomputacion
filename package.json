@@ -1,0 +1,19 @@
+{
+  "name": "santelmocomputacion",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Flujo de compra simple con Mercado Pago, formulario de envio y panel de pedidos",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "preflight": "node server/preflight.js",
+    "release:check": "npm run preflight"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.19.2",
+    "nodemailer": "^8.0.2",
+    "resend": "^6.9.4"
+  }
+}

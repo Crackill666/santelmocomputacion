@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Checkout Mercado Pago - Santelmo Computacion</title>
+  <meta name="theme-color" content="#0b0f17" />
+  <link rel="stylesheet" href="./assets/css/styles.css?v=checkout-20260316-delivery1" />
+  <link rel="stylesheet" href="./assets/css/checkout.css?v=checkout-20260316-delivery1" />
+</head>
+<body class="checkout-page">
+  <main class="checkout-shell single">
+    <section class="checkout-card">
+      <div class="mp-brand">mercado pago</div>
+      <h1>Revisa tu pago</h1>
+      <p class="subtitle">Checkout seguro de prueba para validar el flujo completo de compra.</p>
+      <div id="mockNotice" class="alert-box success" style="display:none;"></div>
+
+      <div class="mock-layout">
+        <div class="order-summary">
+          <div id="mockInfo">Cargando pedido...</div>
+        </div>
+
+        <aside class="mock-pay-box">
+          <h2>Detalles del pago</h2>
+          <div id="mockAmount" class="mock-amount">-</div>
+          <button id="approveBtn" class="btn whatsapp" type="button">Pagar</button>
+          <button id="rejectBtn" class="btn btn-subtle" type="button">Simular pago rechazado</button>
+          <p class="muted mock-legend">No se cobra dinero real en este entorno.</p>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <!-- SOLO ESTE SCRIPT -->
+  <script src="/assets/js/mock-mp-checkout.js"></script>
+</body>
+</html>

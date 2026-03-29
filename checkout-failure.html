@@ -1,0 +1,131 @@
+﻿<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pago no aprobado - Santelmo Computacion</title>
+  <meta name="theme-color" content="#0b0f17" />
+  <link rel="stylesheet" href="./assets/css/styles.css?v=checkout-20260321-failure1" />
+  <link rel="stylesheet" href="./assets/css/checkout.css?v=checkout-20260321-failure1" />
+</head>
+<body class="checkout-page">
+  <main class="checkout-shell single">
+    <section class="checkout-card">
+      <h1 data-status-title>Pago no aprobado</h1>
+      <p class="subtitle" data-status-subtitle>Estamos cerrando el estado del pedido.</p>
+      <div class="alert-box" data-alert style="display:none;"></div>
+      <div class="actions-row">
+        <a class="btn whatsapp" href="./catalogo.html">Volver al catalogo</a>
+        <a class="btn" href="./index.html">Ir al inicio</a>
+      </div>
+    </section>
+  </main>
+
+  <script>
+  (function(){
+    function qs(sel){ return document.querySelector(sel); }
+
+    function resolveApiBaseUrl(){
+      var host = String(window.location.hostname || "").toLowerCase();
+      var port = String(window.location.port || "");
+      var isLocalHost = host === "localhost" || host === "127.0.0.1";
+
+      if(isLocalHost && port && port !== "3000"){
+        return window.location.protocol + "//" + host + ":3000";
+      }
+
+      return "";
+    }
+
+    function buildApiUrl(path){
+      var base = resolveApiBaseUrl();
+      return base ? base + path : path;
+    }
+
+    function setStatus(title, subtitle){
+      var t = qs("[data-status-title]");
+      var s = qs("[data-status-subtitle]");
+      if(t) t.textContent = title;
+      if(s) s.textContent = subtitle;
+    }
+
+    function setAlert(type, message){
+      var box = qs("[data-alert]");
+      if(!box) return;
+      box.className = "alert-box " + type;
+      box.textContent = message;
+      box.style.display = "block";
+    }
+
+    function reasonLabel(status){
+      var raw = String(status || "").toLowerCase();
+      if(raw === "cancelled") return "Pago cancelado";
+      if(raw === "rejected") return "Pago rechazado";
+      if(raw === "pending") return "Pago pendiente";
+      return "Pago no aprobado";
+    }
+
+    async function postJson(url, payload){
+      var res = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload || {}),
+      });
+
+      var data = await res.json().catch(function(){ return {}; });
+      if(!res.ok || !data.ok){
+        throw new Error(data.error || "No se pudo confirmar el cierre del pago.");
+      }
+      return data;
+    }
+
+    async function init(){
+      var params = new URLSearchParams(window.location.search || "");
+      var orderId = params.get("order_id") || "";
+      var accessToken = params.get("access_token") || "";
+      var paymentId = params.get("payment_id") || params.get("collection_id") || "";
+      var finalStatus = params.get("status") || params.get("collection_status") || "cancelled";
+
+      if(!orderId || !accessToken){
+        setStatus("Pago no aprobado", "No pudimos cerrar el estado automaticamente por falta de parametros.");
+        setAlert("error", "Advertencia: falta order_id o access_token. Verifica el pedido en admin para cerrarlo manualmente.");
+        return;
+      }
+
+      setStatus(reasonLabel(finalStatus), "Actualizando el pedido en el backend...");
+
+      try{
+        var response = await postJson(buildApiUrl("/api/checkout/confirm"), {
+          order_id: orderId,
+          access_token: accessToken,
+          payment_id: paymentId,
+          status: finalStatus,
+        });
+
+        var order = response && response.order ? response.order : null;
+        var wasAlreadyApproved = Boolean(
+          order && (
+            order.paymentStatus === "approved" ||
+            order.estado_pago === "pago_aprobado"
+          )
+        );
+
+        if(wasAlreadyApproved){
+          setStatus("Pago aprobado", "El sistema ya registraba este pedido como aprobado.");
+          setAlert("success", "Pedido verificado correctamente. No se sobrescribio el estado aprobado.");
+          return;
+        }
+
+        setStatus(reasonLabel(finalStatus), "Pedido actualizado correctamente.");
+        setAlert("error", reasonLabel(finalStatus) + ". Pedido actualizado correctamente.");
+      }catch(err){
+        setStatus(reasonLabel(finalStatus), "No pudimos confirmar el cierre automaticamente.");
+        setAlert("error", "Advertencia: " + (err.message || "No se pudo confirmar el cierre.") + " Verifica el pedido en admin.");
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", init);
+  })();
+  </script>
+</body>
+</html>
