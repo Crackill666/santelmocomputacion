@@ -49,18 +49,35 @@ router.post("/create-preference", async (req, res, next)=>{
   }
 });
 
-router.get("/confirm-return", async (req, res, next)=>{
+router.get("/confirm-return", async (req, res)=>{
+  const query = req.query || {};
+  const externalReference = String(query.external_reference || "").trim();
+  const orderId = externalReference || String(query.order_id || "").trim();
+  const accessToken = String(query.access_token || "").trim();
+  const paymentId = String(query.payment_id || query.collection_id || "").trim();
+  const finalStatus = String(query.status || query.collection_status || "").toLowerCase();
+
+  const redirectParams = new URLSearchParams();
+  if(orderId) redirectParams.set("order_id", orderId);
+  if(accessToken) redirectParams.set("access_token", accessToken);
+  if(paymentId) redirectParams.set("payment_id", paymentId);
+  if(finalStatus) redirectParams.set("status", finalStatus);
+
+  const queryString = redirectParams.toString();
+  const successUrl = `/checkout-success.html${queryString ? `?${queryString}` : ""}`;
+  const failureUrl = `/checkout-failure.html${queryString ? `?${queryString}` : ""}`;
+
+  if(!orderId){
+    logger.warn("checkout/confirm-return sin referencia de pedido", {
+      has_external_reference: Boolean(externalReference),
+      has_order_id: Boolean(query.order_id),
+      has_payment_id: Boolean(paymentId),
+      status: finalStatus || "",
+    });
+    return res.redirect(successUrl);
+  }
+
   try{
-    const query = req.query || {};
-    const externalReference = String(query.external_reference || "").trim();
-    const orderId = externalReference;
-    const paymentId = query.payment_id || query.collection_id;
-    const finalStatus = String(query.status || query.collection_status || "").toLowerCase();
-
-    if(!orderId){
-      return res.status(400).json({ ok: false, error: "external_reference es obligatorio." });
-    }
-
     if(paymentId){
       await orderService.confirmCheckoutFromReturn({
         externalReference: orderId,
@@ -70,15 +87,21 @@ router.get("/confirm-return", async (req, res, next)=>{
     }else{
       await orderService.getOrderForClient({ orderId });
     }
-
-    if(finalStatus === "rejected" || finalStatus === "cancelled" || finalStatus === "failure"){
-      return res.redirect(`/checkout-failure.html?order_id=${encodeURIComponent(orderId)}`);
-    }
-
-    return res.redirect(`/checkout-success.html?order_id=${encodeURIComponent(orderId)}`);
   }catch(err){
-    next(err);
+    logger.warn("checkout/confirm-return error. Se redirige al frontend para continuar flujo.", {
+      order_id: orderId,
+      payment_id: paymentId || "",
+      status: finalStatus || "",
+      error: err && err.message ? err.message : String(err),
+    });
+    return res.redirect(successUrl);
   }
+
+  if(finalStatus === "rejected" || finalStatus === "cancelled" || finalStatus === "failure"){
+    return res.redirect(failureUrl);
+  }
+
+  return res.redirect(successUrl);
 });
 router.post("/confirm", async (req, res, next)=>{
   try{
