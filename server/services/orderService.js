@@ -447,21 +447,27 @@ async function sendAdminEmailAfterCustomerData(order, source){
   }
 }
 
-function triggerApprovedPaymentEmail(order, source){
+async function sendCustomerEmailAfterApprovedOrder(order, source){
   if(!order || !order.payment || order.payment.status !== PAYMENT_STATUS.APPROVED){
-    return;
+    return {
+      attempted: false,
+      sent: false,
+      reason: "payment_not_approved",
+    };
   }
 
   if(hasApprovedEmailSent(order)){
-    return;
+    return {
+      attempted: false,
+      sent: false,
+      reason: "already_sent",
+    };
   }
 
-  Promise.resolve(emailService.sendOrderEmail(order))
-    .then(async (customerResult)=>{
-      if(!customerResult || !customerResult.sent){
-        return;
-      }
+  try{
+    const customerResult = await emailService.sendOrderEmail(order);
 
+    if(customerResult && customerResult.sent){
       await store.updateOrderById(order.id, (current)=>{
         if(!current) return current;
         if(hasApprovedEmailSent(current)) return current;
@@ -473,14 +479,27 @@ function triggerApprovedPaymentEmail(order, source){
 
         return syncLegacyFields(next);
       });
-    })
-    .catch((err)=>{
-      logger.error("Error enviando email automatico por pago aprobado.", {
-        order_id: order && (order.id || order.id_pedido),
-        source: source || "unknown",
-        error: err && err.message ? err.message : String(err),
-      });
+    }
+
+    return customerResult || { attempted: false, sent: false, reason: "unknown" };
+  }catch(err){
+    logger.error("Error enviando email automatico por pago aprobado.", {
+      order_id: order && (order.id || order.id_pedido),
+      source: source || "unknown",
+      error: err && err.message ? err.message : String(err),
     });
+
+    return {
+      attempted: true,
+      sent: false,
+      reason: "send_failed_unexpected",
+      error: err && err.message ? err.message : String(err),
+    };
+  }
+}
+
+function triggerApprovedPaymentEmail(order, source){
+  Promise.resolve(sendCustomerEmailAfterApprovedOrder(order, source)).catch(()=>{});
 }
 
 async function confirmCheckout({ orderId, accessToken, paymentId, status }){
@@ -777,9 +796,8 @@ async function savePickupContact({ orderId, accessToken, form }){
     return recalculateTotals(next);
   });
 
-  triggerApprovedPaymentEmail(updated, "pickup_contact_saved");
+  const emailResult = await sendCustomerEmailAfterApprovedOrder(updated, "pickup_contact_saved");
   await sendAdminEmailAfterCustomerData(updated, "pickup_contact_saved");
-  const emailResult = null;
 
   if(config.FLOW_DIAGNOSTIC){
     logger.info("DIAG order/pickup_saved", {
@@ -893,9 +911,8 @@ async function saveShipping({ orderId, accessToken, form }){
     finalOrder = creation.order;
   }
 
-  triggerApprovedPaymentEmail(finalOrder, "shipping_data_saved");
+  const emailResult = await sendCustomerEmailAfterApprovedOrder(finalOrder, "shipping_data_saved");
   await sendAdminEmailAfterCustomerData(finalOrder, "shipping_data_saved");
-  const emailResult = null;
 
   if(config.FLOW_DIAGNOSTIC){
     logger.info("DIAG order/shipping_saved", {
