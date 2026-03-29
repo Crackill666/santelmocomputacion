@@ -20,6 +20,6 @@ window.STORE_CONFIG = {
 
   // Opcional: URL base del backend API (ej: "http://localhost:3000").
   // Si queda vacio, se usa la misma origin.
-  apiBaseUrl: "",
+  apiBaseUrl: "https://santelmocomputacion-production.up.railway.app",
   checkoutUrl: "",
 };
