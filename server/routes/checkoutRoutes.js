@@ -64,8 +64,10 @@ router.get("/confirm-return", async (req, res)=>{
   if(finalStatus) redirectParams.set("status", finalStatus);
 
   const queryString = redirectParams.toString();
-  const successUrl = `/checkout-success.html${queryString ? `?${queryString}` : ""}`;
-  const failureUrl = `/checkout-failure.html${queryString ? `?${queryString}` : ""}`;
+  const successBaseUrl = "https://santelmocomputacion.com.ar/checkout-success.html";
+  const failureBaseUrl = "https://santelmocomputacion.com.ar/checkout-failure.html";
+  const successUrl = `${successBaseUrl}${queryString ? `?${queryString}` : ""}`;
+  const failureUrl = `${failureBaseUrl}${queryString ? `?${queryString}` : ""}`;
 
   if(!orderId){
     logger.warn("checkout/confirm-return sin referencia de pedido", {
