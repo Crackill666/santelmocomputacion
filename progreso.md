@@ -2903,3 +2903,141 @@ Actualizar 3 productos solicitados, sin tocar ningun otro campo:
 - 3/3 productos encontrados por nombre exacto.
 - 3/3 con `price_usd` final correcto.
 - Sin cambios en ids, estructura ni logica de aplicacion.
+
+## 50) CORS produccion para frontend publico (2026-03-29)
+
+### 50.1 Objetivo
+
+Permitir llamadas del frontend online a API en Railway sin romper compatibilidad local.
+
+### 50.2 Archivo trabajado
+
+- `server/app.js`
+
+### 50.3 Cambio aplicado
+
+Se reemplazo validacion por regex de localhost por lista explicita de origenes permitidos:
+- `http://localhost:3000`
+- `http://127.0.0.1:3000`
+- `https://santelmocomputacion.com.ar`
+- `https://www.santelmocomputacion.com.ar`
+
+### 50.4 Resultado
+
+- Frontend productivo habilitado para consumir `/api/*`.
+- Compatibilidad localhost mantenida.
+
+## 51) Retorno MP: hardening de `confirm-return` (2026-03-29)
+
+### 51.1 Problema
+
+En algunos retornos desde Mercado Pago, el flujo quedaba en `/api/checkout/confirm-return` sin llegar correctamente a pantalla final.
+
+### 51.2 Causa principal
+
+La ruta dependia solo de `external_reference`; en casos reales llegaba `order_id`.
+Adicionalmente, errores internos de esa ruta podian terminar en JSON del errorHandler (usuario quedaba en endpoint API).
+
+### 51.3 Archivo trabajado
+
+- `server/routes/checkoutRoutes.js`
+
+### 51.4 Cambios aplicados
+
+1. Fallback de referencia:
+- `orderId = external_reference || order_id`.
+2. Construccion de query de retorno preservando:
+- `order_id`, `access_token`, `payment_id`, `status`.
+3. Fallback visual en errores:
+- redireccion al frontend en lugar de responder JSON en ese flujo de retorno.
+
+### 51.5 Resultado
+
+- El usuario deja de quedar clavado en ruta `/api/...` en retornos problematicos.
+- Flujo visual final estabilizado.
+
+## 52) UX final: redireccion de Railway al dominio publico (2026-03-29)
+
+### 52.1 Objetivo
+
+Tras `confirm-return` en Railway, llevar siempre al frontend publico.
+
+### 52.2 Archivo trabajado
+
+- `server/routes/checkoutRoutes.js`
+
+### 52.3 Cambio aplicado
+
+Se cambiaron URLs finales de redirect:
+- success -> `https://santelmocomputacion.com.ar/checkout-success.html`
+- failure -> `https://santelmocomputacion.com.ar/checkout-failure.html`
+
+Manteniendo query params:
+- `order_id`
+- `access_token`
+- `payment_id`
+- `status`
+
+### 52.4 Resultado
+
+- El usuario no queda en dominio Railway en etapa final.
+- UX final consistente en dominio publico.
+
+## 53) Catalogo: alta producto FILM + ajuste precio (2026-03-29)
+
+### 53.1 Archivo trabajado
+
+- `assets/data/products.json`
+
+### 53.2 Alta de producto
+
+Se agrego producto:
+- `id`: `film-protector`
+- `name`: `Film Protector Pantalla`
+- `category`: `Varios`
+- `stock`: `1`
+- `images`: `/assets/products/FILM/1.jpg`, `/2.jpg`, `/3.jpg`
+- `folder`: `/assets/products/FILM/`
+
+### 53.3 Ajuste posterior de precio
+
+- `price_usd`: `2` -> `0.5`
+
+### 53.4 Verificacion local
+
+- Producto visible en catalogo local.
+- En carpeta `assets/products/FILM/` se detecto `1.jpg` presente y `2.jpg`/`3.jpg` faltantes al momento del chequeo.
+
+## 54) Email comprador en submit final (retiro/envio) (2026-03-29)
+
+### 54.1 Problema
+
+En `checkout-success`, al guardar retiro/envio final:
+- pedido se guardaba,
+- email admin seguia,
+- pero `email` de respuesta venia `null` y no habia confirmacion real de envio al comprador en esa etapa.
+
+### 54.2 Causa exacta
+
+Archivo:
+- `server/services/orderService.js`
+
+En `savePickupContact` y `saveShipping`:
+- se llamaba trigger asincrono,
+- luego se seteaba `const emailResult = null`.
+
+### 54.3 Fix aplicado
+
+1. Se agrego helper:
+- `sendCustomerEmailAfterApprovedOrder(order, source)`
+- envia email comprador si corresponde,
+- registra `approved_email_sent` en history cuando se envia.
+2. Se mantuvo `triggerApprovedPaymentEmail(...)` para flujos existentes.
+3. En submit final (`savePickupContact`/`saveShipping`) ahora:
+- `emailResult` se obtiene del helper (no `null`),
+- y se mantiene envio admin con `sendAdminEmailAfterCustomerData(...)`.
+
+### 54.4 Resultado
+
+- El submit final vuelve a tener estado real de email comprador en respuesta.
+- Se conserva email admin y no se rompe flujo de pago/guardado.
