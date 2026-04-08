@@ -1,0 +1,75 @@
+﻿<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Panel de pedidos - Santelmo Computacion</title>
+  <meta name="theme-color" content="#0b0f17" />
+  <link rel="stylesheet" href="/assets/css/styles.css?v=checkout-20260316-pickup2" />
+  <link rel="stylesheet" href="/assets/css/checkout.css?v=checkout-20260316-pickup2" />
+</head>
+<body class="checkout-page">
+  <main class="checkout-shell wide">
+    <section class="checkout-card">
+      <h1>Panel interno de pedidos</h1>
+
+      <div id="adminAccessGate" class="order-summary">
+        <p class="subtitle" id="adminAccessInfo">Ingresa token admin para desbloquear el panel.</p>
+        <div class="filters-row">
+          <label>Token admin
+            <input id="adminToken" type="password" placeholder="x-admin-token" autocomplete="off" />
+          </label>
+          <button id="unlockAdminPanel" class="btn tiny" type="button">Desbloquear panel</button>
+        </div>
+      </div>
+
+      <div id="adminPanelContent" style="display:none;">
+        <p class="subtitle" id="adminInfo">Cargando...</p>
+
+        <div class="filters-row">
+          <label>ID pedido
+            <input id="filterOrderId" type="search" placeholder="Ej: PED-20260316-ABC123" />
+          </label>
+
+          <label>Estado de pago
+            <select id="filterPago">
+              <option value="">Todos</option>
+              <option value="pending">pending</option>
+              <option value="approved">approved</option>
+              <option value="rejected">rejected</option>
+              <option value="refunded">refunded</option>
+            </select>
+          </label>
+
+          <button id="reloadOrders" class="btn tiny" type="button">Actualizar</button>
+        </div>
+
+        <div class="table-wrap">
+          <table class="orders-table">
+            <thead>
+              <tr>
+                <th>Pedido</th>
+                <th>Fecha</th>
+                <th>Comprador</th>
+                <th>Metodo entrega</th>
+                <th>Shipping cost</th>
+                <th>Total</th>
+                <th>Payment status</th>
+                <th>Shipping status</th>
+                <th>Tracking mock</th>
+                <th>Tracking</th>
+                <th>Etiqueta</th>
+                <th>Detalle</th>
+              </tr>
+            </thead>
+            <tbody id="ordersBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="/assets/js/config.js?v=checkout-20260316-pickup2"></script>
+  <script src="/assets/js/admin-orders.js?v=checkout-20260316-pickup2"></script>
+</body>
+</html>

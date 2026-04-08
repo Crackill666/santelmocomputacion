@@ -175,8 +175,9 @@
   }
 
   function buildDetailHref(order){
-    const orderId = encodeURIComponent(order.id || order.id_pedido);
-    const url = new URL(`/stc-admin-orders-9x7q/${orderId}`, window.location.origin);
+    const orderId = String(order.id || order.id_pedido || "").trim();
+    const url = new URL("/admin-order-detail.html", window.location.origin);
+    url.searchParams.set("order_id", orderId);
     const token = getAdminToken();
     if(token) url.searchParams.set("admin_token", token);
     return url.toString();

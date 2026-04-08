@@ -8,7 +8,8 @@
     "start": "node server.js",
     "dev": "node --watch server.js",
     "preflight": "node server/preflight.js",
-    "release:check": "npm run preflight"
+    "release:check": "npm run preflight",
+    "test:smoke": "node --test --test-isolation=none tests/smoke-checkout.test.js"
   },
   "dependencies": {
     "dotenv": "^16.4.7",

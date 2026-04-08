@@ -3041,3 +3041,79 @@ En `savePickupContact` y `saveShipping`:
 
 - El submit final vuelve a tener estado real de email comprador en respuesta.
 - Se conserva email admin y no se rompe flujo de pago/guardado.
+
+## 55) Smoke tests Fase 1 flujo critico (2026-04-08)
+
+### 55.1 Objetivo
+
+Agregar una prueba E2E minima automatizada para cubrir el flujo critico recomendado:
+- create checkout
+- confirm approved
+- guardar datos de envio
+- crear envio desde admin
+- generar/descargar etiqueta desde admin
+
+### 55.2 Archivos trabajados
+
+- `tests/smoke-checkout.test.js` (nuevo)
+- `package.json`
+
+### 55.3 Implementacion aplicada
+
+1. Se creo test nativo con `node:test` + `fetch` (sin dependencias nuevas).
+2. El test levanta `createApp()` en puerto efimero y ejecuta el flujo completo via HTTP real:
+   - `POST /api/checkout/create-preference`
+   - `POST /api/checkout/confirm`
+   - `POST /api/orders/:orderId/shipping`
+   - `POST /api/admin/orders/:orderId/create-shipment`
+   - `POST /api/admin/orders/:orderId/label`
+   - `GET /api/admin/orders/:orderId/label`
+   - `GET /api/admin/orders?order_id=...`
+3. Se agrego script npm:
+   - `test:smoke` -> `node --test --test-isolation=none tests/smoke-checkout.test.js`
+4. Aislamiento operativo incluido en el test:
+   - backup/restore de `server/data/orders.json`
+   - limpieza de labels nuevas en `server/data/labels`
+   (evita contaminar datos operativos locales).
+
+### 55.4 Resultado de verificacion local
+
+- `npm run test:smoke` ejecutado OK (flujo verde).
+
+## 56) Fix ruta admin publica en hosting estatico (2026-04-08)
+
+### 56.1 Problema reportado
+
+Al abrir:
+- `https://santelmocomputacion.com.ar/stc-admin-orders-9x7q`
+
+en produccion se mostraba `index.html` en lugar del panel admin.
+
+### 56.2 Causa tecnica
+
+La ruta discreta existia en backend Node (`server/app.js`), pero el dominio publico sirve frontend estatico.
+En ese hosting, rutas no fisicas terminaban resolviendo al `index`, por eso no llegaba al panel.
+
+### 56.3 Cambios aplicados
+
+Archivos trabajados:
+- `stc-admin-orders-9x7q/index.html` (nuevo)
+- `assets/js/admin-orders.js`
+- `assets/js/admin-order-detail.js`
+- `admin-order-detail.html`
+
+Implementacion:
+1. Se agrego alias fisico estatico en carpeta:
+   - `/stc-admin-orders-9x7q/index.html`
+   - replica el panel admin para que la URL discreta funcione en hosting estatico.
+2. En listado admin, el link de detalle dejo de depender de ruta dinamica:
+   - antes: `/stc-admin-orders-9x7q/:orderId`
+   - ahora: `/admin-order-detail.html?order_id=...`
+3. `admin-order-detail.js` ahora soporta `order_id` por query param (y mantiene fallback path legacy).
+4. Boton "Volver a pedidos" en detalle apunta a:
+   - `/stc-admin-orders-9x7q/`
+
+### 56.4 Resultado esperado
+
+- El link especial vuelve a abrir el panel en produccion.
+- El detalle sigue funcionando sin depender de rutas dinamicas del servidor.

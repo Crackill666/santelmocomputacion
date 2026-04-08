@@ -82,6 +82,9 @@
   }
 
   function getOrderIdFromPath(){
+    const fromQuery = new URLSearchParams(window.location.search || "").get("order_id");
+    if(fromQuery) return String(fromQuery).trim();
+
     const match = String(window.location.pathname || "").match(/\/stc-admin-orders-9x7q\/([^/?#]+)/i);
     return match ? decodeURIComponent(match[1]) : "";
   }
