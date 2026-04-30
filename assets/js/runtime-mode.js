@@ -83,6 +83,11 @@
     }, 120);
   }
 
+  function isPublicStaticHost(){
+    const host = String(window.location.hostname || "").toLowerCase();
+    return host === "santelmocomputacion.com.ar" || host === "www.santelmocomputacion.com.ar";
+  }
+
   async function mountRuntimeBadge(){
     const root = document.querySelector("[data-runtime-mode-badge]");
     const valueEl = document.querySelector("[data-runtime-mode-value]");
@@ -108,6 +113,10 @@
 
       setBadgeState(root, valueEl, "MOCK", "is-mock", detail);
     }catch(err){
+      if(isPublicStaticHost()){
+        root.hidden = true;
+        return;
+      }
       setBadgeState(root, valueEl, "OFFLINE", "is-offline", String(err && err.message ? err.message : err));
     }
   }

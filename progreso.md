@@ -3136,3 +3136,17 @@ Implementacion:
 Estado:
 
 - Guías Tech ya permite entrar al primer informe desde un link dedicado.
+
+### 58. Badge de modo en hosting estatico Cloudflare
+
+Contexto:
+
+- El sitio publico esta alojado como frontend estatico en Cloudflare.
+- El badge `Modo OFFLINE` aparecia porque `runtime-mode.js` no podia obtener JSON desde `/api/health` o desde el backend configurado.
+- Ese estado no indicaba caida del sitio estatico, sino falta de API/backend disponible para la consulta de salud.
+
+Implementacion:
+
+- En dominios publicos `santelmocomputacion.com.ar` y `www.santelmocomputacion.com.ar`, si la API no responde, el badge de modo se oculta.
+- En local se mantiene `OFFLINE` para seguir usando el badge como alerta tecnica.
+- Se actualizo el cache-buster del script a `v=20260430-static1` en las paginas principales.
