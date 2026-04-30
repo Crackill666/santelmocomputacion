@@ -1278,9 +1278,12 @@ img{max-width:100%; display:block}
   border:0;
   border-radius:0;
   background: rgba(255,255,255,0.04);
+  width:min(100%, 430px);
+  margin:0 auto;
 }
 .novedad-item .product-main{
-  aspect-ratio: 16/11;
+  aspect-ratio: 4/3;
+  height:auto;
   min-height:0;
 }
 .novedad-item .product-info{
@@ -1363,8 +1366,15 @@ img{max-width:100%; display:block}
   .novedades-list{
     grid-template-columns: 1fr;
   }
+  .novedad-item .product-grid{
+    grid-template-columns: 1fr;
+  }
   .novedad-item .product-main{
-    aspect-ratio: 16/11;
+    aspect-ratio: 4/3;
+    height:auto;
+  }
+  .novedad-item .product-info{
+    border-top:1px solid rgba(255,255,255,0.08);
   }
 }
 @media (max-width: 560px){

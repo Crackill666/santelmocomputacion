@@ -3157,3 +3157,244 @@ Implementacion:
 - Se cambio el comportamiento para ocultar el badge inmediatamente en el dominio publico estatico, antes de intentar consultar `/api/health`.
 - La cotizacion `USDT/ARS` no depende de este badge y sigue funcionando desde `currency.js`.
 - Cache-buster actualizado a `v=20260430-static2`.
+
+## 59) Catalogo: alta de 3 cables nuevos (2026-04-30)
+
+### 59.1 Archivo trabajado
+
+- `assets/data/products.json`
+
+### 59.2 Productos agregados
+
+Se agregaron 3 productos nuevos en categoria `Cables`:
+
+1. `Cable Cargas_Datos Display`
+   - `price_usd`: `7.2`
+   - `stock`: `1`
+   - `id`: `cable-cargas-datos-display`
+   - imagenes: `1.jpg`, `2.JPG`, `3.JPG`
+
+2. `Cable Datos_Carga Soporte`
+   - `price_usd`: `10.5`
+   - `stock`: `1`
+   - `id`: `cable-datos-carga-soporte`
+   - imagenes: `1.JPG`, `2.JPG`, `3.JPG`
+
+3. `Cable Carga con Luz`
+   - `price_usd`: `1.3`
+   - `stock`: `1`
+   - `id`: `cable-carga-con-luz`
+   - imagenes: `1.JPG`, `2.jpg`, `3.JPG`
+
+### 59.3 Fuente de datos
+
+- Carpetas en `assets/products/`.
+- Descripcion y precio tomados de los `.txt` incluidos dentro de cada carpeta.
+
+### 59.4 Verificacion
+
+- `products.json` validado correctamente con `ConvertFrom-Json`.
+- Conteo actualizado: `46` productos.
+- Se verifico que las 9 rutas de imagen agregadas existen fisicamente.
+
+## 60) Catalogo: alta Estuche Multicable (2026-04-30)
+
+### 60.1 Archivo trabajado
+
+- `assets/data/products.json`
+
+### 60.2 Producto agregado
+
+Se agrego producto nuevo en categoria `Cables`:
+
+- `name`: `Estuche Multicable`
+- `price_usd`: `2.5`
+- `stock`: `1`
+- `id`: `estuche-multicable`
+- `folder`: `/assets/products/Estuche Multicable/`
+- `images`:
+  - `/assets/products/Estuche Multicable/1.JPG`
+  - `/assets/products/Estuche Multicable/2.JPG`
+  - `/assets/products/Estuche Multicable/3.JPG`
+
+### 60.3 Fuente de datos
+
+- Carpeta `assets/products/Estuche Multicable/`.
+- Descripcion y precio tomados de `Estuche Multicable.txt`.
+
+### 60.4 Verificacion
+
+- `products.json` validado correctamente con `ConvertFrom-Json`.
+- Conteo actualizado: `47` productos.
+- Se verifico que las 3 rutas de imagen agregadas existen fisicamente.
+
+## 61) Catalogo: alta Mini Teclado Plegable (2026-04-30)
+
+### 61.1 Archivo trabajado
+
+- `assets/data/products.json`
+
+### 61.2 Producto agregado
+
+Se agrego producto nuevo en categoria `Mouse / Teclados / Gaming`:
+
+- `name`: `Mini Teclado Plegable`
+- `price_usd`: `19.2`
+- `stock`: `1`
+- `id`: `mini-teclado-plegable`
+- `folder`: `/assets/products/Mini Teclado plegable/`
+- `images`:
+  - `/assets/products/Mini Teclado plegable/1.JPG`
+  - `/assets/products/Mini Teclado plegable/2.JPG`
+  - `/assets/products/Mini Teclado plegable/3.JPG`
+
+### 61.3 Fuente de datos
+
+- Carpeta `assets/products/Mini Teclado plegable/`.
+- Descripcion y precio tomados de `Mini Teclado Pegable.txt`.
+
+### 61.4 Verificacion
+
+- `products.json` validado correctamente con `ConvertFrom-Json`.
+- Conteo actualizado: `48` productos.
+- Se verifico que las 3 rutas de imagen agregadas existen fisicamente.
+
+## 62) Catalogo: alta Smartwatch H59 y Tank M1 (2026-04-30)
+
+### 62.1 Archivo trabajado
+
+- `assets/data/products.json`
+
+### 62.2 Productos agregados
+
+Se agregaron 2 productos nuevos en categoria `Varios`:
+
+1. `Smartwatch Inteligente H59`
+   - `price_usd`: `38`
+   - `stock`: `1`
+   - `id`: `smartwatch-inteligente-h59`
+   - imagenes: `1.JPG`, `2.jpg`, `3.JPG`
+
+2. `Smartwatch Tank M1`
+   - `price_usd`: `58.5`
+   - `stock`: `1`
+   - `id`: `smartwatch-tank-m1`
+   - imagenes: `1.JPG`, `2.JPG`, `3.JPG`
+
+### 62.3 Fuente de datos
+
+- Carpetas:
+  - `assets/products/Smartwatch Inteligente H59/`
+  - `assets/products/Smartwatch Tank M1/`
+- Descripcion y precio tomados de los `.txt` incluidos dentro de cada carpeta.
+
+### 62.4 Verificacion
+
+- `products.json` validado correctamente con `ConvertFrom-Json`.
+- Conteo actualizado: `50` productos.
+- Se verifico que las 6 rutas de imagen agregadas existen fisicamente.
+
+## 63) Novedades: reduccion de imagenes en cards (2026-04-30)
+
+### 63.1 Objetivo
+
+Reducir el tamano visual de las imagenes en la seccion `Novedades`, porque quedaban demasiado grandes en desktop.
+
+### 63.2 Archivos trabajados
+
+- `assets/css/styles.css`
+- `novedades.html`
+
+### 63.3 Cambio aplicado
+
+- En `.novedad-item .product-main` se cambio la proporcion de imagen:
+  - antes: `aspect-ratio: 16/11`
+  - ahora: `aspect-ratio: 16/8`
+- El ajuste tambien aplica en mobile dentro del media query existente.
+- Se actualizo el cache-buster del CSS en `novedades.html`:
+  - `v=20260430-novedades-img1`
+
+### 63.4 Resultado esperado
+
+- Las imagenes de `Novedades` se ven aproximadamente 30% mas bajas.
+- Se conserva la estructura de cards, textos, botones y funcionalidad sin cambios.
+
+### 63.5 Ajuste adicional solicitado
+
+- Se aplico una segunda reduccion de alto en imagenes de `Novedades`:
+  - antes: `aspect-ratio: 16/8`
+  - ahora: `aspect-ratio: 16/6.5`
+- Cache-buster actualizado:
+  - `v=20260430-novedades-img2`
+
+### 63.6 Reduccion fuerte solicitada
+
+- Se aplico una tercera reduccion para acercarse al 50% del alto original:
+  - antes: `aspect-ratio: 16/6.5`
+  - ahora: `aspect-ratio: 16/5.5`
+- Cache-buster actualizado:
+  - `v=20260430-novedades-img3`
+
+### 63.7 Ajuste final con altura fija responsive
+
+- Se detecto que, al depender de `aspect-ratio`, las imagenes seguian percibiendose grandes porque las cards son muy anchas.
+- Se reemplazo el ratio por altura responsive controlada:
+  - desktop: `height: clamp(130px, 14vw, 165px)`
+  - mobile/tablet: `height: clamp(120px, 32vw, 170px)`
+- Cache-buster actualizado:
+  - `v=20260430-novedades-img4`
+
+### 63.8 Micro-reduccion adicional
+
+- Se redujo un poco mas la altura controlada de imagenes en `Novedades`:
+  - desktop: `height: clamp(105px, 11vw, 135px)`
+  - mobile/tablet: `height: clamp(105px, 28vw, 150px)`
+- Cache-buster actualizado:
+  - `v=20260430-novedades-img5`
+
+### 63.9 Reduccion adicional fuerte
+
+- Se aplico otra reduccion de altura para que el cambio sea mas notorio:
+  - desktop: `height: clamp(80px, 8vw, 105px)`
+  - mobile/tablet: `height: clamp(90px, 22vw, 125px)`
+- Cache-buster actualizado:
+  - `v=20260430-novedades-img6`
+
+### 63.10 Correccion de formato extendido
+
+- Se detecto que la reduccion fuerte dejaba las imagenes como franja horizontal demasiado extendida.
+- En desktop se cambio la card de `Novedades` a composicion horizontal:
+  - imagen lateral compacta de `170px`
+  - informacion a la derecha
+  - altura minima de imagen `190px`
+- En mobile/tablet se mantiene imagen superior, pero con altura mas natural:
+  - `height: clamp(135px, 34vw, 185px)`
+- Cache-buster actualizado:
+  - `v=20260430-novedades-card1`
+
+### 63.11 Alineacion visual con Catalogo
+
+- Se descarto la composicion horizontal porque no coincidia con el estilo buscado.
+- `Novedades` vuelve a formato de card vertical similar a `Catalogo`:
+  - imagen arriba,
+  - informacion debajo,
+  - grid desktop de 3 columnas para evitar imagenes gigantes.
+- La imagen queda con proporcion `4/3`, como card de catalogo.
+- Cache-buster actualizado:
+  - `v=20260430-novedades-grid1`
+
+### 63.12 Grid final solicitado
+
+- Se ajusto `Novedades` a 2 productos por fila en desktop.
+- Se mantuvieron los tamanos de letra existentes.
+- Cache-buster actualizado:
+  - `v=20260430-novedades-grid2`
+
+### 63.13 Limite de tamano de imagen con 2 columnas
+
+- Se detecto que al pasar a 2 columnas las cards quedaban mas anchas y la imagen volvia a crecer demasiado.
+- Se mantuvo el grid de 2 productos por fila, pero se limito la imagen:
+  - `.novedad-item .product-gallery { width: min(100%, 430px); margin: 0 auto; }`
+- Se mantienen los tamanos de letra existentes.
+- Cache-buster actualizado:
+  - `v=20260430-novedades-grid3`
