@@ -3117,3 +3117,22 @@ Implementacion:
 
 - El link especial vuelve a abrir el panel en produccion.
 - El detalle sigue funcionando sin depender de rutas dinamicas del servidor.
+
+### 56.5 Estado de cierre
+
+- Documentacion de avance guardada en `progreso.md`.
+- Recomendacion operativa post deploy:
+  - abrir `https://santelmocomputacion.com.ar/stc-admin-orders-9x7q/`
+  - aplicar `Ctrl+F5` (y `Purge Cache` en Cloudflare si hiciera falta).
+
+### 57. Guias Tech como indice de informes
+
+Implementacion:
+
+- `guias-tech.html` queda como listado/indice de informes.
+- Se crea `guia-limpiar-notebook.html` para el informe `Cómo limpiar tu notebook sin dañarla`.
+- Se agregan estilos de tarjeta para listar informes y facilitar nuevas publicaciones.
+
+Estado:
+
+- Guías Tech ya permite entrar al primer informe desde un link dedicado.
