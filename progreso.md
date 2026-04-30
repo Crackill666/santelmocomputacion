@@ -3150,3 +3150,10 @@ Implementacion:
 - En dominios publicos `santelmocomputacion.com.ar` y `www.santelmocomputacion.com.ar`, si la API no responde, el badge de modo se oculta.
 - En local se mantiene `OFFLINE` para seguir usando el badge como alerta tecnica.
 - Se actualizo el cache-buster del script a `v=20260430-static1` en las paginas principales.
+
+### 58.1 Ajuste final de carga del badge
+
+- Se detecto que en Cloudflare el badge podia quedar en `Modo CARGANDO...` mientras esperaba la API.
+- Se cambio el comportamiento para ocultar el badge inmediatamente en el dominio publico estatico, antes de intentar consultar `/api/health`.
+- La cotizacion `USDT/ARS` no depende de este badge y sigue funcionando desde `currency.js`.
+- Cache-buster actualizado a `v=20260430-static2`.
