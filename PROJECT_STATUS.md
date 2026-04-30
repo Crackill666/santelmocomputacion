@@ -195,3 +195,68 @@ Se completo una tanda de mejoras de alto impacto visual/comercial sin alterar lo
   1. conectar seleccion real de sucursal (`agencyId`) en success/checkout;
   2. validar flujo completo con credenciales reales de Correo;
   3. cerrar QA visual mobile final de cards/modal/contacto.
+
+## Actualizacion de continuidad (2026-04-30)
+
+### Estado general actualizado
+
+- Catalogo actualizado y validado.
+- Conteo actual en `assets/data/products.json`: `50` productos.
+- `progreso.md` queda como historial detallado de cambios hasta seccion `63`.
+
+### Productos agregados en esta tanda
+
+Se agregaron productos nuevos desde carpetas en `assets/products/`, respetando estructura existente de catalogo:
+
+1. Categoria `Cables`:
+   - `Cable Cargas_Datos Display` - USD `7.2`
+   - `Cable Datos_Carga Soporte` - USD `10.5`
+   - `Cable Carga con Luz` - USD `1.3`
+   - `Estuche Multicable` - USD `2.5`
+
+2. Categoria `Mouse / Teclados / Gaming`:
+   - `Mini Teclado Plegable` - USD `19.2`
+
+3. Categoria `Varios`:
+   - `Smartwatch Inteligente H59` - USD `38`
+   - `Smartwatch Tank M1` - USD `58.5`
+
+### Verificaciones realizadas
+
+- `assets/data/products.json` validado correctamente con `ConvertFrom-Json`.
+- Se verifico existencia fisica de imagenes agregadas.
+- Las rutas respetan mayusculas/minusculas reales de archivos (`.jpg` / `.JPG`) para evitar fallos en hosting.
+
+### Novedades: estado visual final
+
+- `novedades.html` usa cache-buster de CSS:
+  - `v=20260430-novedades-grid3`
+- `Novedades` queda en formato de cards verticales similar a `Catalogo`.
+- En desktop:
+  - 2 productos por fila.
+  - imagen arriba e informacion debajo.
+  - se mantiene el tamano de letra existente.
+  - imagen limitada con:
+    - `.novedad-item .product-gallery { width: min(100%, 430px); margin: 0 auto; }`
+- En mobile/tablet:
+  - 1 producto por fila.
+
+### Archivos principales modificados en la tanda
+
+- `assets/data/products.json`
+- `assets/css/styles.css`
+- `novedades.html`
+- `progreso.md`
+- `project_status.md`
+
+### Estado para retomar
+
+- Revisar visual final de `Novedades` en produccion con `Ctrl+F5`.
+- Si se usa Cloudflare cache, aplicar `Purge Cache` si el cambio de CSS no aparece.
+- Continuar nuevas altas de productos usando el mismo flujo:
+  1. carpeta en `assets/products/`,
+  2. imagenes con nombres exactos,
+  3. `.txt` para descripcion/precio,
+  4. alta en `assets/data/products.json`,
+  5. validar JSON e imagenes,
+  6. documentar en `progreso.md`.
