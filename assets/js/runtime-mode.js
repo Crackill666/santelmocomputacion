@@ -93,6 +93,11 @@
     const valueEl = document.querySelector("[data-runtime-mode-value]");
     if(!root || !valueEl) return;
 
+    if(isPublicStaticHost()){
+      root.hidden = true;
+      return;
+    }
+
     setBadgeState(root, valueEl, "CARGANDO...", null, "Consultando modo operativo");
 
     try{
