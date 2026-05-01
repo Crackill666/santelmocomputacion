@@ -2,9 +2,20 @@
   const FEATURED_NAMES = [
     "Aspiradora Solpadora Aire Portatil Hogar Auto",
     "Auricular Inalambrico+Traductor Idiomas M113",
-    "Auricular Inalambrico+ Traductor Idiomas YYK-Q65",
-    "Teclado Gamer Redragon k630 Dragonbron"
+    "Cable Datos_Carga Soporte",
+    "Smartwatch Tank M1",
+    "Smartwatch Inteligente H59",
+    "Cable Cargas_Datos Display",
+    "Mini Teclado Plegable"
   ];
+  let modal = null;
+
+  function getModal(){
+    if(!modal && window.UIModal && typeof window.UIModal.createModal === "function"){
+      modal = window.UIModal.createModal();
+    }
+    return modal;
+  }
 
   function normalizeName(v){
     return String(v || "").toLowerCase().replace(/\s+/g, " ").trim();
@@ -28,6 +39,14 @@
     if(n <= 3) return "\u2714\uFE0F Disponible ahora";
     if(n <= 5) return "\u2714\uFE0F Disponible ahora";
     return "\u2714\uFE0F Disponible ahora";
+  }
+
+  function getSafeText(text, max){
+    if(window.Utils && typeof window.Utils.safeText === "function"){
+      return window.Utils.safeText(text, max);
+    }
+    const raw = String(text || "").replace(/\s+/g, " ").trim();
+    return raw.length > max ? raw.slice(0, max - 1).trim() + "..." : raw;
   }
 
   function trackLeadIfAvailable(){
@@ -109,6 +128,90 @@
     }
   }
 
+  function renderProductDetail(product){
+    const wrap = document.createElement("div");
+    wrap.className = "product";
+
+    const imgs0 = (product.images && product.images.length) ? product.images.slice(0, 3) : ["./assets/img/placeholder.jpg"];
+    const imgs = imgs0.slice();
+    while(imgs.length < 3) imgs.push(imgs[imgs.length - 1]);
+
+    const usdValue = Number(product.price_usd || 0);
+    const usdText = getUsdText(usdValue);
+
+    wrap.innerHTML = `
+      <div class="product-grid">
+        <div class="product-gallery">
+          <div class="product-main">
+            <img alt="${escapeHtml(product.name || "Producto")}" loading="lazy" src="${imgs[0]}">
+          </div>
+          <div class="product-thumbs">
+            ${imgs.map(function(src, i){
+              return `<button class="thumb" type="button" data-idx="${i}" aria-label="Foto ${i + 1}">
+                <img alt="" loading="lazy" src="${src}">
+              </button>`;
+            }).join("")}
+          </div>
+        </div>
+
+        <div class="product-info">
+          <div class="product-title">${escapeHtml(product.name || "Producto")}</div>
+          <div class="chip-row chip-row-stack" style="margin-top:8px">
+            <span class="chip">${getStockText(product.stock)}</span>
+          </div>
+          <div class="product-desc">${escapeHtml(product.description || "Sin descripcion").replace(/\n/g, "<br>")}</div>
+          <div class="product-price">
+            <div class="usd precio-usd">${usdText}</div>
+            <div class="ars precio-ars" data-ars>$ARS -</div>
+            <div class="rate-note" data-rate-note></div>
+          </div>
+          <div class="product-actions">
+            <button class="btn whatsapp btn-consultar" type="button" data-buy>Consultar por WhatsApp</button>
+            <button class="btn whatsapp btn-comprar" type="button" data-buy-future>Comprar ahora</button>
+          </div>
+          <div class="product-trust" aria-label="Beneficios de compra">
+            <div><span class="trust-ico" aria-hidden="true">&#10003;</span><span>Compra 100% segura con Mercado Pago</span></div>
+            <div><span class="trust-ico" aria-hidden="true">&#10003;</span><span>Envio a todo el pais o retiro en local</span></div>
+            <div><span class="trust-ico" aria-hidden="true">&#10003;</span><span>Asesoramiento rapido por WhatsApp</span></div>
+          </div>
+          <div class="buy-note" style="margin-top:6px; font-size:12px; opacity:0.8;">
+            Paga con Mercado Pago de forma segura
+          </div>
+        </div>
+      </div>
+    `;
+
+    const mainImg = wrap.querySelector(".product-main img");
+    wrap.querySelectorAll(".thumb").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        const i = Number(btn.getAttribute("data-idx") || 0);
+        mainImg.src = imgs[i] || imgs[0];
+        wrap.querySelectorAll(".thumb").forEach(function(b){ b.classList.remove("active"); });
+        btn.classList.add("active");
+      });
+    });
+
+    const firstThumb = wrap.querySelector('.thumb[data-idx="0"]');
+    if(firstThumb) firstThumb.classList.add("active");
+
+    wrap.querySelectorAll("img").forEach(function(img){
+      img.addEventListener("error", function(){ img.src = "./assets/img/placeholder.jpg"; });
+    });
+
+    mountPriceAndActions(wrap, product);
+    return wrap;
+  }
+
+  function openProductDetail(product){
+    const detailModal = getModal();
+    if(!detailModal || !product) return;
+    detailModal.setTitle(product.category ? product.category : "Producto", "");
+    detailModal.setSearchVisible(false);
+    detailModal.setBackVisible(false);
+    detailModal.setBody(renderProductDetail(product));
+    detailModal.open();
+  }
+
   function bindWhatsAppFab(){
     const fab = document.querySelector("[data-fab-whatsapp]");
     if(!fab) return;
@@ -136,53 +239,65 @@
   }
 
   function renderProduct(product){
-    const article = document.createElement("article");
-    article.className = "novedad-item";
+    const card = document.createElement("article");
+    card.className = "card";
 
     const name = escapeHtml(product.name || "Producto");
-    const category = escapeHtml(product.category || "Producto");
-    const description = escapeHtml(product.description || "Sin descripcion").replace(/\n/g, "<br>");
+    const catName = product.category || "Producto";
+    const category = escapeHtml(catName);
+    const icon = (window.Utils && typeof window.Utils.iconForCategory === "function") ? window.Utils.iconForCategory(catName) : "";
+    const description = getSafeText(product.description || "", 120);
     const stockText = getStockText(product.stock);
     const img0 = (product.images && product.images[0]) ? product.images[0] : "./assets/img/placeholder.jpg";
     const usdValue = Number(product.price_usd || 0);
     const usdText = getUsdText(usdValue);
+    const state = (window.Currency && typeof window.Currency.getState === "function") ? window.Currency.getState() : null;
+    const arsText = (state && state.rate && window.Currency && typeof window.Currency.usdToArs === "function" && typeof window.Currency.fmtARS === "function")
+      ? window.Currency.fmtARS(window.Currency.usdToArs(usdValue))
+      : "$ARS -";
 
-    article.innerHTML = `
-      <div class="product-grid">
-        <div class="product-gallery">
-          <div class="product-main">
-            <img alt="${name}" loading="lazy" src="${img0}">
-          </div>
+    card.innerHTML = `
+      <div class="card-media">
+        <img alt="${name}" loading="lazy" src="${img0}">
+      </div>
+
+      <div class="card-content">
+        <div class="card-title"><span class="mini-icon">${icon}</span><span class="t">${name}</span></div>
+
+        <div class="chip-row">
+          <span class="chip">${category}</span>
+          <span class="chip">${stockText}</span>
         </div>
-        <div class="product-info">
-          <div class="product-title">${name}</div>
-          <div class="chip-row chip-row-stack" style="margin-top:8px">
-            <span class="chip">${stockText}</span>
+
+        <div class="card-desc">${escapeHtml(description)}</div>
+
+        <div class="card-bottom">
+          <div class="card-price">
+            <div class="usd">${usdText}</div>
+            <div class="ars">${arsText}</div>
           </div>
-          <div class="product-desc">${description}</div>
-          <div class="product-price">
-            <div class="usd precio-usd">${usdText}</div>
-            <div class="ars precio-ars" data-ars>$ARS -</div>
-            <div class="rate-note" data-rate-note></div>
-          </div>
-          <div class="product-actions">
-            <button class="btn whatsapp btn-consultar" type="button" data-buy style="flex:1;">Consultar</button>
-            <button class="btn whatsapp btn-comprar" type="button" data-buy-future style="flex:1;">Comprar</button>
-          </div>
+          <button class="btn tiny" type="button" data-view>Ver</button>
         </div>
       </div>
     `;
 
-    const img = article.querySelector("img");
+    const img = card.querySelector("img");
     if(img){
       img.addEventListener("error", function(){
         img.src = "./assets/img/placeholder.jpg";
       });
     }
 
-    mountPriceAndActions(article, product);
+    const viewBtn = card.querySelector("[data-view]");
+    if(viewBtn){
+      viewBtn.addEventListener("click", function(e){
+        e.stopPropagation();
+        openProductDetail(product);
+      });
+    }
+    card.addEventListener("click", function(){ openProductDetail(product); });
 
-    return article;
+    return card;
   }
 
   function renderNotFound(name){
@@ -232,6 +347,12 @@
   document.addEventListener("DOMContentLoaded", function(){
     bindWhatsAppFab();
     mountRatePill();
-    renderFeaturedProducts();
+    if(window.Currency && typeof window.Currency.subscribe === "function"){
+      window.Currency.subscribe(function(){
+        renderFeaturedProducts();
+      });
+    }else{
+      renderFeaturedProducts();
+    }
   });
 })();

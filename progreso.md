@@ -3398,3 +3398,331 @@ Reducir el tamano visual de las imagenes en la seccion `Novedades`, porque queda
 - Se mantienen los tamanos de letra existentes.
 - Cache-buster actualizado:
   - `v=20260430-novedades-grid3`
+
+## 64) Novedades: ajuste de ancho de cards (2026-05-01)
+
+### 64.1 Objetivo
+
+Reducir el ancho visual de la seccion `Novedades`, manteniendo el tamano actual de imagen porque ya estaba correcto.
+
+### 64.2 Archivos trabajados
+
+- `assets/css/styles.css`
+- `novedades.html`
+
+### 64.3 Cambio aplicado
+
+- Se agrego una clase especifica al contenedor principal:
+  - `novedades-page`
+- Se limito el ancho de la pagina de novedades:
+  - `.novedades-page { width: min(980px, 100%); }`
+- Se mantuvo el grid de 2 productos por fila en desktop y 1 por fila en mobile/tablet.
+- No se modifico el ratio ni el alto de imagenes.
+
+### 64.4 Cache-buster
+
+- CSS actualizado en `novedades.html`:
+  - `v=20260501-novedades-width1`
+
+## 65) Novedades: click en imagen abre detalle (2026-05-01)
+
+### 65.1 Objetivo
+
+Hacer que la imagen de cada producto en `Novedades` abra el detalle completo del producto, igual que ocurre en `Catalogo`.
+
+### 65.2 Archivos trabajados
+
+- `novedades.html`
+- `assets/js/novedades.js`
+- `assets/css/styles.css`
+
+### 65.3 Cambio aplicado
+
+- Se agrego carga de `assets/js/ui-modal.js` en `novedades.html`.
+- Se implemento modal de detalle en `assets/js/novedades.js` con:
+  - imagen principal;
+  - miniaturas;
+  - descripcion completa;
+  - precio USD/ARS;
+  - botones `Consultar por WhatsApp` y `Comprar ahora`;
+  - bloque de confianza.
+- El click sobre la imagen de la card abre el detalle.
+- Tambien se habilito apertura con teclado (`Enter` / `Espacio`) para accesibilidad.
+- Se agrego cursor pointer sobre la imagen clickeable.
+
+### 65.4 Cache-buster
+
+- CSS actualizado en `novedades.html`:
+  - `v=20260501-novedades-modal1`
+- JS actualizado en `novedades.html`:
+  - `v=20260501-modal1`
+
+## 66) Novedades: reemplazo de producto destacado (2026-05-01)
+
+### 66.1 Objetivo
+
+Reemplazar el producto destacado `Teclado Gamer Redragon k630 Dragonbron` por `Smartwatch Tank M1` en la seccion `Novedades`.
+
+### 66.2 Archivos trabajados
+
+- `assets/js/novedades.js`
+- `novedades.html`
+
+### 66.3 Cambio aplicado
+
+- Se actualizo la lista `FEATURED_NAMES`:
+  - sale: `Teclado Gamer Redragon k630 Dragonbron`
+  - entra: `Smartwatch Tank M1`
+- Se verifico que `Smartwatch Tank M1` existe en `assets/data/products.json`.
+
+### 66.4 Cache-buster
+
+- JS actualizado en `novedades.html`:
+  - `v=20260501-tankm1`
+
+## 67) Novedades: reemplazo por Cable Datos_Carga Soporte (2026-05-01)
+
+### 67.1 Objetivo
+
+Reemplazar el producto destacado `Auricular Inalambrico+ Traductor Idiomas YYK-Q65` por `Cable Datos_Carga Soporte` en la seccion `Novedades`.
+
+### 67.2 Archivos trabajados
+
+- `assets/js/novedades.js`
+- `novedades.html`
+
+### 67.3 Cambio aplicado
+
+- Se actualizo la lista `FEATURED_NAMES`:
+  - sale: `Auricular Inalambrico+ Traductor Idiomas YYK-Q65`
+  - entra: `Cable Datos_Carga Soporte`
+- Se verifico que `Cable Datos_Carga Soporte` existe en `assets/data/products.json`.
+
+### 67.4 Cache-buster
+
+- JS actualizado en `novedades.html`:
+  - `v=20260501-cable-soporte`
+
+## 68) Header: badge Nuevo en Novedades (2026-05-01)
+
+### 68.1 Objetivo
+
+Resaltar la opcion `Novedades` del menu principal con un indicador sutil y moderno, sin modificar rutas ni logica del sitio.
+
+### 68.2 Archivos trabajados
+
+- `index.html`
+- `catalogo.html`
+- `contacto.html`
+- `novedades.html`
+- `guias-tech.html`
+- `guia-limpiar-notebook.html`
+- `assets/css/styles.css`
+
+### 68.3 Cambio aplicado
+
+- Se agrego un badge pequeno `Nuevo` junto al texto `Novedades`.
+- Se mantuvo el `href="./novedades.html"` existente en todos los menus.
+- Se agrego estilo CSS aislado:
+  - capsula chica;
+  - degradado rojo/naranja;
+  - texto blanco;
+  - borde redondeado;
+  - sombra suave;
+  - pulso leve con soporte para `prefers-reduced-motion`.
+- Se ajusto el tamano del badge en mobile para no romper el nav responsive.
+
+### 68.4 Cache-buster
+
+- CSS actualizado en las paginas principales:
+  - `v=20260501-nav-badge1`
+
+## 69) Novedades: alta Smartwatch Inteligente H59 (2026-05-01)
+
+### 69.1 Objetivo
+
+Agregar `Smartwatch Inteligente H59` a la seccion `Novedades`.
+
+### 69.2 Archivos trabajados
+
+- `assets/js/novedades.js`
+- `novedades.html`
+
+### 69.3 Cambio aplicado
+
+- Se agrego `Smartwatch Inteligente H59` a la lista `FEATURED_NAMES`.
+- Se verifico que el producto existe en `assets/data/products.json`.
+- Se mantienen los productos destacados existentes.
+
+### 69.4 Cache-buster
+
+- JS actualizado en `novedades.html`:
+  - `v=20260501-smartwatch-h59`
+
+## 70) Novedades: alta Cable Display y Mini Teclado (2026-05-01)
+
+### 70.1 Objetivo
+
+Agregar a la seccion `Novedades` los productos:
+
+- `Cable Cargas_Datos Display`
+- `Mini Teclado Plegable`
+
+### 70.2 Archivos trabajados
+
+- `assets/js/novedades.js`
+- `novedades.html`
+
+### 70.3 Cambio aplicado
+
+- Se agregaron ambos productos a la lista `FEATURED_NAMES`.
+- Se verifico que ambos existen en `assets/data/products.json`.
+- Se mantienen los productos destacados existentes.
+
+### 70.4 Cache-buster
+
+- JS actualizado en `novedades.html`:
+  - `v=20260501-cable-display-mini-teclado`
+
+## 71) Header: cambio de logo (2026-05-01)
+
+### 71.1 Objetivo
+
+Reemplazar el logo del header por el nuevo archivo provisto, cuidando que no se alteren dimensiones visuales ni arquitectura responsive.
+
+### 71.2 Archivos trabajados
+
+- `assets/img/logo.png`
+- `index.html`
+- `catalogo.html`
+- `contacto.html`
+- `novedades.html`
+- `guias-tech.html`
+- `guia-limpiar-notebook.html`
+
+### 71.3 Cambio aplicado
+
+- Se reemplazo `assets/img/logo.png` usando como fuente:
+  - `C:/Users/malib/Pictures/LogoNuevo.jpg`
+- Se mantuvo la misma ruta base del asset:
+  - `./assets/img/logo.png`
+- No se modificaron las reglas CSS del logo:
+  - `.brand-logo` mantiene altura fija, ancho automatico, `object-fit: contain` y limites mobile existentes.
+- Se agrego cache-buster al `src` del logo en las paginas principales:
+  - `v=20260501-logo1`
+
+### 71.4 Verificacion
+
+- Nuevo asset validado:
+  - `700x150`
+- `git diff --check` sin errores.
+
+## 72) Novedades: cards iguales a Catalogo (2026-05-01)
+
+### 72.1 Objetivo
+
+Hacer que la seccion `Novedades` use la misma forma visual que `Catalogo`, manteniendo solo la seleccion de productos nuevos/destacados.
+
+### 72.2 Archivos trabajados
+
+- `novedades.html`
+- `assets/js/novedades.js`
+- `progreso.md`
+
+### 72.3 Cambio aplicado
+
+- En `novedades.html`, la lista de novedades paso a usar la clase existente:
+  - `grid`
+- Se retiro la clase especifica `novedades-page` del contenedor principal para volver al ancho general del sitio.
+- En `assets/js/novedades.js`, el render visible de cada producto paso a usar la misma estructura que `Catalogo`:
+  - `article.card`
+  - `card-media`
+  - `card-content`
+  - `card-title`
+  - `chip-row`
+  - `card-desc`
+  - `card-bottom`
+  - `card-price`
+  - boton `Ver`
+- Se mantiene la lista `FEATURED_NAMES` como fuente de productos nuevos.
+- El boton `Ver` y el click en la card siguen abriendo el detalle del producto.
+
+### 72.4 Restricciones respetadas
+
+- No se modifico checkout.
+- No se modifico carrito.
+- No se modifico Mercado Pago.
+- No se modifico backend ni logica de ordenes.
+- No se cambiaron rutas.
+- No se eliminaron productos.
+
+### 72.5 Cache-buster
+
+- CSS actualizado en `novedades.html`:
+  - `v=20260501-novedades-catalog-card1`
+
+## 73) Header: ajuste de tamano de logo (2026-05-01)
+
+### 73.1 Objetivo
+
+Agrandar levemente el nuevo logo del header porque se veia chico en local, sin romper desktop ni mobile.
+
+### 73.2 Archivos trabajados
+
+- `assets/css/styles.css`
+- `index.html`
+- `catalogo.html`
+- `contacto.html`
+- `novedades.html`
+- `guias-tech.html`
+- `guia-limpiar-notebook.html`
+
+### 73.3 Cambio aplicado
+
+- Se ajusto solo la altura CSS de `.brand-logo`:
+  - base: `34px` -> `38px`
+  - desktop (`min-width: 900px`): `38px` -> `46px`
+  - mobile override: `40px` -> `44px`
+- Se mantuvo:
+  - `width:auto`
+  - `max-width`
+  - `object-fit: contain`
+  - estructura del header
+  - rutas del logo
+
+### 73.4 Cache-buster
+
+- CSS actualizado en las paginas principales:
+  - `v=20260501-logo-size1`
+
+## 74) Header: quitar badge Modo/OFFLINE (2026-05-01)
+
+### 74.1 Objetivo
+
+Eliminar del header el indicador visual `Modo OFFLINE` / `Modo`, porque no aporta al usuario final y ensucia la vista comercial.
+
+### 74.2 Archivos trabajados
+
+- `index.html`
+- `catalogo.html`
+- `contacto.html`
+- `novedades.html`
+- `guias-tech.html`
+- `guia-limpiar-notebook.html`
+
+### 74.3 Cambio aplicado
+
+- Se removio el bloque visual:
+  - `.mode-pill`
+  - `data-runtime-mode-badge`
+  - `data-runtime-mode-value`
+- Se mantuvo la cotizacion `USDT/ARS` donde ya existia.
+- En `contacto.html`, se quito el contenedor `topbar-status` porque solo contenia el badge de modo.
+
+### 74.4 Restricciones respetadas
+
+- No se modifico backend.
+- No se modifico checkout.
+- No se modifico Mercado Pago.
+- No se modificaron rutas.
+- No se toco `assets/js/runtime-mode.js`; al no existir el badge en DOM, el script no renderiza nada.

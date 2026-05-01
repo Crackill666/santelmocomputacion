@@ -114,6 +114,34 @@ img{max-width:100%; display:block}
   background: rgba(255,255,255,0.06);
   border-color: var(--stroke);
 }
+.nav a.nav-featured{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+}
+.nav-badge-new{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:2px 6px;
+  border-radius:999px;
+  background:linear-gradient(135deg, #ff3b30, #ff8a00);
+  color:#fff;
+  font-size:10px;
+  line-height:1;
+  font-weight:800;
+  box-shadow:0 0 14px rgba(255, 92, 28, .28);
+  transform:translateY(-1px);
+  animation:navBadgePulse 3.8s ease-in-out infinite;
+}
+@keyframes navBadgePulse{
+  0%, 100%{ box-shadow:0 0 12px rgba(255, 92, 28, .22); }
+  50%{ box-shadow:0 0 18px rgba(255, 92, 28, .38); }
+}
+@media (prefers-reduced-motion: reduce){
+  .nav-badge-new{ animation:none; }
+}
 
 .rate-pill{
   display:flex;
@@ -745,6 +773,9 @@ img{max-width:100%; display:block}
 }
 
 /* Novedades */
+.novedades-page{
+  width:min(980px, 100%);
+}
 .novedades-list{
   display:grid;
   gap:12px;
@@ -945,7 +976,7 @@ img{max-width:100%; display:block}
   text-decoration:none;
 }
 .brand-logo{
-  height:34px;
+  height:38px;
   width:auto;
   max-width: 72vw;
   display:block;
@@ -953,7 +984,7 @@ img{max-width:100%; display:block}
   filter: drop-shadow(0 14px 30px rgba(0,0,0,.35));
 }
 @media (min-width: 900px){
-  .brand-logo{ height:38px; }
+  .brand-logo{ height:46px; }
 }
 
 /* Modal search + actions */
@@ -1285,6 +1316,7 @@ img{max-width:100%; display:block}
   aspect-ratio: 4/3;
   height:auto;
   min-height:0;
+  cursor:pointer;
 }
 .novedad-item .product-info{
   border:0;
@@ -1793,8 +1825,10 @@ img{max-width:100%; display:block}
     width:100%;
     justify-content:center;
   }
-  .brand-logo{ height:40px; max-width: 78vw; }
+  .brand-logo{ height:44px; max-width: 78vw; }
   .nav a{ padding:9px 8px; font-size:12px; }
+  .nav a.nav-featured{ gap:4px; }
+  .nav-badge-new{ font-size:9px; padding:2px 5px; }
   .rate-pill{ padding:6px 10px; }
 
   .modal-header{
