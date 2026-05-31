@@ -3925,3 +3925,35 @@ Se agrego producto nuevo en categoria `Mouse / Teclados / Gaming`:
 - Conteo actualizado: `57` productos.
 - Se verifico que las 3 rutas de imagen existen fisicamente.
 - No se detectaron nombres ni `id` duplicados.
+
+## 79) Hotfix imagenes mochilas Targus en produccion (2026-05-31)
+
+### 79.1 Objetivo
+
+Corregir imagenes rotas en cards y modal de las mochilas Targus nuevas, detectadas luego de subir los cambios a produccion.
+
+### 79.2 Archivo trabajado
+
+- `assets/data/products.json`
+
+### 79.3 Causa detectada
+
+- En Windows las rutas funcionaban aunque la extension no coincidiera exactamente.
+- En produccion el servidor distingue mayusculas/minusculas, por lo que rutas como `.JPG` fallaban cuando el archivo real era `.jpg`.
+
+### 79.4 Cambio aplicado
+
+Se corrigieron extensiones de imagen para que coincidan exactamente con los archivos reales en:
+
+- `Mochila Targus Ascend 16"`
+- `Mochila Targus Avila 15-16"`
+- `Mochila Targus Geolite Advanced EcoSmart 16"`
+- `Mochila Targus City 16" Negro`
+- `Mochila Targus Geolite Essential 15-16"`
+- `Mochila Targus Terra EcoSmart 15-16"`
+
+### 79.5 Verificacion
+
+- `products.json` validado correctamente con `ConvertFrom-Json`.
+- Se verifico que todas las rutas de imagen de las mochilas Targus existen localmente.
+- No se modifico HTML, CSS, JavaScript, backend, checkout ni Mercado Pago.

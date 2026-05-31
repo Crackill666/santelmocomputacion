@@ -744,7 +744,7 @@
       "stock": 1,
       "price_usd": 26,
       "images": [
-        "/assets/products/Mochila Targus Ascend/1.JPG",
+        "/assets/products/Mochila Targus Ascend/1.jpg",
         "/assets/products/Mochila Targus Ascend/2.jpg",
         "/assets/products/Mochila Targus Ascend/3.JPG"
       ],
@@ -758,9 +758,9 @@
       "stock": 1,
       "price_usd": 58,
       "images": [
-        "/assets/products/Mochila Targus Avila/1.JPG",
+        "/assets/products/Mochila Targus Avila/1.jpg",
         "/assets/products/Mochila Targus Avila/2.jpg",
-        "/assets/products/Mochila Targus Avila/3.JPG"
+        "/assets/products/Mochila Targus Avila/3.jpg"
       ],
       "folder": "/assets/products/Mochila Targus Avila/",
       "category": "Mochilas",
@@ -772,7 +772,7 @@
       "stock": 1,
       "price_usd": 31,
       "images": [
-        "/assets/products/Mochila Targus Geolite Advanced EcoSmart/1.JPG",
+        "/assets/products/Mochila Targus Geolite Advanced EcoSmart/1.jpg",
         "/assets/products/Mochila Targus Geolite Advanced EcoSmart/3.JPG",
         "/assets/products/Mochila Targus Geolite Advanced EcoSmart/2.jpg"
       ],
@@ -786,8 +786,8 @@
       "stock": 1,
       "price_usd": 17,
       "images": [
-        "/assets/products/Mochila Targus City/1.JPG",
-        "/assets/products/Mochila Targus City/3.JPG",
+        "/assets/products/Mochila Targus City/1.jpg",
+        "/assets/products/Mochila Targus City/3.jpg",
         "/assets/products/Mochila Targus City/2.JPG"
       ],
       "folder": "/assets/products/Mochila Targus City/",
@@ -800,7 +800,7 @@
       "stock": 1,
       "price_usd": 17,
       "images": [
-        "/assets/products/Mochila Targus Geolite Essential/1.JPG",
+        "/assets/products/Mochila Targus Geolite Essential/1.jpg",
         "/assets/products/Mochila Targus Geolite Essential/2.JPG",
         "/assets/products/Mochila Targus Geolite Essential/3.jpg"
       ],
@@ -815,7 +815,7 @@
       "price_usd": 29,
       "images": [
         "/assets/products/Mochila Targus Terra EcoSmart/1.jpg",
-        "/assets/products/Mochila Targus Terra EcoSmart/2.JPG",
+        "/assets/products/Mochila Targus Terra EcoSmart/2.jpg",
         "/assets/products/Mochila Targus Terra EcoSmart/3.jpg"
       ],
       "folder": "/assets/products/Mochila Targus Terra EcoSmart/",
