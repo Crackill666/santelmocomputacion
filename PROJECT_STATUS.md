@@ -1,6 +1,6 @@
 # PROJECT STATUS - Santelmo Computacion
 
-Fecha de actualizacion: 2026-03-23
+Fecha de actualizacion: 2026-05-30
 Estado general: SISTEMA LOCAL OPERATIVO + CHECKOUT CON 3 METODOS DE ENTREGA (preparado para sucursal Correo Argentino sin credenciales reales)
 
 ## Nota de sincronizacion
@@ -201,7 +201,7 @@ Se completo una tanda de mejoras de alto impacto visual/comercial sin alterar lo
 ### Estado general actualizado
 
 - Catalogo actualizado y validado.
-- Conteo actual en `assets/data/products.json`: `50` productos.
+- Conteo actual en `assets/data/products.json`: `57` productos.
 - `progreso.md` queda como historial detallado de cambios hasta seccion `63`.
 
 ### Productos agregados en esta tanda
@@ -260,3 +260,44 @@ Se agregaron productos nuevos desde carpetas en `assets/products/`, respetando e
   4. alta en `assets/data/products.json`,
   5. validar JSON e imagenes,
   6. documentar en `progreso.md`.
+
+## Actualizacion de continuidad (2026-05-30)
+
+### Catalogo: alta de mochilas Targus
+
+Se agregaron 6 productos nuevos en categoria `Mochilas`, manteniendo la estructura existente del catalogo y sin tocar estetica, HTML, CSS, JavaScript ni backend:
+
+1. `Mochila Targus Ascend 16"` - USD `26`
+2. `Mochila Targus Avila 15-16"` - USD `58`
+3. `Mochila Targus Geolite Advanced EcoSmart 16"` - USD `31`
+4. `Mochila Targus City 16" Negro` - USD `17`
+5. `Mochila Targus Geolite Essential 15-16"` - USD `17`
+6. `Mochila Targus Terra EcoSmart 15-16"` - USD `29`
+
+### Verificaciones realizadas
+
+- `assets/data/products.json` validado correctamente con `ConvertFrom-Json`.
+- Conteo actualizado: `56` productos.
+- Se verifico existencia fisica de las 18 imagenes nuevas.
+- No se detectaron nombres ni `id` duplicados.
+
+### Ajuste de imagenes posterior
+
+- Se revirtio el ajuste CSS especifico porque dejaba las mochilas demasiado chicas.
+- Se convirtieron las 18 imagenes de las 6 mochilas Targus nuevas a `1500x1000`.
+- Se reordeno la primera imagen de cada mochila nueva para priorizar la foto mas completa disponible.
+- Ajuste posterior: por pedido, la portada de las 6 mochilas nuevas queda como imagen `1` (`1.JPG` / `1.jpg` segun extension real).
+- Objetivo: que se vean mas parejas con las mochilas ya existentes en la primera linea del catalogo.
+- No se modifico la estetica general, HTML, CSS ni JavaScript.
+
+### Catalogo: alta Teclado Bluetooth
+
+Se agrego 1 producto nuevo en categoria `Mouse / Teclados / Gaming`:
+
+- `Teclado plegable Ergo` - USD `23`
+
+Verificaciones:
+- `assets/data/products.json` validado correctamente con `ConvertFrom-Json`.
+- Conteo actualizado: `57` productos.
+- Se verifico existencia fisica de las 3 imagenes.
+- No se detectaron nombres ni `id` duplicados.

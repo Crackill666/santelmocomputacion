@@ -738,6 +738,104 @@
       "category": "Varios",
       "id": "smartwatch-tank-m1",
       "description": "Reloj inteligente TANK M1 con cronografo, despertador, reserva de energia, control remoto, rastreador de sueno, actividad fisica, pasometro, recordatorio de llamadas y mensajes, rastreador de frecuencia cardiaca y resistencia 3ATM."
+    },
+    {
+      "name": "Mochila Targus Ascend 16\"",
+      "stock": 1,
+      "price_usd": 26,
+      "images": [
+        "/assets/products/Mochila Targus Ascend/1.JPG",
+        "/assets/products/Mochila Targus Ascend/2.jpg",
+        "/assets/products/Mochila Targus Ascend/3.JPG"
+      ],
+      "folder": "/assets/products/Mochila Targus Ascend/",
+      "category": "Mochilas",
+      "id": "mochila-targus-ascend-16",
+      "description": "Compartimento principal amplio con soporte suspendido para notebook, compatible con notebooks de 15 a 16 pulgadas. Bolsillo frontal oculto de acceso r?pido. Bolsillo de seguridad oculto en la parte baja del panel trasero. Bolsillo especial para Notebook. Dos bolsillos laterales para botellas de agua. Correas de hombro contorneadas y ajustables, y manija superior reforzada."
+    },
+    {
+      "name": "Mochila Targus Avila 15-16\"",
+      "stock": 1,
+      "price_usd": 58,
+      "images": [
+        "/assets/products/Mochila Targus Avila/1.JPG",
+        "/assets/products/Mochila Targus Avila/2.jpg",
+        "/assets/products/Mochila Targus Avila/3.JPG"
+      ],
+      "folder": "/assets/products/Mochila Targus Avila/",
+      "category": "Mochilas",
+      "id": "mochila-targus-avila-15-16",
+      "description": "La mochila ?vila de 15-16\" es perfecta para llevar a diario y atraer todas las miradas. Cremallera para el port?til que mantiene tu tecnolog?a segura, adem?s de un compartimento principal secundario con multitud de bolsillos para una organizaci?n sin esfuerzo. Un bolsillo oculto en la parte posterior a?ade una capa de seguridad para tus objetos de valor, mientras que las correas acolchadas ajustables para los hombros te ofrecen comodidad incluso en los d?as m?s largos. Herrajes met?licos de primera calidad con detalles de piel vegana. Fabricado con 14 botellas de agua recicladas y otros materiales reciclados."
+    },
+    {
+      "name": "Mochila Targus Geolite Advanced EcoSmart 16\"",
+      "stock": 1,
+      "price_usd": 31,
+      "images": [
+        "/assets/products/Mochila Targus Geolite Advanced EcoSmart/1.JPG",
+        "/assets/products/Mochila Targus Geolite Advanced EcoSmart/3.JPG",
+        "/assets/products/Mochila Targus Geolite Advanced EcoSmart/2.jpg"
+      ],
+      "folder": "/assets/products/Mochila Targus Geolite Advanced EcoSmart/",
+      "category": "Mochilas",
+      "id": "mochila-targus-geolite-advanced-ecosmart-16",
+      "description": "EcoSmart. Compartimento espec?fico para port?til con soporte multiajuste para port?tiles de 14-16\". Gran compartimento principal secundario. Amplia organizaci?n con dos bolsillos delanteros de acceso r?pido con cremallera y un bolsillo interior de malla. Dos pr?cticos bolsillos para botellas de agua."
+    },
+    {
+      "name": "Mochila Targus City 16\" Negro",
+      "stock": 1,
+      "price_usd": 17,
+      "images": [
+        "/assets/products/Mochila Targus City/1.JPG",
+        "/assets/products/Mochila Targus City/3.JPG",
+        "/assets/products/Mochila Targus City/2.JPG"
+      ],
+      "folder": "/assets/products/Mochila Targus City/",
+      "category": "Mochilas",
+      "id": "mochila-targus-city-16-negro",
+      "description": "La Targus City es una mochila negra de 22 litros dise?ada para transportar ordenadores port?tiles. Llevar accesorios tecnol?gicos de forma segura y organizada. Con un dise?o moderno y profesional, es ideal para estudiantes, profesionales y viajeros que necesitan un accesorio funcional y duradero en su rutina diaria."
+    },
+    {
+      "name": "Mochila Targus Geolite Essential 15-16\"",
+      "stock": 1,
+      "price_usd": 17,
+      "images": [
+        "/assets/products/Mochila Targus Geolite Essential/1.JPG",
+        "/assets/products/Mochila Targus Geolite Essential/2.JPG",
+        "/assets/products/Mochila Targus Geolite Essential/3.jpg"
+      ],
+      "folder": "/assets/products/Mochila Targus Geolite Essential/",
+      "category": "Mochilas",
+      "id": "mochila-targus-geolite-essential-15-16",
+      "description": "La mochila GeoLite EcoSmart Essentials de 15-16\" ofrece una protecci?n pr?ctica en un dise?o estilizado. El panel trasero acolchado y las correas ajustables para los hombros a?aden comodidad personal. Bolsillo frontal con cremallera ofrece un f?cil acceso a los accesorios. Con su exterior resistente al agua y su interior respetuoso con el medio ambiente, esta mochila ofrece estilo, funcionalidad y sostenibilidad, manteni?ndote a ti y a tu equipo preparados para el largo plazo."
+    },
+    {
+      "name": "Mochila Targus Terra EcoSmart 15-16\"",
+      "stock": 1,
+      "price_usd": 29,
+      "images": [
+        "/assets/products/Mochila Targus Terra EcoSmart/1.jpg",
+        "/assets/products/Mochila Targus Terra EcoSmart/2.JPG",
+        "/assets/products/Mochila Targus Terra EcoSmart/3.jpg"
+      ],
+      "folder": "/assets/products/Mochila Targus Terra EcoSmart/",
+      "category": "Mochilas",
+      "id": "mochila-targus-terra-ecosmart-15-16",
+      "description": "La mochila complementa tu look profesional a la vez que te permite hacer la transici?n sin problemas a los senderos los fines de semana. Protege tu equipo mientras te mueves por las abarrotadas calles de la ciudad gracias a los cierres antirrobo integrados en los bolsillos principales. Cuenta con cubierta para la lluvia y arn?s frontal para el casco. Con un forro interior fabricado con materiales reciclados, esta mochila se ha dise?ado para proteger tus objetos esenciales y el medio ambiente. Duradera y cuidadosamente dise?ada, te permite seguir aventur?ndote con estilo durante a?os."
+    },
+    {
+      "name": "Teclado plegable Ergo",
+      "stock": 1,
+      "price_usd": 23,
+      "images": [
+        "/assets/products/Teclado Bluetooth/1.jpg",
+        "/assets/products/Teclado Bluetooth/2.jpg",
+        "/assets/products/Teclado Bluetooth/3.jpg"
+      ],
+      "folder": "/assets/products/Teclado Bluetooth/",
+      "category": "Mouse / Teclados / Gaming",
+      "id": "teclado-plegable-ergo",
+      "description": "Despliega este teclado ligero de bolsillo, alimentado por una batería recargable con autonomía de 36 horas, y estarás listo para todo durante muchas horas seguidas. Dotado de un diseño ergonómico dividido que permite una posición natural de las muñecas, evitando así tener que forzar las manos y las muñecas a enderezarse. Gracias a la fiable conexión Bluetooth 5.1, empareja y guarda tu smartphone iOS, Android o Windows, tablet o portátil."
     }
   ]
 }

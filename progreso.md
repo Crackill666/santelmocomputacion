@@ -3726,3 +3726,202 @@ Eliminar del header el indicador visual `Modo OFFLINE` / `Modo`, porque no aport
 - No se modifico Mercado Pago.
 - No se modificaron rutas.
 - No se toco `assets/js/runtime-mode.js`; al no existir el badge en DOM, el script no renderiza nada.
+
+## 75) Guias Tech: nuevas guias de cables (2026-05-01)
+
+### 75.1 Objetivo
+
+Avanzar con nuevas guias comerciales simples para accesorios de carga, manteniendo el estilo actual de `Guias Tech`.
+
+### 75.2 Archivos trabajados
+
+- `guias-tech.html`
+- `guia-cable-carga-celular.html`
+- `guia-display-cable-carga.html`
+
+### 75.3 Guia: cable de carga para celular
+
+- Se creo la pagina:
+  - `guia-cable-carga-celular.html`
+- Se agrego tarjeta en `guias-tech.html` con:
+  - titulo: `Como elegir un buen cable de carga para tu celular`
+  - descripcion corta
+  - boton `Leer informe`
+  - imagen: `./assets/products/Cable Datos_Carga Soporte/1.JPG`
+- Contenido agregado:
+  - punto 1: `Por que algunos cables cargan lento`
+  - punto 2: `Cable de carga vs cable de datos`
+- Se removio la frase provisoria final por pedido.
+- Se mantuvo CTA final:
+  - `Consultar por WhatsApp`
+
+### 75.4 Guia: display en cable de carga
+
+- Se corrigio el enfoque inicial:
+  - no era `LED`;
+  - el producto correcto es `Cable Cargas_Datos Display`.
+- Se dejo la pagina final:
+  - `guia-display-cable-carga.html`
+- Se elimino la version equivocada:
+  - `guia-indicador-led-cable-carga.html`
+- Se actualizo la tarjeta en `guias-tech.html` con:
+  - titulo: `Ventajas del display en un cable de carga`
+  - descripcion corta
+  - boton `Leer informe`
+  - imagen: `./assets/products/Cable Cargas_Datos Display/1.jpg`
+- El texto se ajusto para hablar de display y practicidad diaria, sin prometer carga rapida ni inventar datos tecnicos.
+
+### 75.5 Restricciones respetadas
+
+- No se modifico backend.
+- No se modifico checkout.
+- No se modifico Mercado Pago.
+- No se modificaron emails.
+- No se modifico catalogo.
+- No se modifico `products.json`.
+- No se modifico `assets/js/guias-tech.js`.
+
+## 76) Catalogo: alta de mochilas Targus (2026-05-30)
+
+### 76.1 Objetivo
+
+Agregar nuevos productos de la categoria `Mochilas`, tomando titulo, descripcion y precio USD desde los `.txt` incluidos en cada carpeta de producto.
+
+### 76.2 Archivo trabajado
+
+- `assets/data/products.json`
+
+### 76.3 Productos agregados
+
+Se agregaron 6 productos nuevos en categoria `Mochilas`:
+
+1. `Mochila Targus Ascend 16"`
+   - `price_usd`: `26`
+   - `stock`: `1`
+   - `id`: `mochila-targus-ascend-16`
+   - imagenes: `1.JPG`, `2.jpg`, `3.JPG`
+
+2. `Mochila Targus Avila 15-16"`
+   - `price_usd`: `58`
+   - `stock`: `1`
+   - `id`: `mochila-targus-avila-15-16`
+   - imagenes: `1.JPG`, `2.jpg`, `3.JPG`
+
+3. `Mochila Targus Geolite Advanced EcoSmart 16"`
+   - `price_usd`: `31`
+   - `stock`: `1`
+   - `id`: `mochila-targus-geolite-advanced-ecosmart-16`
+   - imagenes: `1.JPG`, `2.jpg`, `3.JPG`
+
+4. `Mochila Targus City 16" Negro`
+   - `price_usd`: `17`
+   - `stock`: `1`
+   - `id`: `mochila-targus-city-16-negro`
+   - imagenes: `1.JPG`, `2.JPG`, `3.JPG`
+
+5. `Mochila Targus Geolite Essential 15-16"`
+   - `price_usd`: `17`
+   - `stock`: `1`
+   - `id`: `mochila-targus-geolite-essential-15-16`
+   - imagenes: `1.JPG`, `2.JPG`, `3.jpg`
+
+6. `Mochila Targus Terra EcoSmart 15-16"`
+   - `price_usd`: `29`
+   - `stock`: `1`
+   - `id`: `mochila-targus-terra-ecosmart-15-16`
+   - imagenes: `1.jpg`, `2.JPG`, `3.jpg`
+
+### 76.4 Fuente de datos
+
+- Carpetas en `assets/products/`.
+- Descripcion y precio tomados de los `.txt` incluidos dentro de cada carpeta.
+- La carpeta disponible para el ultimo producto es `Mochila Targus Terra EcoSmart`, aunque el pedido inicial lo mencionaba como `Terra ExoSmart`.
+
+### 76.5 Verificacion
+
+- `products.json` validado correctamente con `ConvertFrom-Json`.
+- Conteo actualizado: `56` productos.
+- Se verifico que las 18 rutas de imagen agregadas existen fisicamente.
+- No se detectaron nombres ni `id` duplicados.
+
+### 76.6 Restricciones respetadas
+
+- No se modifico estetica.
+- No se modifico HTML.
+- No se modifico CSS.
+- No se modifico JavaScript.
+- No se modifico backend, checkout, Mercado Pago ni Correo Argentino.
+
+## 77) Catalogo: ajuste de imagenes de mochilas nuevas (2026-05-30)
+
+### 77.1 Objetivo
+
+Hacer que las imagenes de las mochilas Targus nuevas se vean mas parejas con las mochilas ya existentes en la primera linea del catalogo, sin tocar la estetica general del sitio.
+
+### 77.2 Archivos trabajados
+
+- `assets/data/products.json`
+- carpetas de imagenes de las 6 mochilas nuevas en `assets/products/`
+
+### 77.3 Cambio aplicado
+
+- Se revirtio el ajuste CSS especifico anterior porque dejaba las mochilas demasiado chicas.
+- Se convirtieron las 18 imagenes de las 6 mochilas nuevas a lienzo `1500x1000`.
+- Se reordeno la primera imagen de cada producto para priorizar la foto mas completa disponible:
+  - `Mochila Targus Ascend 16"`: `2.jpg`
+  - `Mochila Targus Avila 15-16"`: `2.jpg`
+  - `Mochila Targus Geolite Advanced EcoSmart 16"`: `3.JPG`
+  - `Mochila Targus City 16" Negro`: `3.JPG`
+  - `Mochila Targus Geolite Essential 15-16"`: `2.JPG`
+  - `Mochila Targus Terra EcoSmart 15-16"`: `1.jpg`
+- No se cambio la estructura de cards, grillas, modales ni logica JS.
+
+### 77.4 Verificacion
+
+- `git diff --check` sin errores.
+- `products.json` sigue validando correctamente.
+- Conteo de catalogo preservado: `56` productos.
+- Las 18 imagenes nuevas verifican dimension `1500x1000`.
+
+### 77.5 Ajuste de portada solicitado
+
+- Se dejo como imagen de portada la foto `1` en las 6 mochilas nuevas:
+  - `1.JPG` para Ascend, Avila, Geolite Advanced EcoSmart, City y Geolite Essential.
+  - `1.jpg` para Terra EcoSmart.
+- Se verifico que todas las rutas de portada existen fisicamente.
+
+## 78) Catalogo: alta Teclado Bluetooth (2026-05-30)
+
+### 78.1 Objetivo
+
+Agregar un nuevo producto desde carpeta existente en `assets/products/`, manteniendo la estructura original del catalogo.
+
+### 78.2 Archivo trabajado
+
+- `assets/data/products.json`
+
+### 78.3 Producto agregado
+
+Se agrego producto nuevo en categoria `Mouse / Teclados / Gaming`:
+
+- `name`: `Teclado plegable Ergo`
+- `price_usd`: `23`
+- `stock`: `1`
+- `id`: `teclado-plegable-ergo`
+- `folder`: `/assets/products/Teclado Bluetooth/`
+- `images`:
+  - `/assets/products/Teclado Bluetooth/1.jpg`
+  - `/assets/products/Teclado Bluetooth/2.jpg`
+  - `/assets/products/Teclado Bluetooth/3.jpg`
+
+### 78.4 Fuente de datos
+
+- Carpeta: `assets/products/Teclado Bluetooth/`.
+- Descripcion y precio tomados de `Teclado.txt`.
+
+### 78.5 Verificacion
+
+- `products.json` validado correctamente con `ConvertFrom-Json`.
+- Conteo actualizado: `57` productos.
+- Se verifico que las 3 rutas de imagen existen fisicamente.
+- No se detectaron nombres ni `id` duplicados.
