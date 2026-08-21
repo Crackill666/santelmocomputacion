@@ -43,7 +43,7 @@
     {
       "name": "Skullcandy Method Active",
       "stock": 5,
-      "price_usd": 54,
+      "price_usd": 59.00,
       "images": [
         "/assets/products/Skullcandy Method Active/1.jpg",
         "/assets/products/Skullcandy Method Active/2.jpg",
@@ -57,7 +57,7 @@
     {
       "name": "Auriculares Gamer Logitech G332",
       "stock": 2,
-      "price_usd": 69,
+      "price_usd": 71.83,
       "images": [
         "/assets/products/Auriculares Gamer Logitech G332/1.jpg",
         "/assets/products/Auriculares Gamer Logitech G332/2.jpg",
@@ -71,7 +71,7 @@
     {
       "name": "Auriculares In Ear Basic by Xiaomi",
       "stock": 1,
-      "price_usd": 11,
+      "price_usd": 14.20,
       "images": [
         "/assets/products/Auriculares In Ear Basic by Xiaomi/1.jpg",
         "/assets/products/Auriculares In Ear Basic by Xiaomi/2.jpg",
@@ -85,7 +85,7 @@
     {
       "name": "Skullcandy Jib Bluetooth",
       "stock": 10,
-      "price_usd": 33,
+      "price_usd": 35.92,
       "images": [
         "/assets/products/Skullcandy Jib Bluetooth/1.jpg",
         "/assets/products/Skullcandy Jib Bluetooth/2.jpg",
@@ -99,7 +99,7 @@
     {
       "name": "Skullcandy Jib + Active IPx4",
       "stock": 5,
-      "price_usd": 29,
+      "price_usd": 31.67,
       "images": [
         "/assets/products/Skullcandy Jib + Active IPx4/1.jpg",
         "/assets/products/Skullcandy Jib + Active IPx4/2.jpg",
@@ -113,7 +113,7 @@
     {
       "name": "Skullcandy Riff Blanco",
       "stock": 1,
-      "price_usd": 65,
+      "price_usd": 71.15,
       "images": [
         "/assets/products/Skullcandy Riff Blanco/1.jpg",
         "/assets/products/Skullcandy Riff Blanco/2.jpg",
@@ -127,7 +127,7 @@
     {
       "name": "Skullcandy Riff Gray Miami",
       "stock": 1,
-      "price_usd": 64,
+      "price_usd": 69.24,
       "images": [
         "/assets/products/Skullcandy Riff Gray Miami/1.jpg",
         "/assets/products/Skullcandy Riff Gray Miami/2.jpg",
@@ -141,7 +141,7 @@
     {
       "name": "Auricular Inalambrico+Traductor Idiomas M113",
       "stock": 1,
-      "price_usd": 24,
+      "price_usd": 24.05,
       "images": [
         "/assets/products/Auricular Inalambrico+Traductor Idiomas M113/1.jpg",
         "/assets/products/Auricular Inalambrico+Traductor Idiomas M113/2.jpg",
@@ -155,7 +155,7 @@
     {
       "name": "Auricular Inalambrico+ Traductor Idiomas YYK-Q65",
       "stock": 1,
-      "price_usd": 19,
+      "price_usd": 18.54,
       "images": [
         "/assets/products/Auricular Inalambrico+ Traductor Idiomas YYK-Q65/1.jpg",
         "/assets/products/Auricular Inalambrico+ Traductor Idiomas YYK-Q65/2.jpg",
@@ -167,37 +167,9 @@
       "description": "Auricular Bluetooth + Traductor de idiomas. Distancia: 10m. Touch. Carga en 1.5hrs. Uso de música hasta 6hrs."
     },
     {
-      "name": "Memoria SANDISK 16GB Clase 10",
-      "stock": 2,
-      "price_usd": 6,
-      "images": [
-        "/assets/products/Memoria SANDISK 16GB Clase 10/1.jpg",
-        "/assets/products/Memoria SANDISK 16GB Clase 10/2.jpg",
-        "/assets/products/Memoria SANDISK 16GB Clase 10/3.jpg"
-      ],
-      "folder": "/assets/products/Memoria SANDISK 16GB Clase 10/",
-      "category": "Almacenamiento",
-      "id": "memoria-sandisk-16gb-clase-10",
-      "description": "Sandisk Ultra microSDXC UHS -I Card with Adapter Full HD Lectura: hasta 100 Mb/s Memor ia SANDISK Extreme 32GB Clase10 : FILMA, GUARDA Y COMPARTE MÁS CONTENIDO 4K UHD QUE NUNCA2 Disfruta de velocidades extremas para una"
-    },
-    {
-      "name": "Memoria SANDISK Extreme 32GB Clase10",
-      "stock": 1,
-      "price_usd": 9,
-      "images": [
-        "/assets/products/Memoria SANDISK Extreme 32GB Clase10/1.jpg",
-        "/assets/products/Memoria SANDISK Extreme 32GB Clase10/2.jpg",
-        "/assets/products/Memoria SANDISK Extreme 32GB Clase10/3.jpg"
-      ],
-      "folder": "/assets/products/Memoria SANDISK Extreme 32GB Clase10/",
-      "category": "Almacenamiento",
-      "id": "memoria-sandisk-extreme-32gb-clase10",
-      "description": "Capturá y almacená contenido en 4K UHD con alto rendimiento. Velocidad de lectura hasta 160 MB/s y escritura hasta 90 MB/s. Ideal para smartphones, cámaras de acción y drones. Clase U3, V30 y A2 para máxima fluidez."
-    },
-    {
       "name": "Memoria SANDISK 64GB Clase 10",
       "stock": 2,
-      "price_usd": 22,
+      "price_usd": 7.90,
       "images": [
         "/assets/products/Memoria SANDISK 64GB Clase 10/1.jpg",
         "/assets/products/Memoria SANDISK 64GB Clase 10/2.jpg",
@@ -209,23 +181,9 @@
       "description": "Sandisk Ultra microSDXC UHS-I con adaptador. Ideal para grabación en Full HD. Velocidad de lectura hasta 100 MB/s."
     },
     {
-      "name": "Pendrive Lexar S80 32GB",
-      "stock": 3,
-      "price_usd": 7,
-      "images": [
-        "/assets/products/Pendrive Lexar S80 32GB/1.jpg",
-        "/assets/products/Pendrive Lexar S80 32GB/2.jpg",
-        "/assets/products/Pendrive Lexar S80 32GB/3.jpg"
-      ],
-      "folder": "/assets/products/Pendrive Lexar S80 32GB/",
-      "category": "Almacenamiento",
-      "id": "pendrive-lexar-s80-32gb",
-      "description": "Pendrive Lexar S80 JumpDri ve 32Gb USB 3.1 Lectura hasta 150 MB/s"
-    },
-    {
       "name": "Pendrive Lexar S80 64GB",
       "stock": 9,
-      "price_usd": 9,
+      "price_usd": 11.64,
       "images": [
         "/assets/products/Pendrive Lexar S80 64GB/1.jpg",
         "/assets/products/Pendrive Lexar S80 64GB/2.jpg",
@@ -239,7 +197,7 @@
     {
       "name": "Pendrive Lexar S80 128GB",
       "stock": 5,
-      "price_usd": 18,
+      "price_usd": 22.60,
       "images": [
         "/assets/products/Pendrive Lexar S80 128GB/1.jpg",
         "/assets/products/Pendrive Lexar S80 128GB/2.jpg",
@@ -253,7 +211,7 @@
     {
       "name": "Pendrive Lexar S60 64GB",
       "stock": 7,
-      "price_usd": 9,
+      "price_usd": 9.36,
       "images": [
         "/assets/products/Pendrive Lexar S60 64GB/1.jpg",
         "/assets/products/Pendrive Lexar S60 64GB/2.jpg",
@@ -267,7 +225,7 @@
     {
       "name": "Mochila Targus Intellect Essential 15.6",
       "stock": 10,
-      "price_usd": 15,
+      "price_usd": 15.89,
       "images": [
         "/assets/products/Mochila Targus Intellect Essential 15.6/1.jpg",
         "/assets/products/Mochila Targus Intellect Essential 15.6/2.jpg",
@@ -281,7 +239,7 @@
     {
       "name": "Mochila Targus Intellect Advanced 15.6",
       "stock": 10,
-      "price_usd": 20,
+      "price_usd": 20.34,
       "images": [
         "/assets/products/Mochila Targus Intellect Advanced 15.6/1.jpg",
         "/assets/products/Mochila Targus Intellect Advanced 15.6/2.jpg",
@@ -295,7 +253,7 @@
     {
       "name": "Mochila Targus Sport 15.6",
       "stock": 10,
-      "price_usd": 30,
+      "price_usd": 30.77,
       "images": [
         "/assets/products/Mochila Targus Sport 15.6/1.jpg",
         "/assets/products/Mochila Targus Sport 15.6/2.jpg",
@@ -309,7 +267,7 @@
     {
       "name": "Mouse Logitech M317c Chirpy Bird",
       "stock": 3,
-      "price_usd": 22,
+      "price_usd": 24.66,
       "images": [
         "/assets/products/Mouse Logitech M317c Chirpy Bird/1.jpg",
         "/assets/products/Mouse Logitech M317c Chirpy Bird/2.jpg",
@@ -323,7 +281,7 @@
     {
       "name": "Mouse Logitech M240 Bluetooth",
       "stock": 1,
-      "price_usd": 18,
+      "price_usd": 18.20,
       "images": [
         "/assets/products/Mouse Logitech M240 Bluetooth/1.jpg",
         "/assets/products/Mouse Logitech M240 Bluetooth/2.jpg",
@@ -337,7 +295,7 @@
     {
       "name": "Mouse Logitech M317c Floral",
       "stock": 4,
-      "price_usd": 22,
+      "price_usd": 24.66,
       "images": [
         "/assets/products/Mouse Logitech M317c Floral/1.jpg",
         "/assets/products/Mouse Logitech M317c Floral/2.jpg",
@@ -351,7 +309,7 @@
     {
       "name": "Mouse Logitech M317c Golden Garden",
       "stock": 3,
-      "price_usd": 22,
+      "price_usd": 24.66,
       "images": [
         "/assets/products/Mouse Logitech M317c Golden Garden/1.jpg",
         "/assets/products/Mouse Logitech M317c Golden Garden/2.jpg",
@@ -365,7 +323,7 @@
     {
       "name": "Mouse Targus Mini",
       "stock": 11,
-      "price_usd": 5,
+      "price_usd": 5.51,
       "images": [
         "/assets/products/Mouse Targus Mini/1.jpg",
         "/assets/products/Mouse Targus Mini/2.jpg",
@@ -379,7 +337,7 @@
     {
       "name": "Mouse Targus W839",
       "stock": 1,
-      "price_usd": 5,
+      "price_usd": 5.85,
       "images": [
         "/assets/products/Mouse Targus W839/1.jpg",
         "/assets/products/Mouse Targus W839/2.jpg",
@@ -393,7 +351,7 @@
     {
       "name": "Teclado Gamer Redragon k630 Dragonbron",
       "stock": 1,
-      "price_usd": 41,
+      "price_usd": 41.60,
       "images": [
         "/assets/products/Teclado Gamer Redragon k630 Dragonbron/1.jpg",
         "/assets/products/Teclado Gamer Redragon k630 Dragonbron/2.jpg",
@@ -407,7 +365,7 @@
     {
       "name": "Alpinestar Remera - Linea Combo Tee (talle M)",
       "stock": 2,
-      "price_usd": 12,
+      "price_usd": 13.00,
       "images": [
         "/assets/products/Alpinestar Remera - Linea Combo Tee (talle M)/1.jpg",
         "/assets/products/Alpinestar Remera - Linea Combo Tee (talle M)/2.jpg",
@@ -421,7 +379,7 @@
     {
       "name": "Gopro Bolsa de soportes diversos",
       "stock": 4,
-      "price_usd": 29,
+      "price_usd": 26.00,
       "images": [
         "/assets/products/Gopro Bolsa de soportes diversos/1.jpg",
         "/assets/products/Gopro Bolsa de soportes diversos/2.jpg",
@@ -435,7 +393,7 @@
     {
       "name": "Gopro carcasa para muñeca",
       "stock": 2,
-      "price_usd": 78,
+      "price_usd": 70.58,
       "images": [
         "/assets/products/Gopro carcasa para muñeca/1.jpg",
         "/assets/products/Gopro carcasa para muñeca/2.jpg",
@@ -449,7 +407,7 @@
     {
       "name": "Gopro arnés de pecho",
       "stock": 2,
-      "price_usd": 54,
+      "price_usd": 48.88,
       "images": [
         "/assets/products/Gopro arnés de pecho/1.jpg",
         "/assets/products/Gopro arnés de pecho/2.jpg",
@@ -463,7 +421,7 @@
     {
       "name": "Gopro soportes removibles",
       "stock": 2,
-      "price_usd": 23,
+      "price_usd": 21.45,
       "images": [
         "/assets/products/Gopro soportes removibles/1.jpg",
         "/assets/products/Gopro soportes removibles/2.jpg",
@@ -477,7 +435,7 @@
     {
       "name": "Soporte TV",
       "stock": 1,
-      "price_usd": 29,
+      "price_usd": 31.46,
       "images": [
         "/assets/products/Soporte TV/1.jpg",
         "/assets/products/Soporte TV/2.jpg",
@@ -491,7 +449,7 @@
     {
       "name": "Soporte celular Moto-Bici wa1",
       "stock": 2,
-      "price_usd": 12,
+      "price_usd": 14.16,
       "images": [
         "/assets/products/Soporte celular Moto-Bici wa1/1.jpg",
         "/assets/products/Soporte celular Moto-Bici wa1/2.jpg",
@@ -505,7 +463,7 @@
     {
       "name": "Aspiradora Solpadora Aire Portatil Hogar Auto",
       "stock": 1,
-      "price_usd": 56,
+      "price_usd": 55.50,
       "images": [
         "/assets/products/Aspiradora Solpadora Aire Portatil Hogar Auto/1.jpg",
         "/assets/products/Aspiradora Solpadora Aire Portatil Hogar Auto/2.jpg",
@@ -517,22 +475,9 @@
       "description": "Aspiradora inalámbrica de 3 velocidades con función de soplador. Paquete incluido: 1 aspiradora; 1 boquilla de succión larga; 1 cepillo de boca plana; 1 boquilla de succión gruesa; 1 boquilla de soplado corta; 1 cable USB; 1 manual de instrucciones."
     },
     {
-      "name": "Film Protector Pantalla",
-      "stock": 1,
-      "price_usd": 0.5,
-      "images": [
-        "/assets/products/FILM/1.jpg",
-        "/assets/products/FILM/2.jpg",
-        "/assets/products/FILM/3.jpg"
-      ],
-      "folder": "/assets/products/FILM/",
-      "category": "Varios",
-      "id": "film-protector"
-    },
-    {
       "name": "Cable Belkin USB to MicroUSB",
       "stock": 25,
-      "price_usd": 6,
+      "price_usd": 6.29,
       "images": [
         "/assets/products/Cable Belkin USD to MicroUSB/1.jpg",
         "/assets/products/Cable Belkin USD to MicroUSB/2.jpg",
@@ -546,7 +491,7 @@
     {
       "name": "Cable de Datos-Carga USB-A to Type-C Oculus",
       "stock": 1,
-      "price_usd": 7,
+      "price_usd": 6.50,
       "images": [
         "/assets/products/Cable de Datos-Carga USB-A to Type-C Oculus/1.jpg",
         "/assets/products/Cable de Datos-Carga USB-A to Type-C Oculus/2.jpg",
@@ -560,7 +505,7 @@
     {
       "name": "Cable HDMI 1.8 metros OB80",
       "stock": 1,
-      "price_usd": 10,
+      "price_usd": 11.80,
       "images": [
         "/assets/products/Cable HDMI 1.8 metros OB80/1.jpg",
         "/assets/products/Cable HDMI 1.8 metros OB80/2.jpg",
@@ -574,7 +519,7 @@
     {
       "name": "Cable HDMI 3.0 metros OB80",
       "stock": 3,
-      "price_usd": 11,
+      "price_usd": 12.58,
       "images": [
         "/assets/products/Cable HDMI 3.0 metros OB80/1.jpg",
         "/assets/products/Cable HDMI 3.0 metros OB80/2.jpg",
@@ -588,7 +533,7 @@
     {
       "name": "Cable HDMI 3.0 metros OB90",
       "stock": 2,
-      "price_usd": 11,
+      "price_usd": 12.58,
       "images": [
         "/assets/products/Cable HDMI 3.0 metros OB90/1.jpg",
         "/assets/products/Cable HDMI 3.0 metros OB90/2.jpg",
@@ -602,7 +547,7 @@
     {
       "name": "Cable HDMI 1.8 metros OB360",
       "stock": 1,
-      "price_usd": 13,
+      "price_usd": 15.60,
       "images": [
         "/assets/products/Cable HDMI 1.8 metros OB360/1.jpg",
         "/assets/products/Cable HDMI 1.8 metros OB360/2.jpg",
@@ -616,7 +561,7 @@
     {
       "name": "Cable HDMI 3.0 metros OB360",
       "stock": 2,
-      "price_usd": 14,
+      "price_usd": 15.73,
       "images": [
         "/assets/products/Cable HDMI 3.0 metros OB360/1.jpg",
         "/assets/products/Cable HDMI 3.0 metros OB360/2.jpg",
@@ -630,7 +575,7 @@
     {
       "name": "Cable carga-datos USB to Type C",
       "stock": 2,
-      "price_usd": 16,
+      "price_usd": 15.73,
       "images": [
         "/assets/products/Cable carga-datos USB to Type C/1.jpg",
         "/assets/products/Cable carga-datos USB to Type C/2.jpg",
@@ -644,7 +589,7 @@
     {
       "name": "Cable Cargas_Datos Display",
       "stock": 1,
-      "price_usd": 7.2,
+      "price_usd": 7.15,
       "images": [
         "/assets/products/Cable Cargas_Datos Display/1.jpg",
         "/assets/products/Cable Cargas_Datos Display/2.JPG",
@@ -658,7 +603,7 @@
     {
       "name": "Cable Datos_Carga Soporte",
       "stock": 1,
-      "price_usd": 10.5,
+      "price_usd": 10.40,
       "images": [
         "/assets/products/Cable Datos_Carga Soporte/1.JPG",
         "/assets/products/Cable Datos_Carga Soporte/2.JPG",
@@ -672,7 +617,7 @@
     {
       "name": "Cable Carga con Luz",
       "stock": 1,
-      "price_usd": 1.3,
+      "price_usd": 1.30,
       "images": [
         "/assets/products/Cable Carga con Luz/1.JPG",
         "/assets/products/Cable Carga con Luz/2.jpg",
@@ -686,7 +631,7 @@
     {
       "name": "Estuche Multicable",
       "stock": 1,
-      "price_usd": 2.5,
+      "price_usd": 2.42,
       "images": [
         "/assets/products/Estuche Multicable/1.JPG",
         "/assets/products/Estuche Multicable/2.JPG",
@@ -700,7 +645,7 @@
     {
       "name": "Mini Teclado Plegable",
       "stock": 1,
-      "price_usd": 19.2,
+      "price_usd": 19.12,
       "images": [
         "/assets/products/Mini Teclado plegable/1.JPG",
         "/assets/products/Mini Teclado plegable/2.JPG",
@@ -714,7 +659,7 @@
     {
       "name": "Smartwatch Inteligente H59",
       "stock": 1,
-      "price_usd": 38,
+      "price_usd": 38.00,
       "images": [
         "/assets/products/Smartwatch Inteligente H59/1.JPG",
         "/assets/products/Smartwatch Inteligente H59/2.jpg",
@@ -728,7 +673,7 @@
     {
       "name": "Smartwatch Tank M1",
       "stock": 1,
-      "price_usd": 58.5,
+      "price_usd": 58.50,
       "images": [
         "/assets/products/Smartwatch Tank M1/1.JPG",
         "/assets/products/Smartwatch Tank M1/2.JPG",
@@ -824,7 +769,7 @@
       "description": "La mochila complementa tu look profesional a la vez que te permite hacer la transici?n sin problemas a los senderos los fines de semana. Protege tu equipo mientras te mueves por las abarrotadas calles de la ciudad gracias a los cierres antirrobo integrados en los bolsillos principales. Cuenta con cubierta para la lluvia y arn?s frontal para el casco. Con un forro interior fabricado con materiales reciclados, esta mochila se ha dise?ado para proteger tus objetos esenciales y el medio ambiente. Duradera y cuidadosamente dise?ada, te permite seguir aventur?ndote con estilo durante a?os."
     },
     {
-      "name": "Teclado plegable Ergo",
+      "name": "Teclado Inalambrico Targus Plegable Negro",
       "stock": 1,
       "price_usd": 23,
       "images": [

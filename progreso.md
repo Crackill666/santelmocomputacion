@@ -1,6 +1,6 @@
 ﻿# Progreso del proyecto - Santelmo Computacion
 
-Fecha de corte: 2026-03-12
+Fecha de corte: 2026-08-21
 
 ## 1) Estado general del proyecto
 
@@ -3957,3 +3957,77 @@ Se corrigieron extensiones de imagen para que coincidan exactamente con los arch
 - `products.json` validado correctamente con `ConvertFrom-Json`.
 - Se verifico que todas las rutas de imagen de las mochilas Targus existen localmente.
 - No se modifico HTML, CSS, JavaScript, backend, checkout ni Mercado Pago.
+
+## 80) Actualizacion de precios del catalogo (2026-08-21)
+
+### 80.1 Objetivo
+
+Actualizar los precios USD indicados en `precios_web_para_codex.txt`, renombrar el producto `Teclado plegable Ergo` y omitir el producto `Proyectores` porque no existe en la web.
+
+### 80.2 Archivo trabajado
+
+- `assets/data/products.json`
+
+### 80.3 Cambios aplicados
+
+- Se actualizaron `49` precios identificados de forma segura con los valores de la columna `Precio WEB USD`.
+- Se contemplaron equivalencias claras entre nombres abreviados del TXT y nombres actuales del catalogo (cables, miniteclado, estuche multicable y smartwatches).
+- Se renombro:
+  - antes: `Teclado plegable Ergo`
+  - ahora: `Teclado Inalambrico Targus Plegable Negro`
+- El teclado renombrado conserva su precio anterior de `USD 23`, ya que el TXT no incluye una fila de precio para ese nombre.
+- Se ignoro `Proyectores | USD 229.43`; no se agrego ningun producto nuevo.
+
+### 80.4 Restricciones respetadas
+
+- No se modificaron descripciones, imagenes, stock, categorias ni rutas.
+- No se modifico HTML, CSS, JavaScript, backend, checkout ni Mercado Pago.
+
+### 80.5 Verificacion
+
+- `products.json` validado correctamente.
+- Conteo preservado: `57` productos.
+- Los `49` precios actualizados coinciden con la lista fuente.
+- No existe ningun producto `Proyector` en el catalogo.
+
+## 81) Ajuste puntual de precios (2026-08-21)
+
+### 81.1 Archivo trabajado
+
+- `assets/data/products.json`
+
+### 81.2 Precios corregidos
+
+- `Smartwatch Inteligente H59`: `USD 38.00`
+- `Smartwatch Tank M1`: `USD 58.50`
+- `Aspiradora Solpadora Aire Portatil Hogar Auto`: `USD 55.50`
+
+### 81.3 Verificacion
+
+- `products.json` validado correctamente.
+- No se modificaron nombres, stock, descripciones, imagenes ni otros productos.
+
+## 82) Retiro de productos del catalogo (2026-08-21)
+
+### 82.1 Archivo trabajado
+
+- `assets/data/products.json`
+
+### 82.2 Productos retirados
+
+- `Memoria SANDISK 16GB Clase 10`
+- `Memoria SANDISK Extreme 32GB Clase10`
+- `Pendrive Lexar S80 32GB`
+- `Film Protector Pantalla`
+
+### 82.3 Alcance
+
+- Los productos se eliminaron del inventario visible del catalogo.
+- Se conservaron sus carpetas e imagenes para permitir una recuperacion posterior.
+- No se modificaron otros productos ni la logica del sitio.
+
+### 82.4 Verificacion
+
+- `products.json` validado correctamente.
+- Conteo actualizado: `53` productos.
+- No se encontraron referencias a esos productos fuera de `products.json` y el historial de `progreso.md`.
