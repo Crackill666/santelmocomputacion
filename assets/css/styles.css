@@ -314,6 +314,107 @@ img{max-width:100%; display:block}
   line-height:1.35;
 }
 
+/* Aviso temporal de cierre en Inicio */
+.home-notice[hidden]{
+  display:none;
+}
+
+.home-notice{
+  position:fixed;
+  inset:0;
+  z-index:10000;
+  display:grid;
+  place-items:center;
+  padding:24px;
+}
+
+.home-notice-backdrop{
+  position:absolute;
+  inset:0;
+  background:rgba(0, 0, 0, .82);
+  backdrop-filter:blur(7px);
+}
+
+.home-notice-dialog{
+  position:relative;
+  width:min(680px, calc(100vw - 48px));
+  min-width:0;
+  max-height:calc(100vh - 48px);
+  max-height:calc(100dvh - 48px);
+  border:1px solid rgba(255, 255, 255, .2);
+  border-radius:24px;
+  background:#02050a;
+  box-shadow:0 28px 90px rgba(0, 0, 0, .7);
+  overflow:hidden;
+}
+
+.home-notice-image{
+  width:100%;
+  max-height:calc(100vh - 48px);
+  max-height:calc(100dvh - 48px);
+  object-fit:contain;
+}
+
+.home-notice-close{
+  position:absolute;
+  top:14px;
+  right:14px;
+  z-index:1;
+  width:46px;
+  height:46px;
+  display:grid;
+  place-items:center;
+  padding:0;
+  border:1px solid rgba(255, 255, 255, .7);
+  border-radius:50%;
+  background:rgba(0, 0, 0, .82);
+  color:#fff;
+  box-shadow:0 8px 26px rgba(0, 0, 0, .55);
+  font-size:34px;
+  font-weight:300;
+  line-height:1;
+  cursor:pointer;
+  transition:background .15s ease, transform .15s ease;
+}
+
+.home-notice-close:hover{
+  background:#e31d25;
+  transform:scale(1.05);
+}
+
+.home-notice-close:focus-visible{
+  outline:3px solid #39a9ff;
+  outline-offset:3px;
+}
+
+body.home-notice-open{
+  overflow:hidden;
+}
+
+@media (max-width: 600px){
+  .home-notice{
+    padding:12px;
+  }
+
+  .home-notice-dialog,
+  .home-notice-image{
+    max-height:calc(100vh - 24px);
+    max-height:calc(100dvh - 24px);
+  }
+
+  .home-notice-dialog{
+    width:calc(100vw - 24px);
+    border-radius:18px;
+  }
+
+  .home-notice-close{
+    top:10px;
+    right:10px;
+    width:44px;
+    height:44px;
+  }
+}
+
 
 .trust-inline{
   text-align:center;

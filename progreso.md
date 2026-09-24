@@ -4031,3 +4031,30 @@ Actualizar los precios USD indicados en `precios_web_para_codex.txt`, renombrar 
 - `products.json` validado correctamente.
 - Conteo actualizado: `53` productos.
 - No se encontraron referencias a esos productos fuera de `products.json` y el historial de `progreso.md`.
+
+## 83) Inicio: aviso emergente de cierre (2026-09-24)
+
+### 83.1 Objetivo
+
+Mostrar al ingresar a `Inicio` el aviso visual de cierre correspondiente al jueves 24 y viernes 25 de septiembre, permitiendo cerrarlo para continuar navegando.
+
+### 83.2 Archivos trabajados
+
+- `index.html`
+- `assets/css/styles.css`
+- `assets/js/home-notice.js` (nuevo)
+- `assets/img/aviso-cerrado-24-25-septiembre-2026.png` (nuevo)
+
+### 83.3 Cambio aplicado
+
+- Se agrego un aviso emergente centrado y responsive sobre la pagina de Inicio.
+- Se incorporo una cruz visible para cerrar el aviso.
+- Tambien puede cerrarse con la tecla `Escape`.
+- Mientras esta abierto se bloquea el scroll de fondo; al cerrarlo, la web vuelve a funcionar normalmente.
+- El cierre se recuerda durante la sesion actual de la pestana para que no reaparezca al volver a Inicio.
+- Se agregaron atributos de accesibilidad para anunciarlo como dialogo.
+
+### 83.4 Cache-buster
+
+- CSS y JavaScript del aviso versionados con:
+  - `v=20260924-aviso-cierre2`
