@@ -4058,3 +4058,30 @@ Mostrar al ingresar a `Inicio` el aviso visual de cierre correspondiente al juev
 
 - CSS y JavaScript del aviso versionados con:
   - `v=20260924-aviso-cierre2`
+
+### 83.5 Pendiente para el fin de semana
+
+- El sabado 26 o domingo 27 de septiembre de 2026, retirar el cartel emergente de cierre de `Inicio`.
+- Elementos relacionados que se pueden remover al desactivarlo:
+  - bloque `.home-notice` de `index.html`;
+  - carga de `assets/js/home-notice.js` en `index.html`;
+  - estilos `.home-notice*` y `body.home-notice-open` de `assets/css/styles.css`;
+  - archivo `assets/js/home-notice.js`;
+  - imagen `assets/img/aviso-cerrado-24-25-septiembre-2026.png`.
+- Al retirarlo, actualizar nuevamente el cache-buster del CSS en `index.html`.
+
+## 84) Inicio: retiro del aviso de cierre (2026-09-27)
+
+### 84.1 Cambio aplicado
+
+- Se retiro el cartel emergente de cierre del jueves 24 y viernes 25 de septiembre de Inicio.
+- Se eliminaron el bloque del aviso y la carga de su script en `index.html`.
+- Se quitaron los estilos exclusivos del aviso y el bloqueo de scroll asociado en `assets/css/styles.css`.
+- Se eliminaron `assets/js/home-notice.js` y `assets/img/aviso-cerrado-24-25-septiembre-2026.png`.
+- Se actualizo el cache-buster del CSS en Inicio a `v=20260927-sin-aviso-cierre`.
+
+### 84.2 Verificacion
+
+- Sin referencias activas al aviso fuera del historial de `progreso.md`.
+- `git diff --check` sin errores.
+- Cambio local listo para subir al sitio publicado.
